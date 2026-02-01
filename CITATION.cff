@@ -1,11 +1,10 @@
 cff-version: 1.2.0
-message: "If you use this framework, please cite it as below."
-type: software
-title: "Meta-Context Framework (MCW Framework)"
-abstract: "Meta-Context Framework is (maybe) novel research into a (maybe) new coordination-focused lens for understanding human–AI interaction through information exchange rather than model capability."
+message: "If you use this software, please cite it as below."
 authors:
-  - family-names: "Akin"
-    given-names: "Alec"
-    email: "alecakin@protonmail.ch"
-repository-code: "https://github.com/rainmana/mcw-framework"
-license: Apache-2.0
+- family-names: "Akin"
+  given-names: "William Alec"
+  orcid: "https://orcid.org/0009-0003-4673-3285"
+title: "Meta-Context Window (MCW) Framework"
+version: 1.0.0
+date-released: 2026-01-31
+url: "https://github.com/rainmana/mcw-framework"
