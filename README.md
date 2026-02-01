@@ -44,3 +44,12 @@ MCW models interaction as the exchange of **Information Units (IUs)** between ac
 Early-stage. Exploratory. Intentionally minimal.
 
 Feedback, critique, and falsification are welcome.
+
+## Citation
+
+If you use this framework in academic or technical work, please cite:
+
+> [William "Alec" Akin]. *Meta-Context Window (MCW) Framework*. GitHub repository, 2026.
+
+A formal citation entry will be provided as the framework matures.
+
