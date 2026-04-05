@@ -8,3 +8,20 @@
 .md-typeset .grid.cards > ul > li {
   border: 1px solid var(--md-default-fg-color--lightest);
 }
+
+/* Mermaid diagrams: horizontal scroll on small screens */
+.mermaid {
+  overflow-x: auto;
+}
+
+/* Mermaid dark mode: ensure text is readable */
+[data-md-color-scheme="slate"] .mermaid svg {
+  filter: invert(0);
+}
+
+[data-md-color-scheme="slate"] .mermaid .label,
+[data-md-color-scheme="slate"] .mermaid text,
+[data-md-color-scheme="slate"] .mermaid .nodeLabel {
+  color: var(--md-default-fg-color) !important;
+  fill: var(--md-default-fg-color) !important;
+}
