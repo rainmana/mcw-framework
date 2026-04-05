@@ -16,6 +16,7 @@ This repository presents the **Meta-Context Window (MCW)** — a formal construc
 |----------|-------------|
 | [Glossary](docs/glossary.md) | Canonical definitions for all framework terms |
 | [Paper Outline](docs/paper_outline.md) | Draft outline for a methods-oriented short paper |
+| [System Prompt Derivation](docs/system_prompt_derivation.md) | First-principles derivation of MCW-aware prompt design from IU theory |
 | [Toy Experiments](docs/experiments/toy_experiments.md) | 5 falsifiable experiments with graded outcome interpretation |
 | [Related Work](docs/related_work.md) | Positioning relative to HCI, CSCW, information theory, and alignment research |
 | [Test Bed](docs/test_bed.md) | Public Custom GPT instrument and planned Hugging Face Space |

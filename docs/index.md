@@ -58,6 +58,14 @@ MCW is not stored in either party. It exists only through active, bidirectional 
 
     [:octicons-arrow-right-24: Read about instruments](test_bed.md)
 
+-   :material-math-compass:{ .lg .middle } **System Prompt Derivation**
+
+    ---
+
+    First-principles derivation of MCW-aware prompt design from IU theory, with falsifiable predictions and explicit non-claims.
+
+    [:octicons-arrow-right-24: Read the derivation](system_prompt_derivation.md)
+
 </div>
 
 ---

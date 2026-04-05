@@ -43,6 +43,7 @@ nav:
     - Related Work: related_work.md
   - Research:
     - Paper Outline: paper_outline.md
+    - System Prompt Derivation: system_prompt_derivation.md
     - Toy Experiments: experiments/toy_experiments.md
     - Test Bed: test_bed.md
 

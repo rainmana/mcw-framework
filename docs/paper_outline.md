@@ -121,6 +121,10 @@ Present the formal definition:
 
 Explain why MCW is not a sum or product. Introduce the five-stage IU flow model (selection → encoding → transmission → decoding → integration).
 
+**Naturalistic micro-example (IU flow failure, Stage 3→4):**
+
+During construction of this framework's documentation site, icon shortcodes (e.g., `:material-book-alphabet:`) were authored correctly but rendered as raw text for all readers. The cause was a missing rendering extension — a hidden variable (constraint opacity) invisible to both the author and the reader. The repair operation was synchronization: making the constraint visible and resolving it. This is a single naturalistic observation with no experimental controls. Its value is illustrative, not evidential: it demonstrates that the IU flow model's failure modes are recognizable in routine technical work, not only in designed experiments. Epistemic weight: **Layer 0 illustration only.**
+
 ### 3.4 System Prompts as Initialization Artifacts
 
 Establish that a system prompt is a static IU bundle — not an MCW participant. It biases early coordination but cannot maintain, monitor, or repair MCW.
@@ -265,7 +269,7 @@ Restate:
 | Paper outline | ✅ This document |
 | Framework diagrams (HCW/ACW/MCW, IU flow) | ⬜ Needed |
 | Pilot study observations | ⬜ Needed |
-| System prompt derivation doc | ⬜ Planned |
+| System prompt derivation doc | ✅ Complete |
 | MCW Constitution | ⬜ Proposed |
 | Hugging Face Space | ⬜ Planned |
 | Formal literature review | ⬜ Needed |
