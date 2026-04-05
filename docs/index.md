@@ -74,6 +74,14 @@ MCW is not stored in either party. It exists only through active, bidirectional 
 
     [:octicons-arrow-right-24: Read the derivation](system_prompt_derivation.md)
 
+-   :material-scale-balance:{ .lg .middle } **Constitution**
+
+    ---
+
+    Eight binding invariants governing canonical term use, epistemic claims, extensions, and anti-capture rules for the MCW framework.
+
+    [:octicons-arrow-right-24: Read the constitution](constitution.md)
+
 </div>
 
 ---

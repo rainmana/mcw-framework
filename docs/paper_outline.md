@@ -270,7 +270,7 @@ Restate:
 | Framework diagrams (HCW/ACW/MCW, IU flow) | ✅ Complete (5 Mermaid diagrams in `docs/diagrams.md`) |
 | Pilot study observations | ⬜ Needed |
 | System prompt derivation doc | ✅ Complete |
-| MCW Constitution | ⬜ Proposed |
+| MCW Constitution | ✅ Complete (`docs/constitution.md`) |
 | Hugging Face Space | ⬜ Planned |
 | Formal literature review | ⬜ Needed |
 
