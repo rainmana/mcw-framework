@@ -16,7 +16,7 @@ This repository presents the **Meta-Context Window (MCW)** — a formal construc
 |----------|-------------|
 | [Glossary](docs/glossary.md) | Canonical definitions for all framework terms |
 | [Paper Outline](docs/paper_outline.md) | Draft outline for a methods-oriented short paper |
-| [Toy Experiments](experiments/toy_experiments.md) | 5 falsifiable experiments with graded outcome interpretation |
+| [Toy Experiments](docs/experiments/toy_experiments.md) | 5 falsifiable experiments with graded outcome interpretation |
 | [Related Work](docs/related_work.md) | Positioning relative to HCI, CSCW, information theory, and alignment research |
 | [Test Bed](docs/test_bed.md) | Public Custom GPT instrument and planned Hugging Face Space |
 | [CITATION.cff](CITATION.cff) | Citable reference with ORCID |
@@ -160,7 +160,7 @@ Experiments use four optional coordination proxies on 0–3 ordinal scales: **H*
 
 Each experiment includes a stated hypothesis, graded outcome interpretation, and explicit falsification conditions. If MCW is not a useful construct, these experiments should fail quietly.
 
-Full specifications: [experiments/toy_experiments.md](experiments/toy_experiments.md)
+Full specifications: [docs/experiments/toy_experiments.md](docs/experiments/toy_experiments.md)
 
 ---
 

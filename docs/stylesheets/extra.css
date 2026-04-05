@@ -1,0 +1,10 @@
+/* Slightly tighter table spacing for the framework's many reference tables */
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  padding: 0.5em 0.75em;
+}
+
+/* Make the grid cards on the homepage a bit more compact */
+.md-typeset .grid.cards > ul > li {
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
