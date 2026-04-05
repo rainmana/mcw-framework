@@ -1,0 +1,1949 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A coordination framework for human–AI collaboration failures">
+      
+      
+        <meta name="author" content="W. Alec Akin">
+      
+      
+        <link rel="canonical" href="https://rainmana.github.io/mcw-framework/experiments/toy_experiments/">
+      
+      
+        <link rel="prev" href="../../paper_outline/">
+      
+      
+        <link rel="next" href="../../test_bed/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Toy Experiments - Meta-Context Window (MCW) Framework</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mcw-toy-experiments-formal-methods" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Meta-Context Window (MCW) Framework" class="md-header__button md-logo" aria-label="Meta-Context Window (MCW) Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Meta-Context Window (MCW) Framework
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Toy Experiments
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rainmana/mcw-framework" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rainmana/mcw-framework
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../glossary/" class="md-tabs__link">
+          
+  
+  
+  Framework
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../paper_outline/" class="md-tabs__link">
+          
+  
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Meta-Context Window (MCW) Framework" class="md-nav__button md-logo" aria-label="Meta-Context Window (MCW) Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Meta-Context Window (MCW) Framework
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rainmana/mcw-framework" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rainmana/mcw-framework
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Framework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Framework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../related_work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Related Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paper_outline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paper Outline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toy Experiments
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toy Experiments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#experimental-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experimental Philosophy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measurement-proxies-optional-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measurement Proxies (Optional Scoring)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-1-false-alignment-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 1: False Alignment Injection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment 1: False Alignment Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypothesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-mcw-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expected MCW Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graded-outcome-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graded Outcome Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsification-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsification Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-2-asymmetric-state-advancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 2: Asymmetric State Advancement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment 2: Asymmetric State Advancement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypothesis_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-mcw-signature_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expected MCW Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graded-outcome-interpretation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graded Outcome Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsification-condition_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsification Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-3-overcompression-damage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 3: Overcompression Damage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment 3: Overcompression Damage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypothesis_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-mcw-signature_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expected MCW Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graded-outcome-interpretation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graded Outcome Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsification-condition_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsification Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-4-constraint-opacity-stress-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 4: Constraint Opacity Stress Test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment 4: Constraint Opacity Stress Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypothesis_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-mcw-signature_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expected MCW Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graded-outcome-interpretation_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graded Outcome Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsification-condition_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsification Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-5-repair-signal-suppression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 5: Repair Signal Suppression
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment 5: Repair Signal Suppression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypothesis_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-mcw-signature_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expected MCW Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graded-outcome-interpretation_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graded Outcome Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsification-condition_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsification Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-experiment-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Experiment Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../test_bed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Bed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#experimental-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experimental Philosophy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measurement-proxies-optional-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measurement Proxies (Optional Scoring)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-1-false-alignment-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 1: False Alignment Injection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment 1: False Alignment Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypothesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-mcw-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expected MCW Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graded-outcome-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graded Outcome Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsification-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsification Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-2-asymmetric-state-advancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 2: Asymmetric State Advancement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment 2: Asymmetric State Advancement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypothesis_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-mcw-signature_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expected MCW Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graded-outcome-interpretation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graded Outcome Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsification-condition_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsification Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-3-overcompression-damage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 3: Overcompression Damage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment 3: Overcompression Damage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypothesis_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-mcw-signature_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expected MCW Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graded-outcome-interpretation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graded Outcome Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsification-condition_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsification Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-4-constraint-opacity-stress-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 4: Constraint Opacity Stress Test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment 4: Constraint Opacity Stress Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypothesis_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-mcw-signature_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expected MCW Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graded-outcome-interpretation_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graded Outcome Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsification-condition_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsification Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-5-repair-signal-suppression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 5: Repair Signal Suppression
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment 5: Repair Signal Suppression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypothesis_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-mcw-signature_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expected MCW Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graded-outcome-interpretation_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graded Outcome Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsification-condition_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsification Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-experiment-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Experiment Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/rainmana/mcw-framework/edit/main/docs/experiments/toy_experiments.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="mcw-toy-experiments-formal-methods">MCW Toy Experiments — Formal Methods<a class="headerlink" href="#mcw-toy-experiments-formal-methods" title="Permanent link">&para;</a></h1>
+<p>This document specifies a set of lightweight, falsifiable experiments designed to probe Meta-Context Window (MCW) dynamics. These experiments intentionally avoid benchmarks, model internals, or quantitative claims, focusing instead on <em>coordination behavior</em> observable by participants.</p>
+<p>The experiments are suitable for:
+- human–human interaction
+- human–AI interaction
+- multi-agent collaboration (conceptually)</p>
+<p>They are designed to fail quietly if MCW is not a useful construct.</p>
+<hr />
+<h2 id="experimental-philosophy">Experimental Philosophy<a class="headerlink" href="#experimental-philosophy" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Coordination over capability:</strong> Hold task difficulty constant; vary coordination conditions.</li>
+<li><strong>Qualitative first:</strong> Early signals are experiential and behavioral.</li>
+<li><strong>Comparative:</strong> Interpret results relative to a baseline.</li>
+<li><strong>Repair-aware:</strong> Treat repair latency and cost as first-class outcomes.</li>
+</ul>
+<hr />
+<h2 id="measurement-proxies-optional-scoring">Measurement Proxies (Optional Scoring)<a class="headerlink" href="#measurement-proxies-optional-scoring" title="Permanent link">&para;</a></h2>
+<p>Use 0–3 ordinal scales to support structured reflection:</p>
+<table>
+<thead>
+<tr>
+<th>Proxy</th>
+<th>Description</th>
+<th>Scale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MCW Health (H)</strong></td>
+<td>Perceived shared understanding</td>
+<td>0 = broken → 3 = strong</td>
+</tr>
+<tr>
+<td><strong>Repair Cost (R)</strong></td>
+<td>Effort required to realign</td>
+<td>0 = low → 3 = high</td>
+</tr>
+<tr>
+<td><strong>Drift Rate (D)</strong></td>
+<td>Speed of divergence</td>
+<td>0 = stable → 3 = rapid</td>
+</tr>
+<tr>
+<td><strong>Misattribution (M)</strong></td>
+<td>Tendency to blame agent capability</td>
+<td>0 = none → 3 = frequent</td>
+</tr>
+</tbody>
+</table>
+<p>These are coordination proxies, not performance metrics. Scores are most meaningful when compared across conditions (baseline vs. MCW-aware), not in absolute terms.</p>
+<hr />
+<h2 id="experiment-1-false-alignment-injection">Experiment 1: False Alignment Injection<a class="headerlink" href="#experiment-1-false-alignment-injection" title="Permanent link">&para;</a></h2>
+<p><strong>Type:</strong> Human ↔ Human</p>
+<h3 id="hypothesis">Hypothesis<a class="headerlink" href="#hypothesis" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Introducing ambiguous agreement language increases false alignment, delaying repair and raising downstream repair cost.</p>
+</blockquote>
+<h3 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h3>
+<p>Two participants collaborate on a simple, multi-step task. Early in the interaction, introduce an ambiguous agreement phrase (e.g., "yeah, that sounds good") without verification. The task proceeds without clarification.</p>
+<h3 id="expected-mcw-signature">Expected MCW Signature<a class="headerlink" href="#expected-mcw-signature" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Early "agreement" produces later surprise</li>
+<li>Repair triggers late, not early</li>
+<li>Clarification becomes emotionally and cognitively expensive</li>
+</ul>
+<h3 id="graded-outcome-interpretation">Graded Outcome Interpretation<a class="headerlink" href="#graded-outcome-interpretation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Scores</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — Strong effect</strong></td>
+<td>H↓, R↑, D↑, M↑</td>
+<td>False alignment reliably masks drift; supports this as a primary MCW failure mode</td>
+</tr>
+<tr>
+<td><strong>B — Moderate effect</strong></td>
+<td>H↘, R↗, D↗, M↘</td>
+<td>Drift occurs but blame doesn't; suggests strong interpersonal repair culture mitigates misattribution</td>
+</tr>
+<tr>
+<td><strong>C — Minimal effect</strong></td>
+<td>H≈, R≈, D≈</td>
+<td>Participants spontaneously clarify despite ambiguity; suggests robust local repair norms</td>
+</tr>
+<tr>
+<td><strong>D — Inverted effect</strong></td>
+<td>H↑</td>
+<td>Ambiguity prompts immediate clarification; implies a highly healthy MCW culture where ambiguity itself is a repair cue</td>
+</tr>
+</tbody>
+</table>
+<h3 id="falsification-condition">Falsification Condition<a class="headerlink" href="#falsification-condition" title="Permanent link">&para;</a></h3>
+<p>If interactions with explicit alignment checks show equivalent drift rates to those with injected false alignment, the failure mode is not meaningfully distinct from baseline noise.</p>
+<hr />
+<h2 id="experiment-2-asymmetric-state-advancement">Experiment 2: Asymmetric State Advancement<a class="headerlink" href="#experiment-2-asymmetric-state-advancement" title="Permanent link">&para;</a></h2>
+<p><strong>Type:</strong> Human ↔ AI</p>
+<h3 id="hypothesis_1">Hypothesis<a class="headerlink" href="#hypothesis_1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Off-turn human reasoning not externalized creates a phase lag between HCW and ACW, increasing clarification cost and perceived "AI failure."</p>
+</blockquote>
+<h3 id="setup_1">Setup<a class="headerlink" href="#setup_1" title="Permanent link">&para;</a></h3>
+<p>The human engages in an extended AI collaboration. Between turns, the human reasons extensively about the problem without externalizing that reasoning. The human then resumes with updated assumptions, treating the AI as if it shares the updated context.</p>
+<h3 id="expected-mcw-signature_1">Expected MCW Signature<a class="headerlink" href="#expected-mcw-signature_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Increased user frustration</li>
+<li>Repetition without convergence</li>
+<li>Rapid improvement after explicit externalization of off-turn thinking</li>
+</ul>
+<h3 id="graded-outcome-interpretation_1">Graded Outcome Interpretation<a class="headerlink" href="#graded-outcome-interpretation_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Scores</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — Strong phase-lag signature</strong></td>
+<td>H↓, R↑, D↑, M↑</td>
+<td>Supports asymmetric state advancement as a primary MCW failure mode</td>
+</tr>
+<tr>
+<td><strong>B — Moderate signature</strong></td>
+<td>H↘, R↗, M↘</td>
+<td>Model partially compensates (e.g., asks clarifying questions); strong built-in repair posture reduces damage</td>
+</tr>
+<tr>
+<td><strong>C — Minimal signature</strong></td>
+<td>H≈</td>
+<td>AI naturally elicits hidden context; interaction protocol already contains repair scaffolding</td>
+</tr>
+<tr>
+<td><strong>D — Reset improves</strong></td>
+<td>—</td>
+<td>If resetting helps, the issue is partly ACW-local (context clutter); argues for a mixed model: MCW drift + ACW saturation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="falsification-condition_1">Falsification Condition<a class="headerlink" href="#falsification-condition_1" title="Permanent link">&para;</a></h3>
+<p>If explicit externalization of off-turn reasoning produces no measurable improvement in alignment, phase lag is not a meaningful MCW variable.</p>
+<hr />
+<h2 id="experiment-3-overcompression-damage">Experiment 3: Overcompression Damage<a class="headerlink" href="#experiment-3-overcompression-damage" title="Permanent link">&para;</a></h2>
+<p><strong>Type:</strong> Human ↔ AI</p>
+<h3 id="hypothesis_2">Hypothesis<a class="headerlink" href="#hypothesis_2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Premature summarization increases IU loss, producing downstream failure that is difficult to debug because the lost distinctions are no longer visible.</p>
+</blockquote>
+<h3 id="setup_2">Setup<a class="headerlink" href="#setup_2" title="Permanent link">&para;</a></h3>
+<p>Early in a multi-step task, request a comprehensive summary and proceed as if it is complete. Do not revisit the original detail. Continue the task to completion.</p>
+<h3 id="expected-mcw-signature_2">Expected MCW Signature<a class="headerlink" href="#expected-mcw-signature_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Summary appears correct</li>
+<li>Edge cases and nuance disappear from the shared state</li>
+<li>Failure emerges late and is hard to attribute</li>
+</ul>
+<h3 id="graded-outcome-interpretation_2">Graded Outcome Interpretation<a class="headerlink" href="#graded-outcome-interpretation_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Scores</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — Downstream failure after "sounds right" summary</strong></td>
+<td>H↓, R↑, D↑</td>
+<td>Strong support for overcompression as a distinct MCW injury</td>
+</tr>
+<tr>
+<td><strong>B — Summary fails fast</strong></td>
+<td>R↘, D↘</td>
+<td>Failure is immediate and cheap to repair; healthy immune signaling prevents compounding</td>
+</tr>
+<tr>
+<td><strong>C — Summary works fine</strong></td>
+<td>H≈</td>
+<td>Task doesn't require nuance, or summary preserved sufficient structure; overcompression risk is task-dependent</td>
+</tr>
+<tr>
+<td><strong>D — Humans disagree but proceed</strong></td>
+<td>R↑, M↑</td>
+<td>Indicates repair suppression or social friction; demonstrates how MCW degrades even when errors are detectable</td>
+</tr>
+</tbody>
+</table>
+<h3 id="falsification-condition_2">Falsification Condition<a class="headerlink" href="#falsification-condition_2" title="Permanent link">&para;</a></h3>
+<p>If premature summarization produces no worse outcomes than delayed summarization across a range of tasks, overcompression is not a meaningful failure mode.</p>
+<hr />
+<h2 id="experiment-4-constraint-opacity-stress-test">Experiment 4: Constraint Opacity Stress Test<a class="headerlink" href="#experiment-4-constraint-opacity-stress-test" title="Permanent link">&para;</a></h2>
+<p><strong>Type:</strong> Human ↔ AI</p>
+<h3 id="hypothesis_3">Hypothesis<a class="headerlink" href="#hypothesis_3" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Opaque constraints function as hidden variables that increase MCW entropy and raise repair cost, even when the model's underlying reasoning is sound.</p>
+</blockquote>
+<h3 id="setup_3">Setup<a class="headerlink" href="#setup_3" title="Permanent link">&para;</a></h3>
+<p>Issue a request approaching a known constraint boundary (e.g., policy restriction, capability limit). Observe the response without advance disclosure of the constraint. Repeat with explicit constraint acknowledgment and compare.</p>
+<h3 id="expected-mcw-signature_3">Expected MCW Signature<a class="headerlink" href="#expected-mcw-signature_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Confusing hedges or refusals without legible explanation</li>
+<li>Misattribution to model incompetence</li>
+<li>Repair attempts target the wrong cause</li>
+<li>Explicit constraint acknowledgment significantly reduces confusion</li>
+</ul>
+<h3 id="graded-outcome-interpretation_3">Graded Outcome Interpretation<a class="headerlink" href="#graded-outcome-interpretation_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Scores</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — Opaque constraint → spiraling confusion</strong></td>
+<td>H↓, R↑, M↑</td>
+<td>Strong evidence that hidden variables impair MCW formation</td>
+</tr>
+<tr>
+<td><strong>B — Constraint triggers explicit uncertainty signaling</strong></td>
+<td>R↘, M↘</td>
+<td>Constraint-handling style is a key MCW health determinant</td>
+</tr>
+<tr>
+<td><strong>C — Minimal effect</strong></td>
+<td>H≈</td>
+<td>Improved transparency can neutralize hidden-variable effects</td>
+</tr>
+<tr>
+<td><strong>D — Unstable response patterns</strong></td>
+<td>—</td>
+<td>Small prompt variations yield large response differences; supports response-surface instability under constraint conflict</td>
+</tr>
+</tbody>
+</table>
+<h3 id="falsification-condition_3">Falsification Condition<a class="headerlink" href="#falsification-condition_3" title="Permanent link">&para;</a></h3>
+<p>If disclosed constraints produce no better alignment outcomes than undisclosed constraints, constraint opacity is not a meaningful MCW variable.</p>
+<hr />
+<h2 id="experiment-5-repair-signal-suppression">Experiment 5: Repair Signal Suppression<a class="headerlink" href="#experiment-5-repair-signal-suppression" title="Permanent link">&para;</a></h2>
+<p><strong>Type:</strong> Human ↔ Human</p>
+<h3 id="hypothesis_4">Hypothesis<a class="headerlink" href="#hypothesis_4" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Suppressing clarification signals reduces visible repair behavior, increasing drift and false consensus, which later produces high-cost correction.</p>
+</blockquote>
+<h3 id="setup_4">Setup<a class="headerlink" href="#setup_4" title="Permanent link">&para;</a></h3>
+<p>Two participants collaborate on a task under conditions that implicitly discourage clarification — for example, time pressure, dismissive responses to questions, or explicit framing that questions are inefficient. Compare against a baseline condition with no such pressure.</p>
+<h3 id="expected-mcw-signature_4">Expected MCW Signature<a class="headerlink" href="#expected-mcw-signature_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Clarifying questions drop below baseline</li>
+<li>Errors persist without correction</li>
+<li>Late correction is emotionally charged and expensive</li>
+</ul>
+<h3 id="graded-outcome-interpretation_4">Graded Outcome Interpretation<a class="headerlink" href="#graded-outcome-interpretation_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Scores</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — Rapid decay</strong></td>
+<td>H↓, D↑, R↑</td>
+<td>Strong support that repair signaling functions as an MCW immune system</td>
+</tr>
+<tr>
+<td><strong>B — Slow decay</strong></td>
+<td>H↘, D↗</td>
+<td>Participants compensate with implicit repair; or task is robust to drift</td>
+</tr>
+<tr>
+<td><strong>C — No decay</strong></td>
+<td>H≈</td>
+<td>Strong internal checks; participants repair silently; or suppression wasn't strong enough</td>
+</tr>
+<tr>
+<td><strong>D — Speed improves, quality harms</strong></td>
+<td>—</td>
+<td>Key tradeoff: MCW optimization may require choosing quality over tempo; supports explicit "uncertainty budget" concept</td>
+</tr>
+</tbody>
+</table>
+<h3 id="falsification-condition_4">Falsification Condition<a class="headerlink" href="#falsification-condition_4" title="Permanent link">&para;</a></h3>
+<p>If repair signal suppression produces no worse coordination outcomes than unsuppressed conditions, repair signaling is not a meaningful MCW variable.</p>
+<hr />
+<h2 id="cross-experiment-analysis">Cross-Experiment Analysis<a class="headerlink" href="#cross-experiment-analysis" title="Permanent link">&para;</a></h2>
+<p>These experiments become more informative when interpreted together.</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>High M across experiments</strong></td>
+<td>Coordination breakdown is systematically blamed on agent competence — a general MCW diagnostic failure</td>
+</tr>
+<tr>
+<td><strong>High R but stable outcomes</strong></td>
+<td>Participants are performing expert manual MCW repair — tacit competence the framework would make transferable</td>
+</tr>
+<tr>
+<td><strong>Low D but low progress</strong></td>
+<td>Over-repair or excessive caution; MCW is stable but throughput is throttled</td>
+</tr>
+<tr>
+<td><strong>Repair latency as primary driver</strong></td>
+<td>Fastest improvement will come from early detection and safe repair cues</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
+<p>These experiments are exploratory. They are intended to:
+- build shared intuition about MCW dynamics
+- guide refinement of the framework
+- identify which failure modes are most tractable</p>
+<p>They do not constitute validation. A null result — experiments that fail to show MCW effects — would be informative and is explicitly welcomed.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rainmana" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
