@@ -35,10 +35,6 @@ graph LR
 
     HCW <-->|"IU exchange\n(text, speech, symbols)"| MCW
     MCW <-->|"IU exchange\n(tokens, probabilities)"| ACW
-
-    style MCW fill:#e8eaf6,stroke:#3949ab,stroke-width:2px
-    style HCW fill:#e3f2fd,stroke:#1e88e5,stroke-width:1px
-    style ACW fill:#f3e5f5,stroke:#8e24aa,stroke-width:1px
 ```
 
 **Key observations:**
@@ -76,17 +72,6 @@ flowchart LR
     S3 -. failure .-> F3
     S4 -. failure .-> F4
     S5 -. failure .-> F5
-
-    style S1 fill:#c8e6c9,stroke:#388e3c
-    style S2 fill:#c8e6c9,stroke:#388e3c
-    style S3 fill:#fff9c4,stroke:#f9a825
-    style S4 fill:#c8e6c9,stroke:#388e3c
-    style S5 fill:#c8e6c9,stroke:#388e3c
-    style F1 fill:#ffebee,stroke:#e53935,stroke-dasharray: 4 2
-    style F2 fill:#ffebee,stroke:#e53935,stroke-dasharray: 4 2
-    style F3 fill:#ffebee,stroke:#e53935,stroke-dasharray: 4 2
-    style F4 fill:#ffebee,stroke:#e53935,stroke-dasharray: 4 2
-    style F5 fill:#ffebee,stroke:#e53935,stroke-dasharray: 4 2
 ```
 
 **Transmission (Stage 3) is highlighted** because it is the stage most constrained by channel properties (C in the coupling function) and the least within either actor's control.
@@ -99,7 +84,7 @@ The six MCW failure modes, organized by the stage of the IU flow model where the
 
 ```mermaid
 mindmap
-  root(("MCW<br/>Degradation"))
+  root(("MCW\nDegradation"))
     Selection failures
       Asymmetric State Advancement
         Human advances HCW off-turn
@@ -161,10 +146,6 @@ flowchart TD
     L -->|Yes| C
     L -->|No| M["Escalate repair\nRe-ground from scratch\nor reset with HCW briefing"]
     M --> B
-
-    style C fill:#c8e6c9,stroke:#388e3c
-    style D fill:#fff9c4,stroke:#f9a825
-    style M fill:#ffccbc,stroke:#e64a19
 ```
 
 **Critical rule:** Repair must happen *before* resuming progress. Each turn of forward motion on a degraded MCW deepens the entropy — making later repair exponentially more expensive.
@@ -177,26 +158,18 @@ The framework's layered accessibility model. The same constructs appear at each 
 
 ```mermaid
 graph TD
-    L0["Layer 0 · Intuition<br/><i>Anyone</i><br/>Are we on the same page?"]
-    L1["Layer 1 · Concepts<br/><i>Generalists</i><br/>MCW as shared coordination state<br/>IUs as coordination atoms"]
-    L2["Layer 2 · Formalization<br/><i>STEM-adjacent</i><br/>Entropy · IU flow model · Coupling function"]
-    L3["Layer 3 · Models<br/><i>Researchers</i><br/>Entropy flows · Phase transitions · Drift metrics"]
-    L4["Layer 4 · Implementation<br/><i>Builders</i><br/>Test beds · Simulations · Experiment protocols"]
-    L5["Layer 5 · Application<br/><i>Domain specialists</i><br/>Biology · Organizations · AI · Policy"]
+    L0["Layer 0 · Intuition\nAnyone\nAre we on the same page?"]
+    L1["Layer 1 · Concepts\nGeneralists\nMCW as shared coordination state\nIUs as coordination atoms"]
+    L2["Layer 2 · Formalization\nSTEM-adjacent\nEntropy · IU flow model · Coupling function"]
+    L3["Layer 3 · Models\nResearchers\nEntropy flows · Phase transitions · Drift metrics"]
+    L4["Layer 4 · Implementation\nBuilders\nTest beds · Simulations · Experiment protocols"]
+    L5["Layer 5 · Application\nDomain specialists\nBiology · Organizations · AI · Policy"]
 
     L0 --> L1 --> L2 --> L3 --> L4 --> L5
 
-    R["Invariant rule:<br/>No concept appears at layer N<br/>unless it exists at layer N-1\nin compressed form"]
+    R["Invariant rule:\nNo concept appears at layer N\nunless it exists at layer N-1\nin compressed form"]
 
     L2 -. governs .-> R
-
-    style L0 fill:#e8f5e9,stroke:#43a047
-    style L1 fill:#e3f2fd,stroke:#1e88e5
-    style L2 fill:#ede7f6,stroke:#7b1fa2
-    style L3 fill:#fff3e0,stroke:#ef6c00
-    style L4 fill:#fce4ec,stroke:#c62828
-    style L5 fill:#e0f2f1,stroke:#00796b
-    style R fill:#f5f5f5,stroke:#9e9e9e,stroke-dasharray: 4 2
 ```
 
 ---
