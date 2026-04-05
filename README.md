@@ -14,6 +14,7 @@ This repository presents the **Meta-Context Window (MCW)** — a formal construc
 
 | Document | Description |
 |----------|-------------|
+| [Diagrams](docs/diagrams.md) | 5 Mermaid diagrams: context windows, IU flow, failure taxonomy, repair flow, OSI layers |
 | [Glossary](docs/glossary.md) | Canonical definitions for all framework terms |
 | [Paper Outline](docs/paper_outline.md) | Draft outline for a methods-oriented short paper |
 | [System Prompt Derivation](docs/system_prompt_derivation.md) | First-principles derivation of MCW-aware prompt design from IU theory |

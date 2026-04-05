@@ -18,6 +18,14 @@ MCW is not stored in either party. It exists only through active, bidirectional 
 
 <div class="grid cards" markdown>
 
+-   :material-vector-line:{ .lg .middle } **Diagrams**
+
+    ---
+
+    Five Mermaid diagrams: the three context windows, IU flow model, failure taxonomy, repair flow, and OSI layers of understanding.
+
+    [:octicons-arrow-right-24: View diagrams](diagrams.md)
+
 -   :material-book-alphabet:{ .lg .middle } **Glossary**
 
     ---

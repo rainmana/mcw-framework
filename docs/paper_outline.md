@@ -267,7 +267,7 @@ Restate:
 | Test bed documentation | ✅ Complete |
 | CITATION.cff with ORCID | ✅ Complete |
 | Paper outline | ✅ This document |
-| Framework diagrams (HCW/ACW/MCW, IU flow) | ⬜ Needed |
+| Framework diagrams (HCW/ACW/MCW, IU flow) | ✅ Complete (5 Mermaid diagrams in `docs/diagrams.md`) |
 | Pilot study observations | ⬜ Needed |
 | System prompt derivation doc | ✅ Complete |
 | MCW Constitution | ⬜ Proposed |
