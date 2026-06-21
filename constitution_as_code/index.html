@@ -1,0 +1,1604 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A coordination framework for human–AI collaboration failures">
+      
+      
+        <meta name="author" content="W. Alec Akin">
+      
+      
+        <link rel="canonical" href="https://rainmana.github.io/mcw-framework/constitution_as_code/">
+      
+      
+        <link rel="prev" href="../constitution/">
+      
+      
+        <link rel="next" href="../related_work/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Constitution as Code - Meta-Context Window (MCW) Framework</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#constitution-as-code-gating-mcw-with-software-lifecycle-tooling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Meta-Context Window (MCW) Framework" class="md-header__button md-logo" aria-label="Meta-Context Window (MCW) Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Meta-Context Window (MCW) Framework
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Constitution as Code
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rainmana/mcw-framework" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rainmana/mcw-framework
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../diagrams/" class="md-tabs__link">
+          
+  
+  
+  Framework
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../paper_outline/" class="md-tabs__link">
+          
+  
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Meta-Context Window (MCW) Framework" class="md-nav__button md-logo" aria-label="Meta-Context Window (MCW) Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Meta-Context Window (MCW) Framework
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rainmana/mcw-framework" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rainmana/mcw-framework
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Framework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Framework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagrams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constitution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constitution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constitution as Code
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constitution as Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motivation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-the-github-native-gating-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 — The GitHub-native gating method
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — The GitHub-native gating method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concrete-github-native-artifacts-to-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concrete GitHub-native artifacts to add
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-gap-analysis-what-github-cannot-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 — Gap analysis: what GitHub cannot do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-proposed-github-app-constitution-sentinel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3 — Proposed GitHub App: "Constitution Sentinel"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Proposed GitHub App: &#34;Constitution Sentinel&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-checks-each-maps-to-a-part-2-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it checks (each maps to a Part 2 gap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-principles-so-the-tool-obeys-the-framework-it-guards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design principles (so the tool obeys the framework it guards)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture-sketch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture sketch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phased-rollout-build-vs-buy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phased rollout (build-vs-buy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fork-prs-and-secret-handling-a-phase-12-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fork PRs and secret handling (a Phase 1/2 constraint)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-does-the-governance-method-itself-work-falsification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4 — Does the governance method itself work? (falsification)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-to-storyloom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship to StoryLoom
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../related_work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Related Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paper_outline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paper Outline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_prompt_derivation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Prompt Derivation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiments/toy_experiments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toy Experiments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test_bed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Bed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motivation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-the-github-native-gating-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 — The GitHub-native gating method
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — The GitHub-native gating method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concrete-github-native-artifacts-to-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concrete GitHub-native artifacts to add
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-gap-analysis-what-github-cannot-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 — Gap analysis: what GitHub cannot do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-proposed-github-app-constitution-sentinel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3 — Proposed GitHub App: "Constitution Sentinel"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Proposed GitHub App: &#34;Constitution Sentinel&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-checks-each-maps-to-a-part-2-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it checks (each maps to a Part 2 gap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-principles-so-the-tool-obeys-the-framework-it-guards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design principles (so the tool obeys the framework it guards)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture-sketch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture sketch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phased-rollout-build-vs-buy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phased rollout (build-vs-buy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fork-prs-and-secret-handling-a-phase-12-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fork PRs and secret handling (a Phase 1/2 constraint)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-does-the-governance-method-itself-work-falsification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4 — Does the governance method itself work? (falsification)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-to-storyloom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship to StoryLoom
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/rainmana/mcw-framework/edit/main/docs/constitution_as_code.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="constitution-as-code-gating-mcw-with-software-lifecycle-tooling">Constitution-as-Code: Gating MCW with Software Lifecycle Tooling<a class="headerlink" href="#constitution-as-code-gating-mcw-with-software-lifecycle-tooling" title="Permanent link">&para;</a></h1>
+<p><strong>Status:</strong> Proposal · v0.1 · June 2026
+<strong>Relationship to the framework:</strong> Governance instrument. This document does not
+modify any canonical construct (see <a href="../constitution/">Constitution</a>, Article I). It
+proposes a <em>process</em> for enforcing the Constitution as the framework is cited,
+extended, forked, and challenged.</p>
+<hr />
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<p>The <a href="../constitution/">MCW Constitution</a> defines eight binding invariants whose entire
+purpose is to keep cross-study comparison possible as the framework spreads. But a
+constitution that is only prose is <em>aspirational</em>: nothing stops a contribution — a
+pull request, a fork, an extension paper's companion repo — from silently redefining
+a canonical term (Article I), citing a toy-experiment <em>design</em> as a <em>result</em>
+(Article IV), or compressing a construct in a way that drops its falsification
+condition (Article VII).</p>
+<p>Software engineering solved an isomorphic problem decades ago. Codebases also have
+invariants that must survive many contributors, and the discipline that protects them
+is the <strong>software development lifecycle (SDLC)</strong>: version control, branch protection,
+required reviews, templated change requests, automated checks, and explicit
+definitions of "done." The Constitution's invariants are, structurally, <em>lint rules
+for a scientific vocabulary.</em></p>
+<p>This document proposes treating them that way:</p>
+<ol>
+<li><strong>A GitHub-native gating method</strong> — what existing GitHub SDLC features can enforce today, with zero custom software.</li>
+<li><strong>A gap analysis</strong> — the invariants GitHub <em>cannot</em> check, and why.</li>
+<li><strong>A GitHub App proposal</strong> — a "Constitution Sentinel" that closes the gap with LLM-backed semantic checks, designed to respect the framework's own epistemic humility.</li>
+</ol>
+<p>A guiding constraint, borrowed from the framework itself: <strong>the enforcement tool must
+not overclaim</strong> (Article VI). A linter for an L0–L1 framework must not pretend to L4
+certainty. Mechanical violations may hard-block; judgment calls escalate to a human.</p>
+<hr />
+<h2 id="part-1-the-github-native-gating-method">Part 1 — The GitHub-native gating method<a class="headerlink" href="#part-1-the-github-native-gating-method" title="Permanent link">&para;</a></h2>
+<p>Each Constitution Article maps to one or more existing GitHub controls. The table
+below is the core deliverable: a control matrix.</p>
+<table>
+<thead>
+<tr>
+<th>Article</th>
+<th>Invariant</th>
+<th>GitHub-native control(s)</th>
+<th>Enforcement strength</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>I — Definition Immutability</strong></td>
+<td>Canonical terms fixed in glossary; departures must be declared</td>
+<td><code>CODEOWNERS</code> makes <code>docs/glossary.md</code> + <code>docs/constitution.md</code> require author review on any change; a "definition-change" PR label is required to touch the definitions block; a mechanical Action fails the PR if glossary definition anchors changed without the label</td>
+<td><strong>Procedural</strong> (the <em>fact</em> of change is gated; the <em>semantics</em> are not — see Part 2)</td>
+</tr>
+<tr>
+<td><strong>II — Layering Invariant</strong></td>
+<td>No construct at layer N without a layer N−1 equivalent</td>
+<td>Issue template "Extension Proposal" forces a "Layer 0 plain-language statement" field; PR checklist requires a traceability claim</td>
+<td><strong>Procedural only</strong></td>
+</tr>
+<tr>
+<td><strong>III — Substrate Independence</strong></td>
+<td>Restrictions to a substrate must be declared as scope, not definition</td>
+<td>PR/issue template requires a "substrate scope" declaration field; label <code>scope:substrate-specific</code></td>
+<td><strong>Procedural only</strong></td>
+</tr>
+<tr>
+<td><strong>IV — Epistemic Floor</strong></td>
+<td>No claim above its evidence layer</td>
+<td>Required <code>evidence:L0</code>–<code>evidence:L4</code> label on any PR/issue making an empirical claim; Action fails if an "empirical-claim" doc lacks an evidence-layer marker string</td>
+<td><strong>Mechanical (presence) + Procedural</strong></td>
+</tr>
+<tr>
+<td><strong>V — Extension Protocol</strong></td>
+<td>Extensions declared, non-contradictory, falsifiable, traceable</td>
+<td>"Extension Proposal" issue/PR template with four required fields (declaration, non-contradiction statement, falsification condition, lower-layer trace); Action fails if any field is empty</td>
+<td><strong>Mechanical (completeness) + Procedural</strong></td>
+</tr>
+<tr>
+<td><strong>VI — Anti-Capture</strong></td>
+<td>MCW is not a product/system/model feature</td>
+<td>Action scans changed prose for overclaim patterns ("implements MCW", "MCW-aware", "solves the MCW problem", "our \&lt;system&gt; reduces MCW") and flags for review</td>
+<td><strong>Mechanical (pattern) — high false-positive, advisory</strong></td>
+</tr>
+<tr>
+<td><strong>VII — Compression Invariance</strong></td>
+<td>Summaries must keep falsification conditions, evidence level, exclusion list</td>
+<td>Action requires that any file tagged as a summary contains a falsification-condition marker, an evidence-layer marker, and a "what it is not" block</td>
+<td><strong>Mechanical (presence only)</strong></td>
+</tr>
+<tr>
+<td><strong>VIII — Scope Boundaries</strong></td>
+<td>Extensions into adjacent layers need justification</td>
+<td>PR template "adjacent-layer justification" field; label <code>scope:adjacent-layer</code> triggers required review</td>
+<td><strong>Procedural only</strong></td>
+</tr>
+<tr>
+<td><strong>Amendment Procedure</strong></td>
+<td>Version bump + prior-text + rationale; some Articles unremovable</td>
+<td>Action fails a PR that edits <code>constitution.md</code> without incrementing the version header and adding an "Amendment Rationale" section; CODEOWNERS forces author approval</td>
+<td><strong>Mechanical + Procedural</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="concrete-github-native-artifacts-to-add">Concrete GitHub-native artifacts to add<a class="headerlink" href="#concrete-github-native-artifacts-to-add" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>.github/CODEOWNERS</code></strong> — assign canonical files to the author:
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/docs/glossary.md       @rainmana
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>/docs/constitution.md   @rainmana
+</code></pre></div>
+  Combined with branch protection's "require review from Code Owners," this makes
+  Article I and the Amendment Procedure <em>procedurally</em> unbypassable.</li>
+<li><strong>Branch protection on <code>main</code></strong> — require a PR, require the governance status checks
+  to pass, require Code Owner review, require linear history.</li>
+<li><strong>Issue Forms</strong> (<code>.github/ISSUE_TEMPLATE/</code>):</li>
+<li><code>extension_proposal.yml</code> — Article V's four conditions as required fields.</li>
+<li><code>definition_change.yml</code> — Article I departure-declaration in the canonical form.</li>
+<li><code>empirical_claim.yml</code> — Article IV evidence-layer dropdown (L0–L4) + supporting data.</li>
+<li><strong>PR template</strong> — a Constitution checklist:
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="gu">## Constitution compliance</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">- [ ]</span> No canonical term is redefined (Article I), OR a departure is declared below.
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">- [ ]</span> Any new construct traces to a Layer 0 statement (Article II).
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">- [ ]</span> Substrate restrictions are declared as scope, not definition (Article III).
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">- [ ]</span> Every empirical claim declares its evidence layer L0–L4 (Article IV).
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">- [ ]</span> Extensions are declared, non-contradictory, falsifiable, traceable (Article V).
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">- [ ]</span> No anti-capture overclaims (Article VI).
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">- [ ]</span> Summaries preserve falsification conditions + exclusions (Article VII).
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">- [ ]</span> Adjacent-layer extensions are justified (Article VIII).
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="gu">### Declared departures (if any)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">&gt; </span><span class="ge">This work uses a modified definition of [term]. Canonical: [cite]. Modification: [...]. Rationale: [...].</span>
+</code></pre></div></li>
+<li><strong>Label taxonomy</strong>: <code>article:I</code>…<code>article:VIII</code>, <code>evidence:L0</code>…<code>evidence:L4</code>,
+  <code>type:extension</code>, <code>type:definition-change</code>, <code>scope:substrate-specific</code>,
+  <code>scope:adjacent-layer</code>, <code>status:needs-departure-declaration</code>, <code>governance:blocked</code>.</li>
+<li><strong>Mechanical Actions</strong> (<code>.github/workflows/constitution-lint.yml</code>):</li>
+<li>glossary structural lint — every canonical construct still present; each has a
+    "what it is not" exclusion block (Article VII / Article I structural floor).</li>
+<li>anchor/link integrity between <code>constitution.md</code> and <code>glossary.md</code>.</li>
+<li>amendment guard — editing <code>constitution.md</code> requires a version bump + rationale.</li>
+<li>marker-presence checks — empirical docs carry an evidence-layer marker; summaries
+    carry falsification + exclusion markers.</li>
+<li><strong>A governance Project board</strong> — views grouped by Article, by evidence layer, and by
+  status, so contributions are visibly gated rather than merged on vibes.</li>
+</ul>
+<p>This much is buildable today with <strong>only YAML and Markdown</strong> — no service to operate.</p>
+<hr />
+<h2 id="part-2-gap-analysis-what-github-cannot-do">Part 2 — Gap analysis: what GitHub cannot do<a class="headerlink" href="#part-2-gap-analysis-what-github-cannot-do" title="Permanent link">&para;</a></h2>
+<p>Every "Procedural only" and "presence only" row above shares the same ceiling:
+<strong>GitHub can verify that a declaration <em>exists</em>; it cannot verify that the declaration
+is <em>true</em>.</strong> The Constitution's hardest invariants are semantic — they require reading
+comprehension and judgment. Specifically:</p>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>The semantic question GitHub can't answer</th>
+<th>Article</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Undeclared redefinition</strong></td>
+<td>The glossary text changed — but did the <em>meaning</em> change? If so, is the departure declaration adequate, or cosmetic?</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>Fake traceability</strong></td>
+<td>A "Layer 0 statement" field is filled — but does it actually compress <em>this</em> construct, or is it unrelated boilerplate?</td>
+<td>II</td>
+</tr>
+<tr>
+<td><strong>Overclaiming</strong></td>
+<td>A claim is stated — does the supporting evidence actually reach the declared layer, or is an L1 anecdote dressed as L3?</td>
+<td>IV</td>
+</tr>
+<tr>
+<td><strong>Extension validity</strong></td>
+<td>The four fields are filled — but is the extension genuinely non-contradictory and genuinely falsifiable, or falsifiable-in-name-only?</td>
+<td>V</td>
+</tr>
+<tr>
+<td><strong>Anti-capture in prose</strong></td>
+<td>Pattern matching flags "implements MCW" — but misses "our architecture maintains shared understanding across turns," which is the same overclaim in disguise; and false-flags legitimate quoted critique</td>
+<td>VI</td>
+</tr>
+<tr>
+<td><strong>Compression fidelity</strong></td>
+<td>A falsification-condition marker is present — but does the summary actually <em>preserve</em> the original condition, or did it keep the heading and gut the content?</td>
+<td>VII</td>
+</tr>
+<tr>
+<td><strong>Adjacent-layer justification</strong></td>
+<td>A justification field is filled — does the coordination-layer lens actually add value, or is it scope creep with a paragraph stapled on?</td>
+<td>VIII</td>
+</tr>
+</tbody>
+</table>
+<p>These are not edge cases; they are the <em>substance</em> of the Constitution. A vocabulary
+collapses through plausible-looking contributions that pass every mechanical check
+while quietly violating meaning. Mechanical gating raises the floor; it does not reach
+the ceiling.</p>
+<p>This is precisely the seam where an LLM-backed check earns its keep — and, fittingly,
+it is itself a coordination problem between a human reviewer and an automated reader.</p>
+<hr />
+<h2 id="part-3-proposed-github-app-constitution-sentinel">Part 3 — Proposed GitHub App: "Constitution Sentinel"<a class="headerlink" href="#part-3-proposed-github-app-constitution-sentinel" title="Permanent link">&para;</a></h2>
+<h3 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">&para;</a></h3>
+<p>A GitHub App, installable on the canonical repo and on forks, that runs as a <strong>required
+status check</strong> on pull requests and as an <strong>issue triager</strong>. It is backed by a language
+model that loads the Constitution and glossary as ground truth and performs the
+<em>semantic</em> checks from Part 2 that mechanical tooling cannot.</p>
+<p>Working name: <strong>Constitution Sentinel</strong> (alt: <em>Canon Keeper</em>, <em>MCW Warden</em>). It is
+deliberately <em>not</em> named or marketed as "MCW-aware" — per Article VI, a tool does not
+implement MCW. It is a linter for a document, nothing more, and says so.</p>
+<h3 id="what-it-checks-each-maps-to-a-part-2-gap">What it checks (each maps to a Part 2 gap)<a class="headerlink" href="#what-it-checks-each-maps-to-a-part-2-gap" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Definition-drift detector.</strong> On any diff to <code>glossary.md</code>/<code>constitution.md</code>,
+   compare changed definitions against the canonical baseline and judge whether meaning
+   changed. If it did and no adequate departure declaration is present → flag.</li>
+<li><strong>Layer-trace verifier.</strong> For new constructs, judge whether the provided Layer 0
+   statement genuinely compresses the higher-layer construct (Article II).</li>
+<li><strong>Epistemic-floor / overclaim detector.</strong> For each empirical claim, judge whether
+   the supporting data reaches the <em>declared</em> evidence layer; flag claims stated above
+   their support (Article IV) — the framework's most important and most violated rule.</li>
+<li><strong>Anti-capture scanner.</strong> Read prose for capability-claim-dressed-as-coordination
+   and product/marketing overclaims, including paraphrases pattern-matching misses
+   (Article VI).</li>
+<li><strong>Compression-invariance checker.</strong> For summaries, judge whether falsification
+   conditions, evidence level, and exclusion lists were <em>preserved in substance</em>
+   (Article VII), not merely whether headings exist.</li>
+<li><strong>Extension-protocol validator.</strong> Judge declaration, non-contradiction,
+   falsifiability, and traceability of proposed extensions (Article V).</li>
+</ol>
+<h3 id="design-principles-so-the-tool-obeys-the-framework-it-guards">Design principles (so the tool obeys the framework it guards)<a class="headerlink" href="#design-principles-so-the-tool-obeys-the-framework-it-guards" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Mechanical violations hard-block; judgment calls escalate.</strong> The App never fails a
+  PR on a semantic verdict <em>alone</em>. A semantic flag posts an inline review comment and
+  sets the check to "action required → human review," not "failed." Only mechanical
+  rules (missing version bump, empty required field, missing exclusion block) hard-fail.
+  This mirrors StoryLoom's <em>proportional gates</em> and prevents the linter from
+  overclaiming certainty it does not have.</li>
+<li><strong>Every verdict is grounded and cited.</strong> Output references the specific Article and
+  quotes the offending text and the canonical text it conflicts with. No bare verdicts.</li>
+<li><strong>Reproducibility.</strong> Model id and prompt version are pinned and recorded in the check
+  output (Article IV/VII spirit: claims carry their provenance). Re-running on the same
+  diff yields a comparable, auditable result.</li>
+<li><strong>Uncertainty is first-class.</strong> Verdicts are <code>pass | flag | uncertain</code>, never a forced
+  binary. <code>uncertain</code> routes to the human, who is the authority (the framework is L0–L1;
+  the reviewer outranks the tool).</li>
+<li><strong>Self-non-claim.</strong> The App's README must state: "This App enforces document
+  invariants. It does not implement, embody, or measure MCW (Constitution Article VI)."</li>
+</ul>
+<h3 id="architecture-sketch">Architecture sketch<a class="headerlink" href="#architecture-sketch" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>GitHub (PR / issue webhook)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>        │
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        ▼
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Constitution Sentinel (GitHub App)
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  ├── event router (pull_request, issues, issue_comment)
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  ├── context loader  → pins canonical constitution.md + glossary.md at base ref
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  ├── diff extractor  → changed docs, claims, summaries
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  ├── semantic checker → LLM with Constitution as system context; per-Article prompts
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>  ├── verdict composer → Check Run (per-Article pass/flag/uncertain) + inline comments
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>  └── status setter    → commit status that branch protection can require
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        │
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        ▼
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>Pinned model API (provider-agnostic; model + prompt version recorded)
+</code></pre></div>
+<ul>
+<li><strong>Config file</strong> <code>.mcw/constitution.yml</code> in each repo: maps Articles → enabled checks
+  → severity (<code>block</code> vs <code>advisory</code>), and pins the canonical source paths/refs. Forks
+  can tune severity but cannot silently disable Article I or IV without it showing in
+  the config diff (which CODEOWNERS gates).</li>
+<li><strong>State:</strong> mostly stateless per-PR; optional store for verdict history/metrics.</li>
+</ul>
+<h3 id="phased-rollout-build-vs-buy">Phased rollout (build-vs-buy)<a class="headerlink" href="#phased-rollout-build-vs-buy" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Deliverable</th>
+<th>Operating cost</th>
+<th>Fork PRs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>GitHub-native only: CODEOWNERS, branch protection, issue forms, PR template, mechanical Actions (Part 1)</td>
+<td>None — YAML/Markdown only</td>
+<td>✅ Works (no secrets needed)</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>A CI job (GitHub Actions) that calls an LLM API on PR diffs and posts an <strong>advisory</strong> governance comment</td>
+<td>API usage only; no service to host</td>
+<td>⚠️ Needs a secret-safe path (see below)</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Promote the semantic check to a <strong>required</strong> status check; add issue triage/labeling</td>
+<td>API usage only</td>
+<td>⚠️ Same caveat as Phase 1</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Package as a distributable <strong>GitHub App</strong> installable on forks, so the <em>ecosystem</em> can self-gate</td>
+<td>Hosted App + API</td>
+<td>✅ Works (App holds the credential)</td>
+</tr>
+</tbody>
+</table>
+<p>Phase 0 captures the entire mechanical layer with no secrets and works identically on
+fork PRs. Phase 3 is what actually serves the Constitution's deepest goal: if forks and
+citing repos can install the same Sentinel, <strong>definitional drift across the ecosystem
+becomes measurable and resistible</strong>, which is the entire point of having a Constitution.</p>
+<h3 id="fork-prs-and-secret-handling-a-phase-12-constraint">Fork PRs and secret handling (a Phase 1/2 constraint)<a class="headerlink" href="#fork-prs-and-secret-handling-a-phase-12-constraint" title="Permanent link">&para;</a></h3>
+<p>The semantic checks (Phases 1–2) need an LLM API key. By GitHub's security design, a
+workflow triggered by <code>pull_request</code> from a <strong>fork</strong> does <strong>not</strong> receive repository
+secrets — it gets only a read-scoped <code>GITHUB_TOKEN</code>. This is correct and protective
+(it stops an attacker from opening a PR that exfiltrates your keys), but it means a
+naïve "Actions calls an LLM API" job will be unusable on exactly the outside
+contributions the gate most needs to check. The proposal must therefore pick a
+secret-safe path <em>before</em> relying on Actions for fork contributions:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>How it handles the secret</th>
+<th>Trade-off</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A. Same-repo only + maintainer label</strong></td>
+<td>Run the semantic check only on branches in the canonical repo, or on a fork PR after a maintainer applies a <code>safe-to-scan</code> label and re-dispatches</td>
+<td>Simple and safe; fork PRs get the check only after a human opt-in (acceptable — a human is in the loop anyway)</td>
+</tr>
+<tr>
+<td><strong>B. <code>pull_request_target</code> with strict hygiene</strong></td>
+<td>This event runs in the <strong>base</strong> repo's context and <em>does</em> have secrets; check out the <strong>base</strong> ref, treat the PR diff/text purely as <strong>data</strong>, and <strong>never</strong> execute fork-supplied code, scripts, or actions</td>
+<td>Powerful but a well-known footgun; mishandled <code>pull_request_target</code> is a classic secret-exfiltration vector. Only safe if the job never runs untrusted code</td>
+</tr>
+<tr>
+<td><strong>C. GitHub App / external proxy (Phase 3)</strong></td>
+<td>The App (or a tiny proxy service) holds the credential server-side and posts the Check Run; the workflow never sees the key</td>
+<td>The robust answer for an open ecosystem; costs a hosted component</td>
+</tr>
+</tbody>
+</table>
+<p>Recommendation: <strong>forks get Phase 0 (mechanical) checks immediately and unconditionally;
+semantic checks on fork PRs wait for Option A (label-gated) until the project is ready
+to operate Option C.</strong> Do not reach for <code>pull_request_target</code> unless the job is provably
+free of untrusted-code execution. This caveat is itself an instance of the secret
+discipline the framework cares about — the enforcement tooling must not become the
+weakest link it was built to protect.</p>
+<hr />
+<h2 id="part-4-does-the-governance-method-itself-work-falsification">Part 4 — Does the governance method itself work? (falsification)<a class="headerlink" href="#part-4-does-the-governance-method-itself-work-falsification" title="Permanent link">&para;</a></h2>
+<p>In keeping with Article IV and Article V, the governance method makes a falsifiable
+prediction about <em>itself</em>:</p>
+<blockquote>
+<p><strong>Hypothesis.</strong> Constitution-as-code gating reduces undeclared invariant violations
+reaching <code>main</code> relative to ungated contribution.</p>
+<p><strong>Observable.</strong> Track, per merged PR, the rate of (a) undeclared term redefinitions,
+(b) claims stated above their evidence layer, (c) summaries that dropped falsification
+conditions. Compare gated vs. ungated periods/forks.</p>
+<p><strong>Falsification.</strong> If gating produces no measurable reduction in (a)–(c) — or if the
+review burden so suppresses contribution that the framework stops evolving — the
+method has failed and should be simplified back toward Phase 0, or abandoned.</p>
+</blockquote>
+<p>Evidence layer of <em>this proposal</em>: <strong>L0 — Illustration.</strong> It is a design, not a result.
+No gating run has been piloted. Stated explicitly per Article IV.</p>
+<hr />
+<h2 id="relationship-to-storyloom">Relationship to StoryLoom<a class="headerlink" href="#relationship-to-storyloom" title="Permanent link">&para;</a></h2>
+<p>This is the research-governance instance of the same philosophy used to build the
+StoryLoom application (<code>rainmana/storyloom</code>): <strong>proportional gates, evidence over vibes,
+hard rules where the blast radius is large, human judgment where automation would
+overclaim.</strong> One project gates a codebase; this one gates a vocabulary. The shared move
+is using ordinary SDLC tooling to make invariants enforceable instead of merely stated.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rainmana" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
