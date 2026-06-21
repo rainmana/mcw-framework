@@ -42,6 +42,7 @@ nav:
     - Diagrams: diagrams.md
     - Glossary: glossary.md
     - Constitution: constitution.md
+    - Constitution as Code: constitution_as_code.md
     - Related Work: related_work.md
   - Research:
     - Paper Outline: paper_outline.md
