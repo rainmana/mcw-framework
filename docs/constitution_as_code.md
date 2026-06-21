@@ -204,18 +204,40 @@ Pinned model API (provider-agnostic; model + prompt version recorded)
 
 ### Phased rollout (build-vs-buy)
 
-| Phase | Deliverable | Operating cost |
-|---|---|---|
-| **0** | GitHub-native only: CODEOWNERS, branch protection, issue forms, PR template, mechanical Actions (Part 1) | None — YAML/Markdown only |
-| **1** | A CI job (GitHub Actions) that calls an LLM API on PR diffs and posts an **advisory** governance comment | API usage only; no service to host |
-| **2** | Promote the semantic check to a **required** status check; add issue triage/labeling | API usage only |
-| **3** | Package as a distributable **GitHub App** installable on forks, so the *ecosystem* can self-gate | Hosted App + API |
+| Phase | Deliverable | Operating cost | Fork PRs |
+|---|---|---|---|
+| **0** | GitHub-native only: CODEOWNERS, branch protection, issue forms, PR template, mechanical Actions (Part 1) | None — YAML/Markdown only | ✅ Works (no secrets needed) |
+| **1** | A CI job (GitHub Actions) that calls an LLM API on PR diffs and posts an **advisory** governance comment | API usage only; no service to host | ⚠️ Needs a secret-safe path (see below) |
+| **2** | Promote the semantic check to a **required** status check; add issue triage/labeling | API usage only | ⚠️ Same caveat as Phase 1 |
+| **3** | Package as a distributable **GitHub App** installable on forks, so the *ecosystem* can self-gate | Hosted App + API | ✅ Works (App holds the credential) |
 
-Phase 1 captures most of the value with no hosted infrastructure — a reusable workflow
-that any fork can copy. Phase 3 is what actually serves the Constitution's deepest goal:
-if forks and citing repos can install the same Sentinel, **definitional drift across the
-ecosystem becomes measurable and resistible**, which is the entire point of having a
-Constitution.
+Phase 0 captures the entire mechanical layer with no secrets and works identically on
+fork PRs. Phase 3 is what actually serves the Constitution's deepest goal: if forks and
+citing repos can install the same Sentinel, **definitional drift across the ecosystem
+becomes measurable and resistible**, which is the entire point of having a Constitution.
+
+### Fork PRs and secret handling (a Phase 1/2 constraint)
+
+The semantic checks (Phases 1–2) need an LLM API key. By GitHub's security design, a
+workflow triggered by `pull_request` from a **fork** does **not** receive repository
+secrets — it gets only a read-scoped `GITHUB_TOKEN`. This is correct and protective
+(it stops an attacker from opening a PR that exfiltrates your keys), but it means a
+naïve "Actions calls an LLM API" job will be unusable on exactly the outside
+contributions the gate most needs to check. The proposal must therefore pick a
+secret-safe path *before* relying on Actions for fork contributions:
+
+| Option | How it handles the secret | Trade-off |
+|---|---|---|
+| **A. Same-repo only + maintainer label** | Run the semantic check only on branches in the canonical repo, or on a fork PR after a maintainer applies a `safe-to-scan` label and re-dispatches | Simple and safe; fork PRs get the check only after a human opt-in (acceptable — a human is in the loop anyway) |
+| **B. `pull_request_target` with strict hygiene** | This event runs in the **base** repo's context and *does* have secrets; check out the **base** ref, treat the PR diff/text purely as **data**, and **never** execute fork-supplied code, scripts, or actions | Powerful but a well-known footgun; mishandled `pull_request_target` is a classic secret-exfiltration vector. Only safe if the job never runs untrusted code |
+| **C. GitHub App / external proxy (Phase 3)** | The App (or a tiny proxy service) holds the credential server-side and posts the Check Run; the workflow never sees the key | The robust answer for an open ecosystem; costs a hosted component |
+
+Recommendation: **forks get Phase 0 (mechanical) checks immediately and unconditionally;
+semantic checks on fork PRs wait for Option A (label-gated) until the project is ready
+to operate Option C.** Do not reach for `pull_request_target` unless the job is provably
+free of untrusted-code execution. This caveat is itself an instance of the secret
+discipline the framework cares about — the enforcement tooling must not become the
+weakest link it was built to protect.
 
 ---
 
