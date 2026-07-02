@@ -35,6 +35,8 @@ Use 0–3 ordinal scales to support structured reflection:
 
 These are coordination proxies, not performance metrics. Scores are most meaningful when compared across conditions (baseline vs. MCW-aware), not in absolute terms.
 
+Anchored behavioral rubrics for all four proxies, rater instructions, and an inter-rater reliability protocol are specified in [H/R/D/M Rubrics](hrdm_rubrics.md) (a declared Article V extension). Experiments reporting these proxies as outcomes should use that instrument, including its scope restriction: M is scored only in Human ↔ AI interactions.
+
 ---
 
 ## Experiment 1: False Alignment Injection

@@ -48,6 +48,7 @@ nav:
     - Paper Outline: paper_outline.md
     - System Prompt Derivation: system_prompt_derivation.md
     - Toy Experiments: experiments/toy_experiments.md
+    - H/R/D/M Rubrics: experiments/hrdm_rubrics.md
     - Test Bed: test_bed.md
 
 markdown_extensions:
