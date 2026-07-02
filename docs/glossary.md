@@ -454,7 +454,7 @@ A five-rung ladder declaring the strength of evidence behind any empirical claim
 - **L3 — Pilot with reliability:** Multi-rater pilot; inter-rater reliability reported; generalizable with caution
 - **L4 — Controlled study:** Random assignment, control conditions, validated instruments; generalizable with stated scope
 
-**Usage convention:** empirical assertions in framework documents carry an inline tag `[L0]`–`[L4]` at the claim site, and pages that make empirical claims state their overall evidence layer in a Status line. No claim may be stated above the layer its supporting data occupies (Article IV). The current framework is at L0–L1 for all empirical claims.
+**Usage convention:** empirical assertions in framework documents carry an inline tag `[L0]`–`[L4]` at the claim site, and pages that make empirical claims state their overall evidence layer in a Status line. No claim may be stated above the layer its supporting data occupies (Article IV). The current framework is at L0–L1 for all empirical claims. Marker *presence* is checked mechanically in CI once [Constitution as Code](constitution_as_code.md) Phase 0 is in place; until every page is tagged, an untagged empirical sentence anywhere in the framework is a defect to be tagged, downgraded, or withdrawn — not an exemption from this convention.
 
 **What evidence layers are not:**
 
