@@ -30,7 +30,7 @@ Two forms are relevant to this framework:
 Entropy is not "disorder," "decay," or "evil." It is a constraint on compression, prediction, and control.
 
 **In MCW context:**
-MCW degradation corresponds to increasing Shannon entropy in the shared coordination state — rising uncertainty about what the other party knows, intends, or means.
+MCW degradation is described as rising uncertainty about what the other party knows, intends, or means — in the *spirit* of Shannon entropy `[L0]`. This correspondence is informal: no random variable, sample space, or probability distribution over the coordination state has been defined, so "MCW entropy," wherever it appears in framework documents, is an intuition pump rather than a computable quantity. The framework's actual measurement program is [H/R/D/M](#measurement-proxies). The Boltzmann form above acknowledges physical grounding and does no analytical work. Defining a computable estimator (or retiring the phrase) is tracked as open work.
 
 ---
 
@@ -136,6 +136,8 @@ More formally, MCW is a **coupling function**:
 > **MCW = f(HCW₁…HCWₙ, ACW₁…ACWₘ, T, C)**
 
 Where T is time/interaction history and C is communication channel constraints (bandwidth, latency, modality, noise).
+
+**Notation status:** informal `[L0]` — the coupling function is a mnemonic, not mathematics. It has no defined codomain, metric, or functional form, and one input (the HCW) is not enumerable, so the notation licenses no quantitative inference (Article IV). Its content is the qualitative properties listed below. Either a proper definition or explicit retirement of the notation is tracked as open work; until then, treat every appearance of this equation as shorthand for those properties.
 
 **Key properties:**
 - **Emergent:** MCW does not exist in either party alone; it arises from interaction
@@ -435,7 +437,9 @@ A layered accessibility model — adapted from the OSI networking model — that
 
 **Per-entry annotation:** every glossary entry carries a **Layer 0 gloss** line — its Layer 0 compressed form — so this rule is checkable rather than aspirational. An entry whose content cannot be glossed in one plain sentence violates the layering invariant.
 
-**Not to be confused with:** the [Evidence Layers L0–L4](#evidence-layers-l0l4) of Constitution Article IV, which grade the strength of empirical support, not accessibility. The overlapping "Layer *n*" notation between the two ladders is a known collision; a notation split is tracked as an open work item.
+**Not to be confused with:** the [Evidence Layers L0–L4](#evidence-layers-l0l4) of Constitution Article IV, which grade the strength of empirical support, not accessibility.
+
+**Notation:** where compact notation is needed, accessibility layers are written **A0–A5**; bare `L`*n* is reserved for evidence layers. This resolves the notation collision an earlier version of this entry flagged as open. Prose may still say "Layer 0" where the ladder is unambiguous from context (as in the per-entry "Layer 0 gloss").
 
 ---
 
@@ -458,7 +462,7 @@ A five-rung ladder declaring the strength of evidence behind any empirical claim
 
 **What evidence layers are not:**
 
-- Not the [OSI Layers of Understanding](#osi-layers-of-understanding) (the accessibility ladder, Layers 0–5): accessibility layers describe how compressed a *presentation* is; evidence layers describe how strong the *support* for a claim is
+- Not the [OSI Layers of Understanding](#osi-layers-of-understanding) (the accessibility ladder, written A0–A5): accessibility layers describe how compressed a *presentation* is; evidence layers describe how strong the *support* for a claim is. Bare `L`*n* notation always means an evidence layer
 - Not a quality score: an honestly tagged L0 claim is fully legitimate; an L1 claim dressed as L3 is not
 
 ---
@@ -489,7 +493,7 @@ Constitution [Article I](constitution.md#article-i-definition-immutability) free
 
 **Amendable fields** — ordinary review, no amendment required, provided the change does not alter the meaning of any frozen field:
 
-- **Type** lines, **Layer 0 gloss** annotations, evidence tags, cross-references, links, and formatting
+- **Type** lines, **Layer 0 gloss** annotations, **Notation status** annotations, evidence tags, cross-references, links, and formatting
 - **Examples**
 - **Early signals** and **Key danger** notes (illustrative, not definitional)
 - Status lines and section ordering

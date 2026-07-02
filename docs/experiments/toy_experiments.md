@@ -20,7 +20,7 @@ They are designed to fail quietly if MCW is not a useful construct.
 - **Coordination over capability:** Hold task difficulty constant; vary coordination conditions.
 - **Qualitative first:** Early signals are experiential and behavioral.
 - **Comparative:** Interpret results relative to a baseline.
-- **Repair-aware:** Treat repair latency and cost as first-class outcomes.
+- **Repair-aware:** Treat repair latency and cost as first-class outcomes (operationalized as discovery lag and repair-episode cost in the [rubrics](hrdm_rubrics.md); "repair latency" carries no meaning beyond those measures).
 
 ---
 
@@ -154,7 +154,7 @@ If premature summarization produces no worse outcomes than delayed summarization
 
 ### Hypothesis
 
-> Opaque constraints function as hidden variables that increase MCW entropy and raise repair cost, even when the model's underlying reasoning is sound.
+> Opaque constraints function as hidden variables that degrade coordination ("MCW entropy" in the framework's informal usage — see [Entropy](../glossary.md#entropy)) and raise repair cost, even when the model's underlying reasoning is sound.
 
 ### Setup
 

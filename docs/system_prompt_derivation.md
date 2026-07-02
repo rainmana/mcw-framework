@@ -40,7 +40,7 @@ A system prompt is injected before any interaction occurs — before MCW exists.
 
 A system prompt typically contains IUs that are not visible to the human party. These function as hidden variables in the MCW coupling function — exogenous constraints that influence ACW behavior without being legible to the HCW.
 
-**Consequence:** Opaque system prompts introduce constraint opacity by construction. Every hidden IU in a system prompt is a potential source of MCW entropy.
+**Consequence:** Opaque system prompts introduce constraint opacity by construction. Every hidden IU in a system prompt is a potential source of MCW entropy. ("MCW entropy," here and throughout this page, is the framework's informal usage — coordination degradation, not a computed quantity; see [Entropy](glossary.md#entropy). The measurable forms of this page's claims are the registered predictions at the end.)
 
 ---
 
@@ -72,7 +72,7 @@ An authoritative instruction ("you must always do X") increases constraint opaci
 
 **Derivation:**
 
-Repair cost is lowest at initialization (Property 3: the prompt is injected before MCW forms). Once MCW has formed and begun to drift, repair cost grows nonlinearly. A system prompt is the only tool available at the moment of lowest repair cost.
+Repair cost is lowest at initialization (Property 3: the prompt is injected before MCW forms). Once MCW has formed and begun to drift, repair cost is predicted to grow with discovery lag `[L0]` (repair theory's ordering claim — non-decreasing, with no functional form asserted). A system prompt is the only tool available at the moment of lowest repair cost.
 
 However, repair cannot occur at all if repair signals are suppressed (Repair Suppression failure mode). The prompt must therefore explicitly authorize the repair behaviors — clarification, uncertainty expression, drift-naming — that MCW theory identifies as immune functions.
 
@@ -92,7 +92,7 @@ Since the prompt cannot repair MCW during the interaction (Property 1), its role
 
 Salience mismatch is a primary source of drift: when the human and AI weight the same IUs differently, their shared state diverges silently. A system prompt cannot observe or correct this mismatch dynamically (Property 1). And it cannot reach into the HCW to align salience from the human side (Property 2).
 
-The only intervention available is to *declare* salience explicitly at initialization — to inject IUs that establish a shared priority ordering before divergence begins. This reduces the initial entropy of the salience dimension of the coupling function.
+The only intervention available is to *declare* salience explicitly at initialization — to inject IUs that establish a shared priority ordering before divergence begins. Informally, this reduces initial uncertainty about what matters most ("the salience dimension" is not a defined quantity — the coupling function is informal notation; the measurable form of this principle is Prediction 4 below).
 
 **Design rule:** State what matters most *for this specific interaction*, what can be deferred, and what can be ignored. Do not attempt to capture all possible salience states — that produces overcompression. A narrow, honest declaration is more effective than a comprehensive one.
 
@@ -114,7 +114,7 @@ This does not require full transparency (which may be impossible for policy-gove
 
 **Design rule:** Name known constraints without moral framing. Distinguish between reasoning limitations, capability limitations, and policy constraints. The act of naming a constraint converts a hidden variable into a visible IU — reducing entropy even when the constraint itself cannot be removed.
 
-**What this does not claim:** That all constraints can be disclosed. Some constraints are genuinely non-disclosable. The claim is that partial disclosure always reduces MCW entropy compared to full opacity, for the constraints that *can* be acknowledged.
+**What this does not claim:** That all constraints can be disclosed. Some constraints are genuinely non-disclosable. The claim is that partial disclosure reduces coordination degradation compared to full opacity, for the constraints that *can* be acknowledged. (The word "always" appeared here in an earlier version; it is a universal claim the framework cannot support, and [Experiment 4's](experiments/preregistration/exp4_constraint_opacity.md) inverted cell is registered specifically as evidence against this principle if disclosure turns out to hurt.)
 
 ---
 

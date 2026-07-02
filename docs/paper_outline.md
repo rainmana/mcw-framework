@@ -74,7 +74,7 @@ Common ground describes the mutual knowledge, beliefs, and assumptions shared by
 **Key distinction:** Common ground is a property of shared beliefs; MCW is a property of shared *coordination state* — which includes salience, timing, and repair capacity, not just propositional content.
 
 ### 2.4 Information Theory
-Shannon entropy provides the mathematical grounding for MCW degradation. MCW does not attempt to formalize cognition in Shannon-theoretic terms, but borrows the intuition of information loss under constrained transmission.
+Shannon entropy provides the *intuition* for MCW degradation — not its mathematical grounding, since no random variable over the coordination state is defined (see the glossary's [Entropy](glossary.md#entropy) status). MCW does not attempt to formalize cognition in Shannon-theoretic terms; it borrows the intuition of information loss under constrained transmission and says so.
 
 ### 2.5 Alignment, Safety, and Prompt Engineering
 These approaches optimize *within* the ACW. MCW addresses the *between* — the coupling layer that is currently unmodeled.
@@ -119,7 +119,7 @@ Present the formal definition:
 
 > **MCW = f(HCW₁…HCWₙ, ACW₁…ACWₘ, T, C)**
 
-Explain why MCW is not a sum or product. Introduce the five-stage IU flow model (selection → encoding → transmission → decoding → integration).
+The notation is informal `[L0]` — no codomain or functional form is defined, and the HCW is not enumerable; the paper must present it as a mnemonic for the qualitative properties (emergent, bidirectional, temporal, lossy, not a sum or product), not as mathematics (see the notation status in the [glossary MCW entry](glossary.md#meta-context-window-mcw)). Explain why MCW is not a sum or product. Introduce the five-stage IU flow model (selection → encoding → transmission → decoding → integration).
 
 **Naturalistic micro-example (IU flow failure, Stage 3→4):**
 
@@ -172,7 +172,7 @@ Present the five canonical repair operations:
 - Disambiguation
 - Synchronization
 
-Establish that repair cost grows nonlinearly with MCW degradation — early repair is exponentially cheaper than late repair. This mirrors known patterns in biological immune response and information error correction.
+Establish the falsifiable ordering claim `[L0]`: repair cost is non-decreasing in discovery lag (the [rubrics'](experiments/hrdm_rubrics.md) late-discovery measure). Earlier drafts asserted "exponentially cheaper" early repair — a functional form with no supporting data, withdrawn per Article IV. The immune-response and error-correction parallels are motivating analogies and must be presented as such.
 
 **Evidence available now:**
 - Repair operations in `README.md` and `docs/glossary.md`
