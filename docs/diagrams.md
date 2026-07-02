@@ -50,6 +50,8 @@ graph LR
 
 Information Units travel through five stages during any communicative act. MCW health is hypothesized to depend on cumulative fidelity across all five stages `[L0]`. Failure at any stage contributes to MCW degradation ("MCW entropy" in the framework's informal usage — see the [glossary](glossary.md#entropy)).
 
+The per-stage labels below (⚠) are **stage risks** — descriptions of what can go wrong at each stage — not the canonical failure-mode taxonomy. Two of them (Overcompression, Drift) are canonical modes; the other three (Omission, Noise/Latency, Misinterpretation) are not, and how each maps onto the canonical six is specified in the [failure-mode ↔ repair mapping](failure_repair_mapping.md#reconciling-diagram-2s-stage-risks-with-the-canonical-modes).
+
 ```mermaid
 flowchart LR
     S1(["1 · Selection"])
@@ -82,7 +84,7 @@ flowchart LR
 
 ## Diagram 3: MCW Failure Taxonomy
 
-The six MCW failure modes, organized by the stage of the IU flow model where they primarily originate and whether they affect primarily the HCW side, the ACW side, or the channel between them.
+The six MCW failure modes, organized by where they primarily *manifest* in the IU flow model. The stage assignments are heuristics about manifestation, not claims about mechanism: Asymmetric State Advancement sits under Selection because the failure is the non-selection of off-turn IUs for externalization; Repair Suppression sits there because the suppressed party stops selecting repair IUs. Drift is deliberately placed on its own cross-stage branch — it is an accumulation phenomenon, not a stage-local event (an earlier version of this diagram placed it under channel/hidden-variable failures, conflicting with Diagram 2's stage-5 placement; see the [reconciliation table](failure_repair_mapping.md#reconciling-diagram-2s-stage-risks-with-the-canonical-modes)).
 
 ```mermaid
 mindmap
@@ -110,6 +112,7 @@ mindmap
         Hidden system-prompt IUs
         Policy restrictions invisible
         Repair misdirected
+    Cross-stage accumulation
       Drift
         Silent desynchronization
         Assumptions accumulate
@@ -151,7 +154,7 @@ flowchart TD
 
 **Notes on the mapping:**
 
-- The five canonical repair operations are Re-grounding, Decompression, Re-weighting, Disambiguation, and Synchronization ([Glossary § Repair Operations](glossary.md#repair-operations)). A sixth operation ("Repair permission") appeared in an earlier version of this diagram without being declared as an extension; it has been removed as an undeclared departure from canon (Constitution Articles I and V). Whether the taxonomy needs additional repair operations for Constraint Opacity and Repair Suppression is an open question, to be resolved either by declared Article V extensions or by documented rationale that the existing five suffice.
+- The five canonical repair operations are Re-grounding, Decompression, Re-weighting, Disambiguation, and Synchronization ([Glossary § Repair Operations](glossary.md#repair-operations)). A sixth operation ("Repair permission") appeared in an earlier version of this diagram without being declared as an extension; it has been removed as an undeclared departure from canon (Constitution Articles I and V). The Constraint Opacity / Repair Suppression gap is now addressed properly: two repair operations — **Constraint Disclosure** and **Repair-Norm Restoration** — are proposed as declared Article V extensions, with falsification conditions, in the [failure-mode ↔ repair mapping](failure_repair_mapping.md). They remain extensions, not canon; the canonical count stays five.
 - **Re-weighting** (explicitly adjusting IU salience — clarifying which information matters most) has no single designated failure mode. It applies wherever salience mismatch is the underlying cause. An earlier version of this diagram mislabeled Re-weighting as "make constraints visible," which is constraint disclosure, not salience adjustment; the canonical meaning is restored here.
 - The Drift → Re-grounding and Constraint-Opacity/Repair-Suppression fallback pairings are the diagram's inference, not canon: the glossary names a target mechanism only for Decompression (reverses overcompression), Disambiguation (addresses false alignment), and Synchronization (closes asymmetric state advancement).
 
