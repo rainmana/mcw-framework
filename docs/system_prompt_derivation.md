@@ -209,6 +209,6 @@ The last prediction is critical: **MCW-aware prompts should not eliminate re-gro
 | Document | Relationship |
 |----------|-------------|
 | [Glossary](glossary.md) | Defines all terms used in this derivation |
-| [README](../README.md) | Presents the template without derivation; links here for the theoretical basis |
+| [README](https://github.com/rainmana/mcw-framework/blob/main/README.md) | Presents the template without derivation; links here for the theoretical basis |
 | [Toy Experiments](experiments/toy_experiments.md) | Experiments that would begin to test the falsifiable predictions above |
 | [Paper Outline §3.4](paper_outline.md) | Situates this derivation within the paper's argument structure |
