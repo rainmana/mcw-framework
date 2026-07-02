@@ -118,7 +118,7 @@ mindmap
 
 ## Diagram 4: MCW Repair Flow
 
-How a degraded MCW is identified and repaired. Each repair operation corresponds to a specific failure mode. Repair must happen before progress — pushing through a degraded MCW compounds entropy.
+How a degraded MCW is identified and repaired. Four of the six failure modes have a canonical repair operation whose glossary definition names them (or their mechanism) directly. The remaining two — Constraint Opacity and Repair Suppression — have **no designated canonical repair operation**; this is an acknowledged gap in the canon, shown honestly below rather than papered over. Repair must happen before progress — pushing through a degraded MCW compounds entropy.
 
 ```mermaid
 flowchart TD
@@ -133,20 +133,25 @@ flowchart TD
     E -->|"Asymmetric\nadvancement"| G["Synchronization\nExternalize off-turn state"]
     E -->|"False alignment"| H["Disambiguation\nSplit overloaded IUs"]
     E -->|Overcompression| I["Decompression\nExpand summary back out"]
-    E -->|"Constraint opacity"| J["Re-weighting\nMake constraints visible"]
-    E -->|"Repair suppression"| K["Repair permission\nExplicitly authorize signals"]
+    E -->|"Constraint opacity"| J["⚠ Open gap\nNo designated canonical repair\nFallback: Re-grounding"]
+    E -->|"Repair suppression"| J
 
     F --> L{MCW restored?}
     G --> L
     H --> L
     I --> L
     J --> L
-    K --> L
 
     L -->|Yes| C
-    L -->|No| M["Escalate repair\nRe-ground from scratch\nor reset with HCW briefing"]
+    L -->|No| M["Escalate repair\nRe-ground from scratch:\nfully restate goals, assumptions,\nand constraints"]
     M --> B
 ```
+
+**Notes on the mapping:**
+
+- The five canonical repair operations are Re-grounding, Decompression, Re-weighting, Disambiguation, and Synchronization ([Glossary § Repair Operations](glossary.md#repair-operations)). A sixth operation ("Repair permission") appeared in an earlier version of this diagram without being declared as an extension; it has been removed as an undeclared departure from canon (Constitution Articles I and V). Whether the taxonomy needs additional repair operations for Constraint Opacity and Repair Suppression is an open question, to be resolved either by declared Article V extensions or by documented rationale that the existing five suffice.
+- **Re-weighting** (explicitly adjusting IU salience — clarifying which information matters most) has no single designated failure mode. It applies wherever salience mismatch is the underlying cause. An earlier version of this diagram mislabeled Re-weighting as "make constraints visible," which is constraint disclosure, not salience adjustment; the canonical meaning is restored here.
+- The Drift → Re-grounding and Constraint-Opacity/Repair-Suppression fallback pairings are the diagram's inference, not canon: the glossary names a target mechanism only for Decompression (reverses overcompression), Disambiguation (addresses false alignment), and Synchronization (closes asymmetric state advancement).
 
 **Critical rule:** Repair must happen *before* resuming progress. Each turn of forward motion on a degraded MCW deepens the entropy — making later repair exponentially more expensive.
 
