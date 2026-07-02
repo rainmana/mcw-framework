@@ -2,6 +2,10 @@ name: constitution-lint
 
 on:
   pull_request:
+    # labeled/unlabeled are included because the amendment guard accepts the
+    # type:definition-change label as its approval signal — adding the label
+    # must re-run this check, not wait for the next push.
+    types: [opened, synchronize, reopened, labeled, unlabeled]
   push:
     branches:
       - main

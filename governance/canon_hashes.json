@@ -38,7 +38,7 @@
     },
     "Evidence Layers (L0–L4)": {
       "category": "meta",
-      "sha256": "2d24f67f65a0cff763406ac2369dcd3d56d193e4d7290bf2b92713b428646be1",
+      "sha256": "9c53577cc2ac7f913bcd4dcda236b48c5202066b0612457b5980ea71ae832a4a",
       "snapshot": "governance/canon/evidence-layers-l0l4.txt"
     },
     "False Alignment": {
@@ -53,7 +53,7 @@
     },
     "Information Unit (IU)": {
       "category": "core",
-      "sha256": "ca68ea0f61394969f07efab23b77e736880b930b3dd948add3befccbb92ad043",
+      "sha256": "4917812ffa03af2f119ec3f4d48ad1ba079936b45b771b2e4e9719e49295cade",
       "snapshot": "governance/canon/information-unit-iu.txt"
     },
     "MCW Health (H)": {

@@ -105,6 +105,8 @@ AMENDABLE_PREFIXES = (
     "**Type:**",
     "**Layer 0 gloss:**",
     "*Example:*",
+    "**Example:**",
+    "**Examples:**",
     "**Early signals:**",
     "**Key danger:**",
     "*Status:",
@@ -177,7 +179,9 @@ def heading_anchors(text: str) -> set[str]:
         m = re.match(r"^#{1,6}\s+(.*?)\s*$", line)
         if not m:
             continue
-        title = re.sub(r"[`*_]", "", m.group(1))
+        # Strip emphasis/code markers but keep literal underscores, which
+        # python-markdown's slugify preserves (\w includes _).
+        title = re.sub(r"[`*]|\\(?=_)", "", m.group(1))
         base = slugify(title) or "section"
         anchor = base
         n = 0
@@ -427,9 +431,21 @@ def check_pr_guards() -> None:
     pin_paths = {"governance/canon_hashes.json"} | {
         f"governance/canon/{slugify(t)}.txt"
         for terms in CANONICAL.values() for t in terms}
-    if (changed & pin_paths) and not marker_present:
+
+    def existed_in_base(path: str) -> bool:
+        try:
+            git("cat-file", "-e", f"{base_sha}:{path}")
+            return True
+        except subprocess.CalledProcessError:
+            return False
+
+    # Changing an *existing* pin is an amendment and needs the marker;
+    # first-time addition of a pin (a new canonical term, or the pinning
+    # system itself landing) is not a change to prior canon.
+    amended = {p for p in (changed & pin_paths) if existed_in_base(p)}
+    if amended and not marker_present:
         err(f"amendment guard: this PR changes pinned canon "
-            f"({', '.join(sorted(changed & pin_paths))}) without the "
+            f"({', '.join(sorted(amended))}) without the "
             f"{DEFINITION_CHANGE_MARKER} commit marker or the "
             f"{DEFINITION_CHANGE_LABEL} label. Declare the amendment "
             f"(Article I / Amendment Procedure) or revert.")
