@@ -105,6 +105,8 @@ AMENDABLE_PREFIXES = (
     "**Type:**",
     "**Layer 0 gloss:**",
     "**Notation status:**",
+    "**Definition history:**",
+    "**Scope note:**",
     "*Example:*",
     "**Example:**",
     "**Examples:**",

@@ -118,7 +118,9 @@ The ACW is the bounded computational context that an AI system (typically a larg
 - attention patterns over the current input
 
 **Key characteristic:**
-The ACW is **enumerable and formally bounded**. It updates only when new input is provided. It does not advance between turns.
+The ACW is **enumerable and formally bounded**. It advances only when input arrives — where input includes user messages, tool results, retrieved content, and scheduled invocations — and never spontaneously. In agentic and background configurations the ACW can therefore advance *between conversational turns*; what it cannot do is advance without input. The coordination-relevant asymmetry with the HCW is not turn-boundedness but **spontaneity**: the HCW advances continuously and unpromptedly; the ACW advances discretely and only on input.
+
+**Definition history:** the v0.2 (April 2026) key characteristic read "It updates only when new input is provided. It does not advance between turns." — amended July 2026 because that text was false for agentic, tool-using, and background AI systems (the dominant deployment pattern the framework targets) and contradicted Article III's claimed applicability to AI–AI systems without modification. Prior text preserved here per the Amendment Procedure; the asymmetry that motivates the framework (continuous/spontaneous vs. discrete/input-driven) is retained and sharpened.
 
 ---
 
@@ -233,6 +235,8 @@ One actor's context window advances — typically through off-turn reasoning or 
 **Early signals:** Frustration at "having to repeat myself"; the sense that one side is "behind"; resets that worsen rather than repair.
 
 **Key danger:** Resetting the ACW does not reset the HCW; the asymmetry persists or grows.
+
+**Scope note:** the definition is direction-symmetric — *either* party's window may advance off-turn without externalization. With the amended ACW definition (above), AI-side off-turn advancement via tool use, background runs, or scheduled work is a live case, not only the human side; the "resets worsen" danger applies in both directions.
 
 ---
 
@@ -493,7 +497,7 @@ Constitution [Article I](constitution.md#article-i-definition-immutability) free
 
 **Amendable fields** — ordinary review, no amendment required, provided the change does not alter the meaning of any frozen field:
 
-- **Type** lines, **Layer 0 gloss** annotations, **Notation status** annotations, evidence tags, cross-references, links, and formatting
+- **Type** lines, **Layer 0 gloss** annotations, **Notation status** annotations, **Definition history** records, **Scope note** clarifications, evidence tags, cross-references, links, and formatting
 - **Examples**
 - **Early signals** and **Key danger** notes (illustrative, not definitional)
 - Status lines and section ordering

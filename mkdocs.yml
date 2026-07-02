@@ -57,6 +57,7 @@ nav:
       - Exp 3 — Overcompression: experiments/preregistration/exp3_overcompression.md
       - Exp 4 — Constraint Opacity: experiments/preregistration/exp4_constraint_opacity.md
       - Exp 5 — Repair Suppression: experiments/preregistration/exp5_repair_suppression.md
+      - Exp 6 — Drift: experiments/preregistration/exp6_drift.md
       - Prompt Predictions: experiments/preregistration/prompt_predictions.md
     - Test Bed: test_bed.md
 
