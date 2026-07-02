@@ -46,7 +46,7 @@ graph LR
 
 ## Diagram 2: IU Flow Model
 
-Information Units travel through five stages during any communicative act. MCW health is determined by cumulative fidelity across all five stages. Failure at any stage contributes to MCW entropy.
+Information Units travel through five stages during any communicative act. MCW health is hypothesized to depend on cumulative fidelity across all five stages `[L0]`. Failure at any stage contributes to MCW degradation ("MCW entropy" in the framework's informal usage — see the [glossary](glossary.md#entropy)).
 
 ```mermaid
 flowchart LR
@@ -118,7 +118,7 @@ mindmap
 
 ## Diagram 4: MCW Repair Flow
 
-How a degraded MCW is identified and repaired. Four of the six failure modes have a canonical repair operation whose glossary definition names them (or their mechanism) directly. The remaining two — Constraint Opacity and Repair Suppression — have **no designated canonical repair operation**; this is an acknowledged gap in the canon, shown honestly below rather than papered over. Repair must happen before progress — pushing through a degraded MCW compounds entropy.
+How a degraded MCW is identified and repaired. Three of the six failure modes have a canonical repair operation whose glossary definition names their mechanism directly (Decompression ↔ Overcompression, Disambiguation ↔ False Alignment, Synchronization ↔ Asymmetric State Advancement). A fourth pairing — Drift → Re-grounding — is this diagram's inference, marked as such in the notes below. The remaining two — Constraint Opacity and Repair Suppression — have **no designated canonical repair operation**; this is an acknowledged gap in the canon, shown honestly below rather than papered over. Repair must happen before progress — pushing through a degraded MCW compounds entropy.
 
 ```mermaid
 flowchart TD
