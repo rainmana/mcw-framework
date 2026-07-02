@@ -2,6 +2,8 @@
 
 **Status:** Designed, not piloted · Evidence: L0 — designs only; no results exist.
 
+**Interpretation note:** for scoring and outcome interpretation, the [pre-registration templates](preregistration/index.md) supersede the graded-outcome tables below. Several cells in those tables read disconfirming patterns as framework-consistent; the pre-registrations rescind those readings and pre-commit which outcomes count *against* each hypothesis. The tables remain here as design rationale.
+
 This document specifies a set of lightweight, falsifiable experiments designed to probe Meta-Context Window (MCW) dynamics. These experiments intentionally avoid benchmarks, model internals, or quantitative claims, focusing instead on *coordination behavior* observable by participants.
 
 The experiments are suitable for:
@@ -66,9 +68,13 @@ Two participants collaborate on a simple, multi-step task. Early in the interact
 | **C — Minimal effect** | H≈, R≈, D≈ | Participants spontaneously clarify despite ambiguity; suggests robust local repair norms |
 | **D — Inverted effect** | H↑ | Ambiguity prompts immediate clarification; implies a highly healthy MCW culture where ambiguity itself is a repair cue |
 
+*Note:* the M readings in this table predate the [rubrics scope restriction](hrdm_rubrics.md#m-misattribution-03-per-window-human-ai-only) — M is not scored in Human ↔ Human experiments — and are rescinded. The [pre-registration](preregistration/exp1_false_alignment.md) does not score M, and its registered interpretations supersede this table (including outcome D, which now counts against the hypothesis).
+
 ### Falsification Condition
 
 If interactions with explicit alignment checks show equivalent drift rates to those with injected false alignment, the failure mode is not meaningfully distinct from baseline noise.
+
+**Pre-registration:** [Experiment 1 template](preregistration/exp1_false_alignment.md) — registered arms (including the explicit-check arm this condition references), minimal N, equivalence bounds, pre-committed disconfirming outcomes, and consent/debrief requirements for this deception design.
 
 ---
 
@@ -103,6 +109,8 @@ The human engages in an extended AI collaboration. Between turns, the human reas
 
 If explicit externalization of off-turn reasoning produces no measurable improvement in alignment, phase lag is not a meaningful MCW variable.
 
+**Pre-registration:** [Experiment 2 template](preregistration/exp2_asymmetric_advancement.md) — registered conditions, the reset disambiguation probe for the ACW-saturation confound acknowledged in Outcome D, equivalence bounds, and pre-committed disconfirming outcomes.
+
 ---
 
 ## Experiment 3: Overcompression Damage
@@ -135,6 +143,8 @@ Early in a multi-step task, request a comprehensive summary and proceed as if it
 ### Falsification Condition
 
 If premature summarization produces no worse outcomes than delayed summarization across a range of tasks, overcompression is not a meaningful failure mode.
+
+**Pre-registration:** [Experiment 3 template](preregistration/exp3_overcompression.md) — registered delayed-summarization arm (which this condition references but the setup above never specified), planted-distinction task battery, equivalence bounds, and pre-committed disconfirming outcomes.
 
 ---
 
@@ -170,6 +180,8 @@ Issue a request approaching a known constraint boundary (e.g., policy restrictio
 
 If disclosed constraints produce no better alignment outcomes than undisclosed constraints, constraint opacity is not a meaningful MCW variable.
 
+**Pre-registration:** [Experiment 4 template](preregistration/exp4_constraint_opacity.md) — experimenter-controlled planted constraint (separating constraint opacity from provider safety policy), registered arms, equivalence bounds, and pre-committed disconfirming outcomes.
+
 ---
 
 ## Experiment 5: Repair Signal Suppression
@@ -203,6 +215,8 @@ Two participants collaborate on a task under conditions that implicitly discoura
 
 If repair signal suppression produces no worse coordination outcomes than unsuppressed conditions, repair signaling is not a meaningful MCW variable.
 
+**Pre-registration:** [Experiment 5 template](preregistration/exp5_repair_suppression.md) — three-arm design de-confounding time pressure from suppression, equivalence bounds, pre-committed disconfirming outcomes, and the consent/debrief/wellbeing requirements for this design's engineered social pressure.
+
 ---
 
 ## Cross-Experiment Analysis
@@ -211,7 +225,7 @@ These experiments become more informative when interpreted together.
 
 | Pattern | Interpretation |
 |---------|----------------|
-| **High M across experiments** | Coordination breakdown is systematically blamed on agent competence — a general MCW diagnostic failure |
+| **High M across experiments** | Coordination breakdown is systematically blamed on agent competence — a general MCW diagnostic failure. (Human ↔ AI experiments only: M is not scored in Experiments 1 and 5 per the [rubrics scope restriction](hrdm_rubrics.md#m-misattribution-03-per-window-human-ai-only)) |
 | **High R but stable outcomes** | Participants are performing expert manual MCW repair — tacit competence the framework would make transferable |
 | **Low D but low progress** | Over-repair or excessive caution; MCW is stable but throughput is throttled |
 | **Repair latency as primary driver** | Fastest improvement will come from early detection and safe repair cues |

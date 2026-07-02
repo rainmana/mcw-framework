@@ -49,6 +49,14 @@ nav:
     - System Prompt Derivation: system_prompt_derivation.md
     - Toy Experiments: experiments/toy_experiments.md
     - H/R/D/M Rubrics: experiments/hrdm_rubrics.md
+    - Pre-Registration:
+      - Overview: experiments/preregistration/index.md
+      - Exp 1 — False Alignment: experiments/preregistration/exp1_false_alignment.md
+      - Exp 2 — Asymmetric Advancement: experiments/preregistration/exp2_asymmetric_advancement.md
+      - Exp 3 — Overcompression: experiments/preregistration/exp3_overcompression.md
+      - Exp 4 — Constraint Opacity: experiments/preregistration/exp4_constraint_opacity.md
+      - Exp 5 — Repair Suppression: experiments/preregistration/exp5_repair_suppression.md
+      - Prompt Predictions: experiments/preregistration/prompt_predictions.md
     - Test Bed: test_bed.md
 
 markdown_extensions:

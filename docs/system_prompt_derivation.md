@@ -180,13 +180,15 @@ If the derivation is correct, MCW-aware prompts initialized with this template s
 
 | Prediction | Measurable proxy | Falsification condition |
 |------------|-----------------|------------------------|
-| Reduced early repair events | R score in first 5 turns | No difference in R between MCW-aware and baseline prompts in turns 1–5 |
+| Reduced early repair events | R\_ev (repair-event count) in the first 5 exchanges — see [H/R/D/M Rubrics](experiments/hrdm_rubrics.md) | No difference in early R\_ev between MCW-aware and baseline prompts (equivalence bounds per the [pre-registration](experiments/preregistration/prompt_predictions.md)) |
 | Reduced misattribution | M score across interaction | No difference in M scores; failures still attributed to model capability at same rate |
 | No reduction in capability failures | Factual accuracy on knowledge tasks | MCW-aware prompt produces lower accuracy — would indicate the prompt introduces noise |
 | Improved H score after turn 3 | H proxy rating | No difference in H after turn 3 vs. baseline |
 | Re-grounding events still required | Count of explicit re-grounding turns | MCW-aware prompt eliminates all re-grounding — would falsify the claim that prompts cannot maintain MCW |
 
-The last prediction is critical: **MCW-aware prompts should not eliminate re-grounding**. If they did, that would contradict the theoretical claim that prompts are initialization artifacts, not dynamic MCW managers. A prompt that appears to eliminate all repair need is more likely masking repair suppression than genuinely maintaining MCW health.
+The last prediction is critical: **MCW-aware prompts should not eliminate re-grounding**. If they did, that would contradict the theoretical claim that prompts are initialization artifacts, not dynamic MCW managers.
+
+An earlier version of this page immediately reinterpreted its own designated falsifier — zero re-grounding was pre-explained as "more likely masking repair suppression than genuinely maintaining MCW health" — which made Prediction 5 unfalsifiable in practice. That escape is withdrawn. The disambiguation is now pre-committed instead: zero re-grounding *with* repair-suppression markers present indicates suppression; zero re-grounding *without* suppression markers falsifies the initialization-artifact claim outright, and would be reported as such. The marker set and decision rule are registered in advance in [the predictions pre-registration](experiments/preregistration/prompt_predictions.md), so the two cases are separated by data, not by narrative after the fact.
 
 ---
 
@@ -196,7 +198,7 @@ The last prediction is critical: **MCW-aware prompts should not eliminate re-gro
 
 2. **Not that prompts can fully manage MCW.** The derivation explicitly establishes that prompts cannot maintain or repair MCW. Claiming otherwise contradicts the framework.
 
-3. **Not that these predictions have been validated.** The predictions are falsifiable; they have not been tested. See `docs/experiments/toy_experiments.md` for the experimental designs that would begin to test them.
+3. **Not that these predictions have been validated.** The predictions are falsifiable; they have not been tested. The registered design that would test them — arms, baseline prompt, sample sizes, analysis plan, and pre-committed disconfirming outcomes — is [the predictions pre-registration](experiments/preregistration/prompt_predictions.md). (The [toy experiments](experiments/toy_experiments.md) probe the underlying failure modes; an earlier version of this page pointed there for testing these predictions, but they do not operationalize a prompt A/B comparison.)
 
 4. **Not that all system prompts benefit from this structure.** Narrow, task-specific, single-turn interactions may not require MCW-aware initialization. The framework's predictions apply most strongly to open-ended, multi-turn, collaborative interactions.
 
@@ -210,5 +212,6 @@ The last prediction is critical: **MCW-aware prompts should not eliminate re-gro
 |----------|-------------|
 | [Glossary](glossary.md) | Defines all terms used in this derivation |
 | [README](https://github.com/rainmana/mcw-framework/blob/main/README.md) | Presents the template without derivation; links here for the theoretical basis |
-| [Toy Experiments](experiments/toy_experiments.md) | Experiments that would begin to test the falsifiable predictions above |
+| [Toy Experiments](experiments/toy_experiments.md) | Probe the failure modes this derivation builds on |
+| [Predictions Pre-Registration](experiments/preregistration/prompt_predictions.md) | The registered A/B design that tests the five predictions above |
 | [Paper Outline §3.4](paper_outline.md) | Situates this derivation within the paper's argument structure |
