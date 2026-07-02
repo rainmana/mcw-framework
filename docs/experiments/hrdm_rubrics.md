@@ -176,8 +176,12 @@ guessed.
   each other's scores.
 - **Calibration:** two transcripts rated jointly and discussed before the
   study; calibration transcripts are excluded from analysis.
-- **Corpus:** at least 12 transcripts (≥ 48 rated windows per proxy) before
-  any experiment reports H/R/D/M as outcomes at L3.
+- **Corpus:** at least 12 transcripts, with two floors that must *both* be
+  met before any experiment reports H/R/D/M as outcomes at L3: ≥ 48 rated
+  windows for H, D, and M, **and ≥ 24 rated repair episodes for R**. R is
+  scored per repair episode, not per window, so a corpus can satisfy the
+  window floor while containing too few repair episodes for κ on R to be
+  computable at all; transcripts are added until both floors are met.
 - **Statistics:** quadratic-weighted Cohen's kappa per proxy (ordinal
   distances matter), with Krippendorff's alpha (ordinal) reported alongside
   as a robustness check.
@@ -186,9 +190,10 @@ guessed.
   0.4 and 0.6, results may be reported only with the reliability figures
   attached and claims capped at L2.
 - **Failure rule (the losable bet, restated):** κ_w < 0.4 on H and R after
-  one calibration round across ≥ 12 transcripts falsifies this instrument —
-  see the declaration block. Disagreements of more than one scale point on
-  the same window are logged as anchor defects regardless of aggregate κ.
+  one calibration round across ≥ 12 transcripts (both corpus floors met)
+  falsifies this instrument — see the declaration block. Disagreements of
+  more than one scale point on the same window or episode are logged as
+  anchor defects regardless of aggregate κ.
 - **Adjudication:** post-hoc consensus scores may be produced for exploratory
   analysis but are never substituted for the independent scores in
   reliability reporting.
