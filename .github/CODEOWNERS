@@ -1,0 +1,15 @@
+# Constitution-as-Code Phase 0 (docs/constitution_as_code.md, Part 1).
+#
+# Canonical files require author review on any change (Article I and the
+# Amendment Procedure). The governance tooling itself is guarded so the
+# guard cannot be silently disabled.
+#
+# Honesty note: in a single-maintainer repository, Code Owner review is
+# self-review. It gates authorship, not judgment; the mechanical lint is
+# the only non-self reviewer this repo currently has.
+
+/docs/glossary.md       @rainmana
+/docs/constitution.md   @rainmana
+/governance/            @rainmana
+/scripts/               @rainmana
+/.github/               @rainmana

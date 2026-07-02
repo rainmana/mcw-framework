@@ -1,5 +1,7 @@
 # MCW Toy Experiments — Formal Methods
 
+**Status:** Designed, not piloted · Evidence: L0 — designs only; no results exist.
+
 This document specifies a set of lightweight, falsifiable experiments designed to probe Meta-Context Window (MCW) dynamics. These experiments intentionally avoid benchmarks, model internals, or quantitative claims, focusing instead on *coordination behavior* observable by participants.
 
 The experiments are suitable for:

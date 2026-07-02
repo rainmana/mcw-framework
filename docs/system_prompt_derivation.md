@@ -4,7 +4,7 @@ This document derives MCW-aware system prompt design from first principles of In
 
 **Audience:** Researchers and practitioners who have read the framework and want to understand *why* MCW-aware prompts are structured the way they are before using or modifying the template.
 
-**Status:** Theoretical derivation. Predictions are falsifiable but not yet tested.
+**Status:** Theoretical derivation · Evidence: L0. Predictions are falsifiable but not yet tested.
 
 ---
 

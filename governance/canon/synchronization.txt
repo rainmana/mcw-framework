@@ -1,0 +1,1 @@
+**Definition:** Aligning the IU timelines of participating actors — surfacing off-turn state changes to close asymmetric state advancement.

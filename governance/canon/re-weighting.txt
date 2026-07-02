@@ -1,0 +1,1 @@
+**Definition:** Explicitly adjusting IU salience — clarifying which information matters most and which can be safely deprioritized.

@@ -1,5 +1,7 @@
 # Related Work & Positioning
 
+**Status:** Positioning narrative · Evidence: L0 — no empirical claims; citation pass pending.
+
 This section situates the Meta-Context Window (MCW) framework relative to existing research traditions. The intent is not to subsume, replace, or critique these fields, but to clarify *what MCW is and is not attempting to do*.
 
 ---

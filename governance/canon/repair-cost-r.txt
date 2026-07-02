@@ -1,0 +1,1 @@
+Effort required to realign after a coordination failure. Higher values indicate more costly repair. `0 = low / 3 = high`

@@ -1,0 +1,1 @@
+**Definition:** Hidden variables — such as undisclosed system constraints, policy restrictions, or unstated assumptions — influence one party's behavior without being legible to the other. These act as exogenous constraints on the coupling function.

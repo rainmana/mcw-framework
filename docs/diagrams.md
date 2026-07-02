@@ -1,5 +1,7 @@
 # MCW Framework — Diagrams
 
+**Status:** Visual companion to canon · Evidence: L0 — diagrams illustrate definitions; they are not evidence.
+
 Visual representations of the core framework constructs. All diagrams are defined as source text (Mermaid) and version-controlled alongside the framework documentation.
 
 ---

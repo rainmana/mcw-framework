@@ -1,0 +1,51 @@
+name: Definition change (Article I departure / amendment)
+description: Propose a change to a canonical definition, or declare a departure. Uses the canonical departure-declaration form.
+title: "[definition-change]: "
+labels: ["type:definition-change", "article:I"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Canonical definitions are frozen ([Article I](https://rainmana.github.io/mcw-framework/constitution/#article-i-definition-immutability)).
+        Changes to frozen fields require the Amendment Procedure (version
+        increment, prior text preserved, rationale recorded) and update the
+        pins under `governance/canon/`. See the glossary change policy for
+        which fields are frozen versus amendable.
+  - type: input
+    id: term
+    attributes:
+      label: Term
+      description: Which canonical construct is affected?
+      placeholder: "e.g., ACW (Artificial Context Window)"
+    validations:
+      required: true
+  - type: textarea
+    id: canonical_text
+    attributes:
+      label: Canonical definition (cite)
+      description: Quote the current canonical text from the glossary (this becomes the preserved "prior text").
+    validations:
+      required: true
+  - type: textarea
+    id: modification
+    attributes:
+      label: The modification
+      description: The proposed new text, exactly.
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale
+      description: Why the canonical definition is wrong or insufficient. Amendments that merely restate preference will be declined.
+    validations:
+      required: true
+  - type: checkboxes
+    id: paperwork
+    attributes:
+      label: Amendment paperwork
+      options:
+        - label: I understand the prior text must be preserved and the version incremented (Amendment Procedure).
+          required: true
+        - label: The PR implementing this change will carry the `[definition-change]` commit marker or `type:definition-change` label so the amendment guard passes deliberately, not silently.
+          required: true

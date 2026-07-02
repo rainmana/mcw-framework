@@ -1,0 +1,105 @@
+{
+  "_comment": "Frozen canonical definition text, pinned. Regenerate with scripts/constitution_lint.py --update. Changing these pins requires the [definition-change] commit marker or the type:definition-change PR label (Constitution Article I; glossary change policy).",
+  "pins": {
+    "Artificial Context Window (ACW)": {
+      "category": "core",
+      "sha256": "893ff66cf20c770811b83cc59517af09d680b482b377814f85c30b758b6ebc63",
+      "snapshot": "governance/canon/artificial-context-window-acw.txt"
+    },
+    "Asymmetric State Advancement": {
+      "category": "failure_mode",
+      "sha256": "4c239e168dc9f0e3da796a0a9aa0ce204b18fe0f7e6ec937368a21ea4784d1d1",
+      "snapshot": "governance/canon/asymmetric-state-advancement.txt"
+    },
+    "Constraint Opacity": {
+      "category": "failure_mode",
+      "sha256": "e266d15dc476fc1e33e04f2d399e5162db30fad18a0da919702515eb365a72c2",
+      "snapshot": "governance/canon/constraint-opacity.txt"
+    },
+    "Decompression": {
+      "category": "repair_op",
+      "sha256": "530f5e4b5d5f222b0eec1145633eef777627554b94cbf2deb795f18413c8c455",
+      "snapshot": "governance/canon/decompression.txt"
+    },
+    "Disambiguation": {
+      "category": "repair_op",
+      "sha256": "5ccc8ace52f4d9fa84a1a930027dd6f4f666c93aae7f399877d91679f819cdda",
+      "snapshot": "governance/canon/disambiguation.txt"
+    },
+    "Drift (Silent Desynchronization)": {
+      "category": "failure_mode",
+      "sha256": "bb95bea4dfee9ac5c8ce11ea5857d16e38f2f3cd96ba6b28064bfab83c249f74",
+      "snapshot": "governance/canon/drift-silent-desynchronization.txt"
+    },
+    "Drift Rate (D)": {
+      "category": "proxy",
+      "sha256": "2b3eaa896c0bf2e3a5383eaccae5cb8e5ed395dbace10e92385ff72fac661fa4",
+      "snapshot": "governance/canon/drift-rate-d.txt"
+    },
+    "Evidence Layers (L0–L4)": {
+      "category": "meta",
+      "sha256": "2d24f67f65a0cff763406ac2369dcd3d56d193e4d7290bf2b92713b428646be1",
+      "snapshot": "governance/canon/evidence-layers-l0l4.txt"
+    },
+    "False Alignment": {
+      "category": "failure_mode",
+      "sha256": "b0d78f6f36a49d0d052c938a72dc344240e88221be2929138982c640fe5c2778",
+      "snapshot": "governance/canon/false-alignment.txt"
+    },
+    "Human Context Window (HCW)": {
+      "category": "core",
+      "sha256": "2f54b583ee798918f8275ccd7e06d7c2a733de5fd70d4776b7802ca8aeb23b54",
+      "snapshot": "governance/canon/human-context-window-hcw.txt"
+    },
+    "Information Unit (IU)": {
+      "category": "core",
+      "sha256": "ca68ea0f61394969f07efab23b77e736880b930b3dd948add3befccbb92ad043",
+      "snapshot": "governance/canon/information-unit-iu.txt"
+    },
+    "MCW Health (H)": {
+      "category": "proxy",
+      "sha256": "7b533d7175e6d8731328d0a51741b598163ce0b418325f16128f6c77bd3528c7",
+      "snapshot": "governance/canon/mcw-health-h.txt"
+    },
+    "Meta-Context Window (MCW)": {
+      "category": "core",
+      "sha256": "9b07e301154d54eca71f8c47f844fad1cd636ef61b1037aba1151799c1ccb7ff",
+      "snapshot": "governance/canon/meta-context-window-mcw.txt"
+    },
+    "Misattribution (M)": {
+      "category": "proxy",
+      "sha256": "44de8896f47c94f993757372529372ccf653afc8d69e182d7cd1a5d3f3c9bbc6",
+      "snapshot": "governance/canon/misattribution-m.txt"
+    },
+    "Overcompression": {
+      "category": "failure_mode",
+      "sha256": "74c53f9142dea495b30aee3cb801150c10ac825a2d1a840bae363058e32541dc",
+      "snapshot": "governance/canon/overcompression.txt"
+    },
+    "Re-grounding": {
+      "category": "repair_op",
+      "sha256": "009b45bb4f11a60cc5af1e6a3257d7c69bbbd868dd68be860c43997a83303797",
+      "snapshot": "governance/canon/re-grounding.txt"
+    },
+    "Re-weighting": {
+      "category": "repair_op",
+      "sha256": "d6a2c9aecf3e46e306016e6655aae8fead813f1872e3aba390210543a551026e",
+      "snapshot": "governance/canon/re-weighting.txt"
+    },
+    "Repair Cost (R)": {
+      "category": "proxy",
+      "sha256": "a669b57c97f14c200607d9da26cea23b6c4446c826c6641033b652df20e9cffa",
+      "snapshot": "governance/canon/repair-cost-r.txt"
+    },
+    "Repair Suppression": {
+      "category": "failure_mode",
+      "sha256": "1c4c023b12abf2b0664d31f8855af29f9037dfa95023c7c221f329b8ee190c21",
+      "snapshot": "governance/canon/repair-suppression.txt"
+    },
+    "Synchronization": {
+      "category": "repair_op",
+      "sha256": "946437323d40f97984c56cce37c89c4c928dd67daff85319e9cc33ef88d7ae98",
+      "snapshot": "governance/canon/synchronization.txt"
+    }
+  }
+}

@@ -9,7 +9,7 @@
 
 **Target length:** 6–10 pages (short paper) or extended abstract (4 pages)
 
-**Status:** Outline only. Evidence notes indicate what currently exists vs. what is still needed.
+**Status:** Outline only · Evidence: L0–L1. Evidence notes indicate what currently exists vs. what is still needed.
 
 ---
 

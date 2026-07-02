@@ -1,0 +1,1 @@
+Speed at which the shared coordination state diverges. Higher values indicate faster degradation. `0 = stable / 3 = rapid`
