@@ -111,7 +111,7 @@ MCW repair is treated as a first-class coordination primitive, not a social nice
 | **Disambiguation** | Split overloaded IUs; surface divergent interpretations |
 | **Synchronization** | Align IU timelines; externalize off-turn state changes |
 
-A key implication of repair theory: repair cost grows nonlinearly with MCW degradation. Early repair is exponentially cheaper than late repair — a pattern that mirrors biological immune response and information-theoretic error correction.
+A key implication of repair theory, stated in its falsifiable form: repair cost is predicted to be **non-decreasing in discovery lag** — the longer a misalignment incubates before discovery, the more it costs to repair (an ordering claim, hypothesis-level; no data yet exist). An earlier version asserted repair becomes "exponentially" more expensive; that claimed a functional form with zero data and is withdrawn. The biological-immune-response analogy remains an analogy, not evidence.
 
 ---
 
@@ -136,12 +136,14 @@ The framework is designed to be accessible at multiple levels of formality. No p
 
 | Layer | Audience | Framing |
 |-------|----------|---------|
-| 0 — Intuition | Anyone | "Are we on the same page?" |
-| 1 — Concepts | Generalists | MCW as shared coordination state; IUs as coordination atoms |
-| 2 — Formalization | STEM-adjacent | Entropy, IU flow model, coupling function |
-| 3 — Models | Researchers | Entropy flows, phase transitions, drift metrics |
-| 4 — Implementation | Builders | Simulations, test beds, experiment protocols |
-| 5 — Application | Domain specialists | Case studies across biology, organizations, AI, policy |
+| A0 — Intuition | Anyone | "Are we on the same page?" |
+| A1 — Concepts | Generalists | MCW as shared coordination state; IUs as coordination atoms |
+| A2 — Formalization | STEM-adjacent | IU flow model; coupling function (informal notation) |
+| A3 — Models & instruments | Researchers | Anchored H/R/D/M rubrics; pre-registered designs |
+| A4 — Implementation | Builders | Test beds, governance lint, experiment protocols |
+| A5 — Application | Domain specialists | Case studies across biology, organizations, AI, policy |
+
+Accessibility layers are written A0–A5; bare L*n* notation is reserved for the evidence layers of Constitution Article IV (L0–L4).
 
 **Invariant rule:** No concept appears at a higher layer unless it already exists at a lower layer in compressed form. This prevents semantic drift and gatekeeping.
 

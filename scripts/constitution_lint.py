@@ -104,6 +104,9 @@ DEFINITION_REQUIRED_CATEGORIES = {"core", "failure_mode", "repair_op"}
 AMENDABLE_PREFIXES = (
     "**Type:**",
     "**Layer 0 gloss:**",
+    "**Notation status:**",
+    "**Definition history:**",
+    "**Scope note:**",
     "*Example:*",
     "**Example:**",
     "**Examples:**",

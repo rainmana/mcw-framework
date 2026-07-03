@@ -2,6 +2,8 @@
 
 **Status:** Designed, not piloted · Evidence: L0 — designs only; no results exist.
 
+**Interpretation note:** for scoring and outcome interpretation, the [pre-registration templates](preregistration/index.md) supersede the graded-outcome tables below. Several cells in those tables read disconfirming patterns as framework-consistent; the pre-registrations rescind those readings and pre-commit which outcomes count *against* each hypothesis. The tables remain here as design rationale.
+
 This document specifies a set of lightweight, falsifiable experiments designed to probe Meta-Context Window (MCW) dynamics. These experiments intentionally avoid benchmarks, model internals, or quantitative claims, focusing instead on *coordination behavior* observable by participants.
 
 The experiments are suitable for:
@@ -18,7 +20,7 @@ They are designed to fail quietly if MCW is not a useful construct.
 - **Coordination over capability:** Hold task difficulty constant; vary coordination conditions.
 - **Qualitative first:** Early signals are experiential and behavioral.
 - **Comparative:** Interpret results relative to a baseline.
-- **Repair-aware:** Treat repair latency and cost as first-class outcomes.
+- **Repair-aware:** Treat repair latency and cost as first-class outcomes (operationalized as discovery lag and repair-episode cost in the [rubrics](hrdm_rubrics.md); "repair latency" carries no meaning beyond those measures).
 
 ---
 
@@ -66,9 +68,13 @@ Two participants collaborate on a simple, multi-step task. Early in the interact
 | **C — Minimal effect** | H≈, R≈, D≈ | Participants spontaneously clarify despite ambiguity; suggests robust local repair norms |
 | **D — Inverted effect** | H↑ | Ambiguity prompts immediate clarification; implies a highly healthy MCW culture where ambiguity itself is a repair cue |
 
+*Note:* the M readings in this table predate the [rubrics scope restriction](hrdm_rubrics.md#m-misattribution-03-per-window-human-ai-only) — M is not scored in Human ↔ Human experiments — and are rescinded. The [pre-registration](preregistration/exp1_false_alignment.md) does not score M, and its registered interpretations supersede this table (including outcome D, which now counts against the hypothesis).
+
 ### Falsification Condition
 
 If interactions with explicit alignment checks show equivalent drift rates to those with injected false alignment, the failure mode is not meaningfully distinct from baseline noise.
+
+**Pre-registration:** [Experiment 1 template](preregistration/exp1_false_alignment.md) — registered arms (including the explicit-check arm this condition references), minimal N, equivalence bounds, pre-committed disconfirming outcomes, and consent/debrief requirements for this deception design.
 
 ---
 
@@ -103,6 +109,8 @@ The human engages in an extended AI collaboration. Between turns, the human reas
 
 If explicit externalization of off-turn reasoning produces no measurable improvement in alignment, phase lag is not a meaningful MCW variable.
 
+**Pre-registration:** [Experiment 2 template](preregistration/exp2_asymmetric_advancement.md) — registered conditions, the reset disambiguation probe for the ACW-saturation confound acknowledged in Outcome D, equivalence bounds, and pre-committed disconfirming outcomes.
+
 ---
 
 ## Experiment 3: Overcompression Damage
@@ -136,6 +144,8 @@ Early in a multi-step task, request a comprehensive summary and proceed as if it
 
 If premature summarization produces no worse outcomes than delayed summarization across a range of tasks, overcompression is not a meaningful failure mode.
 
+**Pre-registration:** [Experiment 3 template](preregistration/exp3_overcompression.md) — registered delayed-summarization arm (which this condition references but the setup above never specified), planted-distinction task battery, equivalence bounds, and pre-committed disconfirming outcomes.
+
 ---
 
 ## Experiment 4: Constraint Opacity Stress Test
@@ -144,7 +154,7 @@ If premature summarization produces no worse outcomes than delayed summarization
 
 ### Hypothesis
 
-> Opaque constraints function as hidden variables that increase MCW entropy and raise repair cost, even when the model's underlying reasoning is sound.
+> Opaque constraints function as hidden variables that degrade coordination ("MCW entropy" in the framework's informal usage — see [Entropy](../glossary.md#entropy)) and raise repair cost, even when the model's underlying reasoning is sound.
 
 ### Setup
 
@@ -166,9 +176,13 @@ Issue a request approaching a known constraint boundary (e.g., policy restrictio
 | **C — Minimal effect** | H≈ | Improved transparency can neutralize hidden-variable effects |
 | **D — Unstable response patterns** | — | Small prompt variations yield large response differences; supports response-surface instability under constraint conflict |
 
+*Note:* outcome C's reading and outcome D's "response-surface instability" reading (a term defined nowhere in the framework) are rescinded as framework-friendly escapes; the [pre-registration](preregistration/exp4_constraint_opacity.md) supersedes this table, and its registered interpretations include cells that count against the hypothesis.
+
 ### Falsification Condition
 
 If disclosed constraints produce no better alignment outcomes than undisclosed constraints, constraint opacity is not a meaningful MCW variable.
+
+**Pre-registration:** [Experiment 4 template](preregistration/exp4_constraint_opacity.md) — experimenter-controlled planted constraint (separating constraint opacity from provider safety policy), registered arms, equivalence bounds, and pre-committed disconfirming outcomes.
 
 ---
 
@@ -199,9 +213,40 @@ Two participants collaborate on a task under conditions that implicitly discoura
 | **C — No decay** | H≈ | Strong internal checks; participants repair silently; or suppression wasn't strong enough |
 | **D — Speed improves, quality harms** | — | Key tradeoff: MCW optimization may require choosing quality over tempo; supports explicit "uncertainty budget" concept |
 
+*Note:* outcome D's "uncertainty budget" reading (a term defined nowhere in the framework) is rescinded as a framework-friendly escape; the [pre-registration](preregistration/exp5_repair_suppression.md) supersedes this table, and under its registered interpretations this outcome pattern counts *against* the claim that repair signals are load-bearing.
+
 ### Falsification Condition
 
 If repair signal suppression produces no worse coordination outcomes than unsuppressed conditions, repair signaling is not a meaningful MCW variable.
+
+**Pre-registration:** [Experiment 5 template](preregistration/exp5_repair_suppression.md) — three-arm design de-confounding time pressure from suppression, equivalence bounds, pre-committed disconfirming outcomes, and the consent/debrief/wellbeing requirements for this design's engineered social pressure.
+
+---
+
+## Experiment 6: Drift Accumulation
+
+**Type:** Human ↔ AI · **Declared extension** (Constitution Article V) — Drift is the framework's flagship failure mode and was the only canonical mode with no dedicated experiment; this design closes that gap. *Declaration:* extends the experiment set; changes no canonical construct. *Non-contradiction:* uses the canonical Drift definition unmodified. *Falsification condition:* below, two-part. *Layer 0 trace:* "Talk long enough without stepping back, and you quietly end up working on different things — can outsiders even see it happening?"
+
+### Hypothesis
+
+> In extended Human ↔ AI collaboration without re-grounding checkpoints, the parties' representations of the current goal diverge measurably even absent any discrete failure event — and the divergence is visible to independent observers.
+
+### Setup
+
+Within-subject, two matched extended tasks (≥ 20 exchanges), order counterbalanced: **(a) checkpoint condition** — every 5 exchanges, both parties briefly restate the current goal and assumptions (a scripted Re-grounding checkpoint); **(b) no-checkpoint condition** — same task flow with filler prompts of matched length in place of checkpoints. At task end in *both* conditions, the participant writes their current understanding of the goal and open assumptions, and the AI is elicited for the same.
+
+### Expected MCW Signature
+
+- End-of-task goal statements diverge more in the no-checkpoint condition
+- Late discoveries (the D proxy's observable) accumulate in the no-checkpoint condition
+- Blinded raters can identify the no-checkpoint transcript in matched pairs above chance
+
+### Falsification Condition (two-part, deliberately separated)
+
+1. **Mode existence:** if independent blinded raters cannot distinguish no-checkpoint (drifted) from checkpoint transcripts above chance, Drift is not an observable failure mode — this counts against the taxonomy itself.
+2. **Repair efficacy:** if end-of-task divergence is equivalent (TOST) between conditions, Re-grounding checkpoints do not prevent drift — this counts against the repair claim *only*; the original taxonomy conflated these two tests, and they are separated here on purpose.
+
+**Pre-registration:** [Experiment 6 template](preregistration/exp6_drift.md) — arms, N, elicitation scripts, divergence scoring, rater-discrimination protocol, equivalence bounds, and pre-committed disconfirming outcomes.
 
 ---
 
@@ -211,7 +256,7 @@ These experiments become more informative when interpreted together.
 
 | Pattern | Interpretation |
 |---------|----------------|
-| **High M across experiments** | Coordination breakdown is systematically blamed on agent competence — a general MCW diagnostic failure |
+| **High M across experiments** | Coordination breakdown is systematically blamed on agent competence — a general MCW diagnostic failure. (Human ↔ AI experiments only: M is not scored in Experiments 1 and 5 per the [rubrics scope restriction](hrdm_rubrics.md#m-misattribution-03-per-window-human-ai-only)) |
 | **High R but stable outcomes** | Participants are performing expert manual MCW repair — tacit competence the framework would make transferable |
 | **Low D but low progress** | Over-repair or excessive caution; MCW is stable but throughput is throttled |
 | **Repair latency as primary driver** | Fastest improvement will come from early detection and safe repair cues |
