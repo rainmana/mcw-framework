@@ -20,7 +20,7 @@ They are designed to fail quietly if MCW is not a useful construct.
 - **Coordination over capability:** Hold task difficulty constant; vary coordination conditions.
 - **Qualitative first:** Early signals are experiential and behavioral.
 - **Comparative:** Interpret results relative to a baseline.
-- **Repair-aware:** Treat repair latency and cost as first-class outcomes.
+- **Repair-aware:** Treat repair latency and cost as first-class outcomes (operationalized as discovery lag and repair-episode cost in the [rubrics](hrdm_rubrics.md); "repair latency" carries no meaning beyond those measures).
 
 ---
 
@@ -154,7 +154,7 @@ If premature summarization produces no worse outcomes than delayed summarization
 
 ### Hypothesis
 
-> Opaque constraints function as hidden variables that increase MCW entropy and raise repair cost, even when the model's underlying reasoning is sound.
+> Opaque constraints function as hidden variables that degrade coordination ("MCW entropy" in the framework's informal usage — see [Entropy](../glossary.md#entropy)) and raise repair cost, even when the model's underlying reasoning is sound.
 
 ### Setup
 
@@ -220,6 +220,33 @@ Two participants collaborate on a task under conditions that implicitly discoura
 If repair signal suppression produces no worse coordination outcomes than unsuppressed conditions, repair signaling is not a meaningful MCW variable.
 
 **Pre-registration:** [Experiment 5 template](preregistration/exp5_repair_suppression.md) — three-arm design de-confounding time pressure from suppression, equivalence bounds, pre-committed disconfirming outcomes, and the consent/debrief/wellbeing requirements for this design's engineered social pressure.
+
+---
+
+## Experiment 6: Drift Accumulation
+
+**Type:** Human ↔ AI · **Declared extension** (Constitution Article V) — Drift is the framework's flagship failure mode and was the only canonical mode with no dedicated experiment; this design closes that gap. *Declaration:* extends the experiment set; changes no canonical construct. *Non-contradiction:* uses the canonical Drift definition unmodified. *Falsification condition:* below, two-part. *Layer 0 trace:* "Talk long enough without stepping back, and you quietly end up working on different things — can outsiders even see it happening?"
+
+### Hypothesis
+
+> In extended Human ↔ AI collaboration without re-grounding checkpoints, the parties' representations of the current goal diverge measurably even absent any discrete failure event — and the divergence is visible to independent observers.
+
+### Setup
+
+Within-subject, two matched extended tasks (≥ 20 exchanges), order counterbalanced: **(a) checkpoint condition** — every 5 exchanges, both parties briefly restate the current goal and assumptions (a scripted Re-grounding checkpoint); **(b) no-checkpoint condition** — same task flow with filler prompts of matched length in place of checkpoints. At task end in *both* conditions, the participant writes their current understanding of the goal and open assumptions, and the AI is elicited for the same.
+
+### Expected MCW Signature
+
+- End-of-task goal statements diverge more in the no-checkpoint condition
+- Late discoveries (the D proxy's observable) accumulate in the no-checkpoint condition
+- Blinded raters can identify the no-checkpoint transcript in matched pairs above chance
+
+### Falsification Condition (two-part, deliberately separated)
+
+1. **Mode existence:** if independent blinded raters cannot distinguish no-checkpoint (drifted) from checkpoint transcripts above chance, Drift is not an observable failure mode — this counts against the taxonomy itself.
+2. **Repair efficacy:** if end-of-task divergence is equivalent (TOST) between conditions, Re-grounding checkpoints do not prevent drift — this counts against the repair claim *only*; the original taxonomy conflated these two tests, and they are separated here on purpose.
+
+**Pre-registration:** [Experiment 6 template](preregistration/exp6_drift.md) — arms, N, elicitation scripts, divergence scoring, rater-discrimination protocol, equivalence bounds, and pre-committed disconfirming outcomes.
 
 ---
 

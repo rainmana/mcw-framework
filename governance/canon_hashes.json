@@ -3,7 +3,7 @@
   "pins": {
     "Artificial Context Window (ACW)": {
       "category": "core",
-      "sha256": "893ff66cf20c770811b83cc59517af09d680b482b377814f85c30b758b6ebc63",
+      "sha256": "fdc048c55c32be4cb02a1b1dc6178884be7c9d3cb57060eedef150e359fee67f",
       "snapshot": "governance/canon/artificial-context-window-acw.txt"
     },
     "Asymmetric State Advancement": {
@@ -38,7 +38,7 @@
     },
     "Evidence Layers (L0–L4)": {
       "category": "meta",
-      "sha256": "9c53577cc2ac7f913bcd4dcda236b48c5202066b0612457b5980ea71ae832a4a",
+      "sha256": "9b765b4ccf7c80cdf1c27103919901c4c070b341c11e1af2bb0b14539bce6504",
       "snapshot": "governance/canon/evidence-layers-l0l4.txt"
     },
     "False Alignment": {

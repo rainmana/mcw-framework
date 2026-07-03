@@ -40,6 +40,7 @@ nav:
   - Home: index.md
   - Framework:
     - Diagrams: diagrams.md
+    - Failure ↔ Repair Mapping: failure_repair_mapping.md
     - Glossary: glossary.md
     - Constitution: constitution.md
     - Constitution as Code: constitution_as_code.md
@@ -56,8 +57,10 @@ nav:
       - Exp 3 — Overcompression: experiments/preregistration/exp3_overcompression.md
       - Exp 4 — Constraint Opacity: experiments/preregistration/exp4_constraint_opacity.md
       - Exp 5 — Repair Suppression: experiments/preregistration/exp5_repair_suppression.md
+      - Exp 6 — Drift: experiments/preregistration/exp6_drift.md
       - Prompt Predictions: experiments/preregistration/prompt_predictions.md
     - Test Bed: test_bed.md
+    - Working Note — IU Individuation: working_notes/iu_individuation.md
 
 markdown_extensions:
   - admonition
