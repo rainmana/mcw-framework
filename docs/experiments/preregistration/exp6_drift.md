@@ -29,7 +29,7 @@ The two claims are registered **separately** because they fail separately: rater
 ## Analysis plan
 
 - **Repair efficacy:** Wilcoxon signed-rank on divergence scores (no-checkpoint vs. checkpoint), one-sided, α = 0.05; TOST with the shared ±0.5 margin for the equivalence decision.
-- **Mode existence:** exact binomial test of rater discrimination accuracy against 0.5, α = 0.05, with ≥ 2 raters × 12 pairs; pre-registered success threshold: accuracy ≥ 65% with p < .05.
+- **Mode existence:** analyzed at the **pair level**, not by pooling rater judgments — with two raters scoring the same 12 pairs, the 24 individual judgments are clustered by pair (some pairs are intrinsically easier), and pooling them into one binomial would understate uncertainty. Registered rule: a pair counts as *discriminated* only if **both** raters independently identify the no-checkpoint transcript. Under rater-level guessing, a pair is discriminated with probability 0.25, so the test is exact binomial on 12 pair-level outcomes against 0.25, α = 0.05; pre-registered success threshold: **≥ 7 of 12 pairs discriminated** (exact p ≈ .014). Per-rater accuracies and pair-level agreement are reported descriptively. With only 12 pairs this is a pilot-grade test powered for large effects, and says so.
 
 ## Pre-committed outcome interpretation (the losable bets)
 
@@ -37,7 +37,7 @@ The two claims are registered **separately** because they fail separately: rater
 |---|---|
 | Divergence ↑ and D↑ without checkpoints; raters discriminate above threshold | Supports Drift as an observable failure mode and Re-grounding as its repair. |
 | Raters discriminate above threshold, but divergence equivalent between conditions | Drift is observable; **the repair claim fails** — Re-grounding checkpoints do not prevent it. Reported as a split result, no narrative rescue. |
-| **Raters cannot discriminate above chance (accuracy CI includes 50%)** | **Mode-existence falsification: Drift is not observable in transcripts, and its status as a failure mode — not merely its repair — counts against the taxonomy. Reported as such.** |
+| **Pair-level discrimination fails the registered threshold (< 7 of 12 pairs)** | **Mode-existence falsification: Drift is not observable in transcripts, and its status as a failure mode — not merely its repair — counts against the taxonomy. Reported as such.** |
 | **Divergence equivalent AND no discrimination** | **Both registered claims fail. This is the framework's flagship failure mode producing a double null; it is reported with the same prominence a positive result would get.** |
 | Inverted (checkpoint condition diverges more) | Counts against the hypothesis; no framework-friendly reading is registered. |
 
