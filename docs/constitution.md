@@ -1,6 +1,6 @@
 # MCW Constitution
 
-**Version 1.0 · W. Alec Akin · April 2026**
+**Version 1.1 · W. Alec Akin · April 2026, amended July 2026 (see [Amendments](#amendments))**
 
 > *This document governs the canonical use of MCW framework constructs. It is not a roadmap or a philosophy — it is a set of binding invariants designed to keep cross-study comparison possible as the framework is cited, extended, and challenged.*
 
@@ -46,7 +46,11 @@ The OSI Layers of Understanding (Layers 0–5) define a strict accessibility ord
 
 ## Article III — Substrate Independence
 
-MCW, IUs, and all six failure modes are substrate-independent. They apply to human–human, human–AI, and AI–AI coordination systems without modification.
+*(Amended in v1.1 — prior text preserved in [Amendments](#amendments).)*
+
+IUs and all six failure modes are substrate-independent: they apply to human–human, human–AI, and AI–AI coordination systems without modification.
+
+The MCW construct itself is canonically defined for HCW–ACW coupling. This is a declared scope restriction, not an accident of phrasing. Generalizations of MCW to human–human or AI–AI substrates are conjectured to be coherent `[L1]` but must be filed as declared extensions under Article V, with their own falsification conditions. The framework's sharpest substrate-specific prediction — coordination effects arising from the HCW-continuous / ACW-discrete asymmetry — is testable only in Human↔AI conditions and is deliberately protected by this scoping.
 
 **Rule:** An implementation or study that restricts MCW constructs to a specific substrate (e.g., a particular model, modality, or platform) must:
 
@@ -148,7 +152,7 @@ Amendments may not remove Articles I (Definition Immutability), IV (Epistemic Fl
 |---|---|---|
 | I — Definition Immutability | Canonical terms fixed in glossary; departures must be declared | Definitional drift across citations |
 | II — Layering Invariant | No construct at layer N without layer N−1 equivalent | Gatekeeping formalism; inaccessible abstractions |
-| III — Substrate Independence | MCW applies across all actor types; restrictions must be declared | Premature substrate-specificity; false generalization |
+| III — Substrate Independence | IUs and failure modes substrate-independent; MCW canonically scoped to HCW–ACW coupling, with generalizations as declared extensions | Premature substrate-specificity; false generalization; canon contradicting its own definition |
 | IV — Epistemic Floor | Claims must declare evidence layer; no overclaiming | Toy experiments cited as validation |
 | V — Extension Protocol | Extensions declared, non-contradictory, falsifiable, traceable | Scope creep; incompatible forks |
 | VI — Anti-Capture | MCW is not a product, system, or model feature | Vendor appropriation; marketing overclaims |
@@ -157,4 +161,18 @@ Amendments may not remove Articles I (Definition Immutability), IV (Epistemic Fl
 
 ---
 
-*This document is version-controlled at [`docs/constitution.md`](https://github.com/rainmana/mcw-framework/blob/main/docs/constitution.md). Cite as: W. Alec Akin, "MCW Constitution v1.0," in *Meta-Context Window (MCW) Framework*, GitHub, 2026.*
+## Amendments
+
+### v1.1 (July 2026) — Article III
+
+**Amended article:** III — Substrate Independence.
+
+**Previous text:** *"MCW, IUs, and all six failure modes are substrate-independent. They apply to human–human, human–AI, and AI–AI coordination systems without modification."* (The Rule and Anti-pattern of Article III are unchanged.)
+
+**New text:** the first two paragraphs of Article III as they now stand — IUs and the six failure modes remain substrate-independent; the MCW construct is canonically scoped to HCW–ACW coupling, with generalizations as declared Article V extensions.
+
+**Amendment Rationale:** the previous text contradicted the canonical MCW definition (Article I; [glossary](glossary.md#meta-context-window-mcw)), which is phrased for HCW–ACW coupling — by that definition, a human–human system contains no ACW and therefore no MCW, so the canon disagreed with itself in two quotations. Both resolutions were drafted with full paperwork in `notes/amendment-drafts/article-iii-mcw-definition-options.md`; this option (B — scope restriction) was adopted because it matches the actual evidence base (every current instrument is Human↔AI), changes no frozen glossary text, and protects rather than dilutes the framework's sharpest differential prediction, the HCW-continuous / ACW-discrete asymmetry (see [Related Work](related_work.md)). IUs and the failure modes remain substrate-independent, so the two Human↔Human toy experiments remain canonical failure-mode probes.
+
+---
+
+*This document is version-controlled at [`docs/constitution.md`](https://github.com/rainmana/mcw-framework/blob/main/docs/constitution.md). Cite as: W. Alec Akin, "MCW Constitution v1.1," in *Meta-Context Window (MCW) Framework*, GitHub, 2026.*

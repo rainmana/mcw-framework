@@ -1,5 +1,14 @@
 # Decision memo: Article III vs. the canonical MCW definition
 
+**Status: DECIDED — Option B adopted** (Constitution v1.1, July 2026; author
+delegated the choice and the amendment was filed with the Option B paperwork —
+see `docs/constitution.md` § Amendments). This memo is retained unchanged below
+as the decision record; the drafts are historical.
+
+---
+
+*(Original memo follows.)*
+
 **Status:** Decision memo — NOT site content, NOT canon. Two mutually exclusive
 amendment drafts follow. The choice between them is reserved for the framework
 author (Alec) per the amendment procedure (author consent). Nothing in this file
