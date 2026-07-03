@@ -30,7 +30,7 @@ Two forms are relevant to this framework:
 Entropy is not "disorder," "decay," or "evil." It is a constraint on compression, prediction, and control.
 
 **In MCW context:**
-MCW degradation corresponds to increasing Shannon entropy in the shared coordination state — rising uncertainty about what the other party knows, intends, or means.
+MCW degradation is described as rising uncertainty about what the other party knows, intends, or means — in the *spirit* of Shannon entropy `[L0]`. This correspondence is informal: no random variable, sample space, or probability distribution over the coordination state has been defined, so "MCW entropy," wherever it appears in framework documents, is an intuition pump rather than a computable quantity. The framework's actual measurement program is [H/R/D/M](#measurement-proxies). The Boltzmann form above acknowledges physical grounding and does no analytical work. Defining a computable estimator (or retiring the phrase) is tracked as open work.
 
 ---
 
@@ -53,6 +53,8 @@ IUs are the atomic elements through which MCWs form, degrade, and are repaired.
 - **Lossy under transfer:** IU exchange is never perfectly faithful — compression, omission, and distortion are inherent
 
 **Examples:** a stated assumption, a goal, a constraint, a correction, a clarification, a summary
+
+**Scope note:** how to *count* IUs — whether an utterance is one IU or three — is an open problem. Candidate individuation criteria, a segmentation reliability plan, and the resulting caveats for countability-dependent claims are analyzed in the [IU individuation working note](working_notes/iu_individuation.md); until a criterion is adopted (which would be a declared Article V extension), quantitative IU claims should be phrased against planted, pre-registered distinctions.
 
 **What IUs are not:**
 - Not tokens (tokens are one *representation* of IUs)
@@ -118,7 +120,9 @@ The ACW is the bounded computational context that an AI system (typically a larg
 - attention patterns over the current input
 
 **Key characteristic:**
-The ACW is **enumerable and formally bounded**. It updates only when new input is provided. It does not advance between turns.
+The ACW is **enumerable and formally bounded**. It advances only when input arrives — where input includes user messages, tool results, retrieved content, and scheduled invocations — and never spontaneously. In agentic and background configurations the ACW can therefore advance *between conversational turns*; what it cannot do is advance without input. The coordination-relevant asymmetry with the HCW is not turn-boundedness but **spontaneity**: the HCW advances continuously and unpromptedly; the ACW advances discretely and only on input.
+
+**Definition history:** the v0.2 (April 2026) key characteristic read "It updates only when new input is provided. It does not advance between turns." — amended July 2026 because that text was false for agentic, tool-using, and background AI systems (the dominant deployment pattern the framework targets) and contradicted Article III's claimed applicability to AI–AI systems without modification. Prior text preserved here per the Amendment Procedure; the asymmetry that motivates the framework (continuous/spontaneous vs. discrete/input-driven) is retained and sharpened.
 
 ---
 
@@ -136,6 +140,8 @@ More formally, MCW is a **coupling function**:
 > **MCW = f(HCW₁…HCWₙ, ACW₁…ACWₘ, T, C)**
 
 Where T is time/interaction history and C is communication channel constraints (bandwidth, latency, modality, noise).
+
+**Notation status:** informal `[L0]` — the coupling function is a mnemonic, not mathematics. It has no defined codomain, metric, or functional form, and one input (the HCW) is not enumerable, so the notation licenses no quantitative inference (Article IV). Its content is the qualitative properties listed below. Either a proper definition or explicit retirement of the notation is tracked as open work; until then, treat every appearance of this equation as shorthand for those properties.
 
 **Key properties:**
 - **Emergent:** MCW does not exist in either party alone; it arises from interaction
@@ -231,6 +237,8 @@ One actor's context window advances — typically through off-turn reasoning or 
 **Early signals:** Frustration at "having to repeat myself"; the sense that one side is "behind"; resets that worsen rather than repair.
 
 **Key danger:** Resetting the ACW does not reset the HCW; the asymmetry persists or grows.
+
+**Scope note:** the definition is direction-symmetric — *either* party's window may advance off-turn without externalization. With the amended ACW definition (above), AI-side off-turn advancement via tool use, background runs, or scheduled work is a live case, not only the human side; the "resets worsen" danger applies in both directions.
 
 ---
 
@@ -435,7 +443,9 @@ A layered accessibility model — adapted from the OSI networking model — that
 
 **Per-entry annotation:** every glossary entry carries a **Layer 0 gloss** line — its Layer 0 compressed form — so this rule is checkable rather than aspirational. An entry whose content cannot be glossed in one plain sentence violates the layering invariant.
 
-**Not to be confused with:** the [Evidence Layers L0–L4](#evidence-layers-l0l4) of Constitution Article IV, which grade the strength of empirical support, not accessibility. The overlapping "Layer *n*" notation between the two ladders is a known collision; a notation split is tracked as an open work item.
+**Not to be confused with:** the [Evidence Layers L0–L4](#evidence-layers-l0l4) of Constitution Article IV, which grade the strength of empirical support, not accessibility.
+
+**Notation:** where compact notation is needed, accessibility layers are written **A0–A5**; bare `L`*n* is reserved for evidence layers. This resolves the notation collision an earlier version of this entry flagged as open. Prose may still say "Layer 0" where the ladder is unambiguous from context (as in the per-entry "Layer 0 gloss").
 
 ---
 
@@ -458,7 +468,7 @@ A five-rung ladder declaring the strength of evidence behind any empirical claim
 
 **What evidence layers are not:**
 
-- Not the [OSI Layers of Understanding](#osi-layers-of-understanding) (the accessibility ladder, Layers 0–5): accessibility layers describe how compressed a *presentation* is; evidence layers describe how strong the *support* for a claim is
+- Not the [OSI Layers of Understanding](#osi-layers-of-understanding) (the accessibility ladder, written A0–A5): accessibility layers describe how compressed a *presentation* is; evidence layers describe how strong the *support* for a claim is. Bare `L`*n* notation always means an evidence layer
 - Not a quality score: an honestly tagged L0 claim is fully legitimate; an L1 claim dressed as L3 is not
 
 ---
@@ -489,7 +499,7 @@ Constitution [Article I](constitution.md#article-i-definition-immutability) free
 
 **Amendable fields** — ordinary review, no amendment required, provided the change does not alter the meaning of any frozen field:
 
-- **Type** lines, **Layer 0 gloss** annotations, evidence tags, cross-references, links, and formatting
+- **Type** lines, **Layer 0 gloss** annotations, **Notation status** annotations, **Definition history** records, **Scope note** clarifications, evidence tags, cross-references, links, and formatting
 - **Examples**
 - **Early signals** and **Key danger** notes (illustrative, not definitional)
 - Status lines and section ordering
