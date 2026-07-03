@@ -1,0 +1,44 @@
+name: Empirical claim (Article IV)
+description: Report an observation or result relevant to MCW dynamics, with its evidence layer declared.
+title: "[claim]: "
+labels: ["type:empirical-claim", "article:IV"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        No claim may be stated above the evidence layer its supporting data
+        occupies ([Article IV](https://rainmana.github.io/mcw-framework/constitution/#article-iv-epistemic-floor)).
+        Null results are as welcome as positive results — and more credible.
+  - type: textarea
+    id: claim
+    attributes:
+      label: The claim
+      description: One or two sentences. State it no more strongly than the data supports.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence_layer
+    attributes:
+      label: Evidence layer (Article IV)
+      options: ["L0 — Illustration (naturalistic observation, no controls)", "L1 — Practitioner observation (extended personal use)", "L2 — Designed pilot (structured, single observer / small N)", "L3 — Pilot with reliability (multi-rater, IRR reported)", "L4 — Controlled study (random assignment, controls, validated instruments)"]
+    validations:
+      required: true
+  - type: textarea
+    id: supporting_data
+    attributes:
+      label: Supporting data
+      description: Transcripts, logs, counts, analysis — whatever exists. If nothing auditable exists, the claim is at most L1 and should say so.
+    validations:
+      required: true
+  - type: textarea
+    id: falsification
+    attributes:
+      label: What would falsify this claim? (Article VII)
+      description: Summaries of this claim must preserve this condition.
+    validations:
+      required: true
+  - type: textarea
+    id: proxies
+    attributes:
+      label: H/R/D/M readings (if scored)
+      description: 0–3 ordinal readings and the conditions they were taken under, if the coordination proxies were used.

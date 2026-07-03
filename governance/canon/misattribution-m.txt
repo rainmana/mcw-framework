@@ -1,0 +1,1 @@
+Tendency to blame coordination failures on agent capability rather than shared context. Higher values indicate more frequent mislabeling. `0 = none / 3 = frequent`

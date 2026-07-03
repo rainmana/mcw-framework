@@ -1,0 +1,47 @@
+name: constitution-lint
+
+on:
+  pull_request:
+    # labeled/unlabeled are included because the amendment guard accepts the
+    # type:definition-change label as its approval signal — adding the label
+    # must re-run this check, not wait for the next push.
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Mechanical constitution checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # Stdlib only — no dependencies to install.
+      - name: constitution-lint
+        run: python scripts/constitution_lint.py
+
+  build:
+    name: Strict site build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - run: mkdocs build --strict

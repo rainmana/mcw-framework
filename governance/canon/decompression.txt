@@ -1,0 +1,1 @@
+**Definition:** Expanding a compressed IU bundle back into its component IUs. Reverses overcompression by recovering lost distinctions.

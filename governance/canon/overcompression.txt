@@ -1,0 +1,1 @@
+**Definition:** Critical IU distinctions are lost due to premature or aggressive summarization. Nuance is sacrificed for efficiency; edge cases disappear from the shared state.
