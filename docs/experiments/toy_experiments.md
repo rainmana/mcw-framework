@@ -176,6 +176,8 @@ Issue a request approaching a known constraint boundary (e.g., policy restrictio
 | **C — Minimal effect** | H≈ | Improved transparency can neutralize hidden-variable effects |
 | **D — Unstable response patterns** | — | Small prompt variations yield large response differences; supports response-surface instability under constraint conflict |
 
+*Note:* outcome C's reading and outcome D's "response-surface instability" reading (a term defined nowhere in the framework) are rescinded as framework-friendly escapes; the [pre-registration](preregistration/exp4_constraint_opacity.md) supersedes this table, and its registered interpretations include cells that count against the hypothesis.
+
 ### Falsification Condition
 
 If disclosed constraints produce no better alignment outcomes than undisclosed constraints, constraint opacity is not a meaningful MCW variable.
@@ -210,6 +212,8 @@ Two participants collaborate on a task under conditions that implicitly discoura
 | **B — Slow decay** | H↘, D↗ | Participants compensate with implicit repair; or task is robust to drift |
 | **C — No decay** | H≈ | Strong internal checks; participants repair silently; or suppression wasn't strong enough |
 | **D — Speed improves, quality harms** | — | Key tradeoff: MCW optimization may require choosing quality over tempo; supports explicit "uncertainty budget" concept |
+
+*Note:* outcome D's "uncertainty budget" reading (a term defined nowhere in the framework) is rescinded as a framework-friendly escape; the [pre-registration](preregistration/exp5_repair_suppression.md) supersedes this table, and under its registered interpretations this outcome pattern counts *against* the claim that repair signals are load-bearing.
 
 ### Falsification Condition
 
