@@ -1,0 +1,36 @@
+name: labels-sync
+
+# Pushes the versioned label taxonomy (.github/labels.yml — the source of
+# truth per Constitution-as-Code Phase 0) into the repository's label
+# settings. Non-destructive: labels not listed in labels.yml are reported
+# but never deleted.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/labels.yml'
+      - 'scripts/sync_labels.py'
+      - '.github/workflows/labels-sync.yml'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - run: pip install pyyaml
+
+      - name: Sync labels from labels.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/sync_labels.py

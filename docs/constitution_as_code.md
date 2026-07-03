@@ -123,7 +123,18 @@ As of July 2026, the mechanical layer above exists in this repository:
   evidence marker (tag or `Evidence: Ln` status line). The lint checks
   presence — it cannot check truthfulness (see Part 2).
 - **`CODEOWNERS`, the label taxonomy (`.github/labels.yml`), the three issue
-  forms, and the PR compliance checklist** exist as specified above.
+  forms, and the PR compliance checklist** exist as specified above. The
+  label taxonomy is synced automatically to repository settings by
+  `labels-sync.yml` (create/update only — labels not in the file are
+  reported, never deleted), so the versioned file is the operative source
+  of truth rather than documentation of one.
+- **One control remains manual by GitHub's design:** branch protection.
+  Making `constitution-lint`'s "Mechanical constitution checks" and
+  "Strict site build" *required* status checks — and requiring Code Owner
+  review — is set in repository settings (Settings → Branches → protect
+  `main`), not in any file this repo can carry. Until that is clicked, the
+  checks run on every PR but cannot block a merge; this sentence exists so
+  that gap is stated rather than assumed away.
 
 **The single-maintainer degenerate case, stated honestly.** This repository
 currently has one maintainer. Code Owner review is therefore self-review: it
