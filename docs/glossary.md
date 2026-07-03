@@ -54,6 +54,8 @@ IUs are the atomic elements through which MCWs form, degrade, and are repaired.
 
 **Examples:** a stated assumption, a goal, a constraint, a correction, a clarification, a summary
 
+**Scope note:** how to *count* IUs — whether an utterance is one IU or three — is an open problem. Candidate individuation criteria, a segmentation reliability plan, and the resulting caveats for countability-dependent claims are analyzed in the [IU individuation working note](working_notes/iu_individuation.md); until a criterion is adopted (which would be a declared Article V extension), quantitative IU claims should be phrased against planted, pre-registered distinctions.
+
 **What IUs are not:**
 - Not tokens (tokens are one *representation* of IUs)
 - Not facts (facts may span many IUs)

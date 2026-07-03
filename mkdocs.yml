@@ -60,6 +60,7 @@ nav:
       - Exp 6 — Drift: experiments/preregistration/exp6_drift.md
       - Prompt Predictions: experiments/preregistration/prompt_predictions.md
     - Test Bed: test_bed.md
+    - Working Note — IU Individuation: working_notes/iu_individuation.md
 
 markdown_extensions:
   - admonition
