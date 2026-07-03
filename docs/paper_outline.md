@@ -209,6 +209,7 @@ Establish the falsifiable ordering claim `[L0]`: repair cost is non-decreasing i
 | 3 | Overcompression Damage | Human ↔ AI | Overcompression | Premature summarization produces late, hard-to-debug failure |
 | 4 | Constraint Opacity Stress Test | Human ↔ AI | Constraint Opacity | Opaque constraints increase H↓, M↑ vs. disclosed constraints |
 | 5 | Repair Signal Suppression | Human ↔ Human | Repair Suppression | Suppressed clarification accelerates drift; late correction is costly |
+| 6 | Drift Accumulation *(declared extension)* | Human ↔ AI | Drift | Without re-grounding checkpoints, goal representations diverge measurably and observably |
 
 Full specifications, graded outcome interpretations, and cross-experiment analysis in `experiments/toy_experiments.md`.
 

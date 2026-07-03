@@ -41,7 +41,7 @@ graph LR
 
 **Key observations:**
 - MCW does not exist independently — it arises from the exchange
-- The HCW advances continuously; the ACW advances only when input arrives
+- The HCW advances continuously and spontaneously; the ACW advances only when input arrives (where input includes tool results and scheduled invocations — see the amended [ACW definition](glossary.md#artificial-context-window-acw))
 - The exchange channel is constrained by bandwidth, latency, and modality (C in the coupling function)
 
 ---

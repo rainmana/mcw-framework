@@ -3,7 +3,7 @@
   "pins": {
     "Artificial Context Window (ACW)": {
       "category": "core",
-      "sha256": "893ff66cf20c770811b83cc59517af09d680b482b377814f85c30b758b6ebc63",
+      "sha256": "fdc048c55c32be4cb02a1b1dc6178884be7c9d3cb57060eedef150e359fee67f",
       "snapshot": "governance/canon/artificial-context-window-acw.txt"
     },
     "Asymmetric State Advancement": {
