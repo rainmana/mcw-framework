@@ -41,7 +41,7 @@ graph LR
 
 **Key observations:**
 - MCW does not exist independently — it arises from the exchange
-- The HCW advances continuously; the ACW advances only when input arrives
+- The HCW advances continuously and spontaneously; the ACW advances only when input arrives (where input includes tool results and scheduled invocations — see the amended [ACW definition](glossary.md#artificial-context-window-acw))
 - The exchange channel is constrained by bandwidth, latency, and modality (C in the coupling function)
 
 ---
@@ -158,28 +158,51 @@ flowchart TD
 - **Re-weighting** (explicitly adjusting IU salience — clarifying which information matters most) has no single designated failure mode. It applies wherever salience mismatch is the underlying cause. An earlier version of this diagram mislabeled Re-weighting as "make constraints visible," which is constraint disclosure, not salience adjustment; the canonical meaning is restored here.
 - The Drift → Re-grounding and Constraint-Opacity/Repair-Suppression fallback pairings are the diagram's inference, not canon: the glossary names a target mechanism only for Decompression (reverses overcompression), Disambiguation (addresses false alignment), and Synchronization (closes asymmetric state advancement).
 
-**Critical rule:** Repair must happen *before* resuming progress. Each turn of forward motion on a degraded MCW deepens the entropy — making later repair exponentially more expensive.
+**Critical rule:** Repair must happen *before* resuming progress. Each turn of forward motion on a degraded MCW compounds the damage. The falsifiable form of that claim `[L0]`: repair cost **R is non-decreasing in discovery lag** — the number of exchanges between a misalignment's introduction and its discovery (the [rubrics'](experiments/hrdm_rubrics.md) late-discovery measure). This is an ordering claim, testable by the registered experiments. An earlier version of this caption asserted repair becomes "exponentially more expensive" — a functional form with zero supporting data; that phrasing is withdrawn per Article IV.
 
 ---
 
-## Diagram 5: OSI Layers of Understanding
+## Diagram 5: OSI Layers of Understanding (A0–A5)
 
-The framework's layered accessibility model. The same constructs appear at each layer; only the compression level changes. No concept appears at a higher layer unless it already exists at a lower layer.
+The framework's layered accessibility model. The same constructs appear at each layer; only the compression level changes. No concept appears at a higher layer unless it already exists at a lower layer. Accessibility layers are written **A0–A5**; bare `L`*n* notation is reserved for the evidence layers (Diagram 6) — an earlier version of this diagram used L0–L5 here, colliding with the evidence ladder.
+
+Each layer's contents below list only what actually exists today. An earlier version advertised "Entropy," "Phase transitions," and "Drift metrics" at A2–A3 — constructs with no formal content anywhere in the framework, which made the diagram violate the very layering invariant it displays. They are removed until they exist.
 
 ```mermaid
 graph TD
-    L0["Layer 0 · Intuition\nAnyone\nAre we on the same page?"]
-    L1["Layer 1 · Concepts\nGeneralists\nMCW as shared coordination state\nIUs as coordination atoms"]
-    L2["Layer 2 · Formalization\nSTEM-adjacent\nEntropy · IU flow model · Coupling function"]
-    L3["Layer 3 · Models\nResearchers\nEntropy flows · Phase transitions · Drift metrics"]
-    L4["Layer 4 · Implementation\nBuilders\nTest beds · Simulations · Experiment protocols"]
-    L5["Layer 5 · Application\nDomain specialists\nBiology · Organizations · AI · Policy"]
+    A0["A0 · Intuition\nAnyone\nAre we on the same page?"]
+    A1["A1 · Concepts\nGeneralists\nMCW as shared coordination state\nIUs as coordination atoms"]
+    A2["A2 · Formalization\nSTEM-adjacent\nIU flow model\nCoupling function (informal notation)"]
+    A3["A3 · Models & instruments\nResearchers\nAnchored H/R/D/M rubrics\nPre-registered designs\nDiscriminant decision tree"]
+    A4["A4 · Implementation\nBuilders\nTest beds · Governance lint\nExperiment protocols"]
+    A5["A5 · Application\nDomain specialists\nBiology · Organizations · AI · Policy"]
 
-    L0 --> L1 --> L2 --> L3 --> L4 --> L5
+    A0 --> A1 --> A2 --> A3 --> A4 --> A5
 
     R["Invariant rule:\nNo concept appears at layer N\nunless it exists at layer N-1\nin compressed form"]
 
-    L2 -. governs .-> R
+    A2 -. governs .-> R
+```
+
+---
+
+## Diagram 6: Evidence Ladder (L0–L4)
+
+The evidence layers of [Constitution Article IV](constitution.md#article-iv-epistemic-floor) — a separate ladder from the accessibility layers above. Every empirical claim in the framework carries one of these tags; the current framework sits at L0–L1 everywhere.
+
+```mermaid
+graph LR
+    L0["L0 · Illustration\nNaturalistic observation\nno controls\nrecognizability only"]
+    L1["L1 · Practitioner\nobservation\nExtended personal use\nnot generalizable"]
+    L2["L2 · Designed pilot\nStructured, hypothesis-driven\nsingle observer / small N"]
+    L3["L3 · Pilot with reliability\nMulti-rater\nIRR reported"]
+    L4["L4 · Controlled study\nRandomized, controlled\nvalidated instruments"]
+
+    L0 --> L1 --> L2 --> L3 --> L4
+
+    N["Rule (Article IV):\nno claim above the layer\nits supporting data occupies"]
+
+    L4 -. bounds .-> N
 ```
 
 ---

@@ -29,6 +29,7 @@ Every template on this page inherits the following unless it explicitly override
 | [Experiment 3 — Overcompression Damage](exp3_overcompression.md) | [Toy Experiment 3](../toy_experiments.md#experiment-3-overcompression-damage) | Human ↔ AI |
 | [Experiment 4 — Constraint Opacity Stress Test](exp4_constraint_opacity.md) | [Toy Experiment 4](../toy_experiments.md#experiment-4-constraint-opacity-stress-test) | Human ↔ AI |
 | [Experiment 5 — Repair Signal Suppression](exp5_repair_suppression.md) | [Toy Experiment 5](../toy_experiments.md#experiment-5-repair-signal-suppression) | Human ↔ Human |
+| [Experiment 6 — Drift Accumulation](exp6_drift.md) | [Toy Experiment 6](../toy_experiments.md#experiment-6-drift-accumulation) (declared extension) | Human ↔ AI |
 | [System-Prompt Predictions 1–5](prompt_predictions.md) | [System Prompt Derivation](../../system_prompt_derivation.md#falsifiable-predictions) | Human ↔ AI |
 
 These templates supersede the toy-experiments pages *for scoring and interpretation purposes*; the toy-experiments page remains the design rationale.
