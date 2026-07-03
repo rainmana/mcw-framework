@@ -43,7 +43,7 @@ The original graded-outcome table read every cell — including the inverted eff
 | **Equivalence within margins between injection and explicit-check arms** | **Falsification condition met: the failure mode is not meaningfully distinct from baseline noise. This counts against the framework and is reported as such.** |
 | **Inverted effect (H↑ or earlier surfacing in the injection arm)** | **Counts against the hypothesis.** The prior reading ("a highly healthy MCW culture where ambiguity itself is a repair cue") is explicitly disallowed as a primary interpretation; it may appear only as a labeled post-hoc conjecture requiring its own pre-registered follow-up. |
 
-**Decision rule across sessions:** if ≥ 50% of injection-arm dyads individually show no later surfacing than their matched explicit-check comparison (or the aggregate TOST declares equivalence), the falsification condition is triggered — regardless of how interesting the transcripts are.
+**Decision rule across sessions:** the falsification trigger is the aggregate equivalence decision — TOST on surfacing time and on D between the injection and explicit-check arms, within the registered margins — regardless of how interesting the transcripts are. (An earlier draft added a per-dyad "≥ 50% of matched pairs" clause; the arms are between-dyad randomized with **no registered matching**, so that clause was not computable and left the trigger to analyst discretion. It is removed; the aggregate rule is the only registered trigger. Per-arm median surfacing times are reported descriptively.)
 
 ## Ethics: deception, consent, debrief
 
