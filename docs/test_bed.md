@@ -1,5 +1,7 @@
 # MCW Test Bed & Experimental Instruments
 
+**Status:** Instrument documentation · Evidence: L0 — nothing on this page constitutes a result.
+
 This document describes the experimental instruments used to explore and validate the Meta-Context Window (MCW) framework. These instruments are intentionally lightweight, qualitative, and accessible.
 
 They are designed to:
@@ -42,8 +44,10 @@ This Custom GPT implements an MCW-aware system prompt and exposes model selectio
 - Results are **not** logged or aggregated.
 - The environment is constrained by the hosting platform.
 - Findings should be treated as exploratory.
+- The **Comparative** design principle above is not yet satisfied by this instrument: only the MCW-aware arm is published, with no version-hashed baseline prompt alongside it. Until a matched baseline is published, A/B comparison requires the user to supply their own baseline.
+- Only the Human ↔ AI experiments ([Experiments 2–4](experiments/toy_experiments.md)) can run on this instrument. Experiments 1 and 5 are Human ↔ Human and are out of scope for it.
 
-Despite these limitations, early results suggest that MCW-aware initialization can improve perceived clarity and reduce repair latency even in single-turn interactions.
+**Withdrawn claim.** An earlier version of this page stated that "early results suggest that MCW-aware initialization can improve perceived clarity and reduce repair latency even in single-turn interactions." That sentence contradicted the limitation two bullets above it — results are not logged, so the claim was unauditable — and "single-turn repair latency" is incoherent: repair latency is inherently a multi-turn quantity and is not yet operationalized anywhere in the framework. The claim is withdrawn. What can honestly be said is this: informal, unlogged use of the instrument has felt consistent with improved perceived clarity `[L0]` — an anecdotal impression, recorded here only as motivation for building the logged, comparative instruments described below.
 
 ---
 
