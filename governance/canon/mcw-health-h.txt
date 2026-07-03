@@ -1,0 +1,1 @@
+Perceived shared understanding between participants. Higher values indicate stronger alignment. `0 = broken / 3 = strong`

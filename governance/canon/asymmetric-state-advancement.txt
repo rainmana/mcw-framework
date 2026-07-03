@@ -1,0 +1,1 @@
+**Definition:** One actor's context window advances — typically through off-turn reasoning or access to external information — without that advancement being externalized to the other party. This creates a phase lag between HCW and ACW.

@@ -1,0 +1,1 @@
+**Definition:** Gradual, unacknowledged divergence between participating context windows. Neither party recognizes that their shared state is degrading.

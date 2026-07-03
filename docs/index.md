@@ -10,7 +10,7 @@ The **Meta-Context Window (MCW)** is a formal construct describing the shared co
 
 MCW is not stored in either party. It exists only through active, bidirectional exchange — and it can degrade silently, fail completely, or be deliberately repaired.
 
-**Framework status:** Exploratory. Definitions and failure taxonomy are formalized. Toy experiments are designed but not yet piloted. No quantitative validation exists. Claims are hypothesis-level.
+**Framework status:** Exploratory. Definitions and failure taxonomy are formalized. Toy experiments are designed but not yet piloted. No quantitative validation exists. Claims are hypothesis-level. Evidence: L0–L1 across all empirical claims ([Article IV](constitution.md#article-iv-epistemic-floor)).
 
 ---
 

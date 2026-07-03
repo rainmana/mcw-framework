@@ -1,5 +1,7 @@
 # MCW Framework — Diagrams
 
+**Status:** Visual companion to canon · Evidence: L0 — diagrams illustrate definitions; they are not evidence.
+
 Visual representations of the core framework constructs. All diagrams are defined as source text (Mermaid) and version-controlled alongside the framework documentation.
 
 ---
@@ -39,7 +41,7 @@ graph LR
 
 **Key observations:**
 - MCW does not exist independently — it arises from the exchange
-- The HCW advances continuously; the ACW advances only when input arrives
+- The HCW advances continuously and spontaneously; the ACW advances only when input arrives (where input includes tool results and scheduled invocations — see the amended [ACW definition](glossary.md#artificial-context-window-acw))
 - The exchange channel is constrained by bandwidth, latency, and modality (C in the coupling function)
 
 ---
@@ -47,6 +49,8 @@ graph LR
 ## Diagram 2: IU Flow Model
 
 Information Units travel through five stages during any communicative act. MCW health is hypothesized to depend on cumulative fidelity across all five stages `[L0]`. Failure at any stage contributes to MCW degradation ("MCW entropy" in the framework's informal usage — see the [glossary](glossary.md#entropy)).
+
+The per-stage labels below (⚠) are **stage risks** — descriptions of what can go wrong at each stage — not the canonical failure-mode taxonomy. Two of them (Overcompression, Drift) are canonical modes; the other three (Omission, Noise/Latency, Misinterpretation) are not, and how each maps onto the canonical six is specified in the [failure-mode ↔ repair mapping](failure_repair_mapping.md#reconciling-diagram-2s-stage-risks-with-the-canonical-modes).
 
 ```mermaid
 flowchart LR
@@ -80,7 +84,7 @@ flowchart LR
 
 ## Diagram 3: MCW Failure Taxonomy
 
-The six MCW failure modes, organized by the stage of the IU flow model where they primarily originate and whether they affect primarily the HCW side, the ACW side, or the channel between them.
+The six MCW failure modes, organized by where they primarily *manifest* in the IU flow model. The stage assignments are heuristics about manifestation, not claims about mechanism: Asymmetric State Advancement sits under Selection because the failure is the non-selection of off-turn IUs for externalization; Repair Suppression sits there because the suppressed party stops selecting repair IUs. Drift is deliberately placed on its own cross-stage branch — it is an accumulation phenomenon, not a stage-local event (an earlier version of this diagram placed it under channel/hidden-variable failures, conflicting with Diagram 2's stage-5 placement; see the [reconciliation table](failure_repair_mapping.md#reconciling-diagram-2s-stage-risks-with-the-canonical-modes)).
 
 ```mermaid
 mindmap
@@ -108,6 +112,7 @@ mindmap
         Hidden system-prompt IUs
         Policy restrictions invisible
         Repair misdirected
+    Cross-stage accumulation
       Drift
         Silent desynchronization
         Assumptions accumulate
@@ -149,32 +154,55 @@ flowchart TD
 
 **Notes on the mapping:**
 
-- The five canonical repair operations are Re-grounding, Decompression, Re-weighting, Disambiguation, and Synchronization ([Glossary § Repair Operations](glossary.md#repair-operations)). A sixth operation ("Repair permission") appeared in an earlier version of this diagram without being declared as an extension; it has been removed as an undeclared departure from canon (Constitution Articles I and V). Whether the taxonomy needs additional repair operations for Constraint Opacity and Repair Suppression is an open question, to be resolved either by declared Article V extensions or by documented rationale that the existing five suffice.
+- The five canonical repair operations are Re-grounding, Decompression, Re-weighting, Disambiguation, and Synchronization ([Glossary § Repair Operations](glossary.md#repair-operations)). A sixth operation ("Repair permission") appeared in an earlier version of this diagram without being declared as an extension; it has been removed as an undeclared departure from canon (Constitution Articles I and V). The Constraint Opacity / Repair Suppression gap is now addressed properly: two repair operations — **Constraint Disclosure** and **Repair-Norm Restoration** — are proposed as declared Article V extensions, with falsification conditions, in the [failure-mode ↔ repair mapping](failure_repair_mapping.md). They remain extensions, not canon; the canonical count stays five.
 - **Re-weighting** (explicitly adjusting IU salience — clarifying which information matters most) has no single designated failure mode. It applies wherever salience mismatch is the underlying cause. An earlier version of this diagram mislabeled Re-weighting as "make constraints visible," which is constraint disclosure, not salience adjustment; the canonical meaning is restored here.
 - The Drift → Re-grounding and Constraint-Opacity/Repair-Suppression fallback pairings are the diagram's inference, not canon: the glossary names a target mechanism only for Decompression (reverses overcompression), Disambiguation (addresses false alignment), and Synchronization (closes asymmetric state advancement).
 
-**Critical rule:** Repair must happen *before* resuming progress. Each turn of forward motion on a degraded MCW deepens the entropy — making later repair exponentially more expensive.
+**Critical rule:** Repair must happen *before* resuming progress. Each turn of forward motion on a degraded MCW compounds the damage. The falsifiable form of that claim `[L0]`: repair cost **R is non-decreasing in discovery lag** — the number of exchanges between a misalignment's introduction and its discovery (the [rubrics'](experiments/hrdm_rubrics.md) late-discovery measure). This is an ordering claim, testable by the registered experiments. An earlier version of this caption asserted repair becomes "exponentially more expensive" — a functional form with zero supporting data; that phrasing is withdrawn per Article IV.
 
 ---
 
-## Diagram 5: OSI Layers of Understanding
+## Diagram 5: OSI Layers of Understanding (A0–A5)
 
-The framework's layered accessibility model. The same constructs appear at each layer; only the compression level changes. No concept appears at a higher layer unless it already exists at a lower layer.
+The framework's layered accessibility model. The same constructs appear at each layer; only the compression level changes. No concept appears at a higher layer unless it already exists at a lower layer. Accessibility layers are written **A0–A5**; bare `L`*n* notation is reserved for the evidence layers (Diagram 6) — an earlier version of this diagram used L0–L5 here, colliding with the evidence ladder.
+
+Each layer's contents below list only what actually exists today. An earlier version advertised "Entropy," "Phase transitions," and "Drift metrics" at A2–A3 — constructs with no formal content anywhere in the framework, which made the diagram violate the very layering invariant it displays. They are removed until they exist.
 
 ```mermaid
 graph TD
-    L0["Layer 0 · Intuition\nAnyone\nAre we on the same page?"]
-    L1["Layer 1 · Concepts\nGeneralists\nMCW as shared coordination state\nIUs as coordination atoms"]
-    L2["Layer 2 · Formalization\nSTEM-adjacent\nEntropy · IU flow model · Coupling function"]
-    L3["Layer 3 · Models\nResearchers\nEntropy flows · Phase transitions · Drift metrics"]
-    L4["Layer 4 · Implementation\nBuilders\nTest beds · Simulations · Experiment protocols"]
-    L5["Layer 5 · Application\nDomain specialists\nBiology · Organizations · AI · Policy"]
+    A0["A0 · Intuition\nAnyone\nAre we on the same page?"]
+    A1["A1 · Concepts\nGeneralists\nMCW as shared coordination state\nIUs as coordination atoms"]
+    A2["A2 · Formalization\nSTEM-adjacent\nIU flow model\nCoupling function (informal notation)"]
+    A3["A3 · Models & instruments\nResearchers\nAnchored H/R/D/M rubrics\nPre-registered designs\nDiscriminant decision tree"]
+    A4["A4 · Implementation\nBuilders\nTest beds · Governance lint\nExperiment protocols"]
+    A5["A5 · Application\nDomain specialists\nBiology · Organizations · AI · Policy"]
 
-    L0 --> L1 --> L2 --> L3 --> L4 --> L5
+    A0 --> A1 --> A2 --> A3 --> A4 --> A5
 
     R["Invariant rule:\nNo concept appears at layer N\nunless it exists at layer N-1\nin compressed form"]
 
-    L2 -. governs .-> R
+    A2 -. governs .-> R
+```
+
+---
+
+## Diagram 6: Evidence Ladder (L0–L4)
+
+The evidence layers of [Constitution Article IV](constitution.md#article-iv-epistemic-floor) — a separate ladder from the accessibility layers above. Every empirical claim in the framework carries one of these tags; the current framework sits at L0–L1 everywhere.
+
+```mermaid
+graph LR
+    L0["L0 · Illustration\nNaturalistic observation\nno controls\nrecognizability only"]
+    L1["L1 · Practitioner\nobservation\nExtended personal use\nnot generalizable"]
+    L2["L2 · Designed pilot\nStructured, hypothesis-driven\nsingle observer / small N"]
+    L3["L3 · Pilot with reliability\nMulti-rater\nIRR reported"]
+    L4["L4 · Controlled study\nRandomized, controlled\nvalidated instruments"]
+
+    L0 --> L1 --> L2 --> L3 --> L4
+
+    N["Rule (Article IV):\nno claim above the layer\nits supporting data occupies"]
+
+    L4 -. bounds .-> N
 ```
 
 ---

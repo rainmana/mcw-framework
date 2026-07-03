@@ -98,6 +98,44 @@ below is the core deliverable: a control matrix.
 
 This much is buildable today with **only YAML and Markdown** — no service to operate.
 
+### Phase 0 status: implemented
+
+As of July 2026, the mechanical layer above exists in this repository:
+
+- **`scripts/constitution_lint.py`** runs in CI (`.github/workflows/constitution-lint.yml`)
+  on every push and pull request: glossary structural lint (every canonical
+  construct present exactly once; exactly six failure modes and five repair
+  operations; Definition blocks; exclusion blocks on core constructs; a
+  Layer 0 gloss per canonical entry), internal link/anchor integrity across
+  `docs/`, per-page evidence-layer markers, and an advisory Article VI
+  overclaim scan. A strict site build runs alongside it.
+- **The amendment guard is hash-based.** The frozen fields of each canonical
+  entry (per the [glossary change policy](glossary.md#glossary-change-policy-frozen-vs-amendable-fields))
+  are pinned as plain-text snapshots in `governance/canon/` with SHA-256
+  hashes in `governance/canon_hashes.json`. Any divergence fails CI. Changing
+  a pin requires the `[definition-change]` commit marker or the
+  `type:definition-change` label; editing `constitution.md` requires a version
+  bump plus an "Amendment Rationale" section (or a `[non-normative]` marker
+  for formatting-only changes). Downstream implementations can vendor the
+  snapshots to detect upstream drift in their own CI.
+- **The evidence-tag convention is lintable:** empirical claims carry inline
+  `[L0]`–`[L4]` tags at the claim site, and every docs page carries an
+  evidence marker (tag or `Evidence: Ln` status line). The lint checks
+  presence — it cannot check truthfulness (see Part 2).
+- **`CODEOWNERS`, the label taxonomy (`.github/labels.yml`), the three issue
+  forms, and the PR compliance checklist** exist as specified above.
+
+**The single-maintainer degenerate case, stated honestly.** This repository
+currently has one maintainer. Code Owner review is therefore self-review: it
+gates *authorship* (nothing merges without the author acting deliberately),
+but it provides no independent judgment. Until a second reviewer exists, the
+mechanical lint is the only non-self reviewer this project has — and it can
+verify only that declarations exist, never that they are true. Semantic
+verdicts of the flag/uncertain kind (Part 3) have no meaningful disposition
+under self-review; anything a future Sentinel would flag should instead be
+recorded as an open issue so the judgment call is at least public. Claims
+about what this governance layer achieves must be read against that limit.
+
 ---
 
 ## Part 2 — Gap analysis: what GitHub cannot do

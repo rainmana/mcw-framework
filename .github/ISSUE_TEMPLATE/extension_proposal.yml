@@ -1,0 +1,53 @@
+name: Extension proposal (Article V)
+description: Propose an extension to the failure taxonomy, repair taxonomy, or proxy metrics. All four Article V conditions are required.
+title: "[extension]: "
+labels: ["type:extension", "article:V"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Extensions are encouraged. They are legitimate only under the four
+        conditions of [Constitution Article V](https://rainmana.github.io/mcw-framework/constitution/#article-v-extension-protocol).
+        An extension that redefines a canonical term is not an extension —
+        use the "Definition change" form instead.
+  - type: textarea
+    id: declaration
+    attributes:
+      label: Declaration (Article V.1)
+      description: State the extension as an extension — what is being added, and to which taxonomy. Not a replacement or correction of canon.
+      placeholder: "This proposes a sixth repair operation, 'X', extending the canonical five…"
+    validations:
+      required: true
+  - type: textarea
+    id: non_contradiction
+    attributes:
+      label: Non-contradiction statement (Article V.2)
+      description: Explain why the extension does not redefine or contradict any canonical term (Article I applies).
+    validations:
+      required: true
+  - type: textarea
+    id: falsification
+    attributes:
+      label: Falsification condition (Article V.3)
+      description: A predicted observation that, if absent, would count as evidence against the extension. "Falsifiable in name only" fails review.
+    validations:
+      required: true
+  - type: textarea
+    id: layer0_trace
+    attributes:
+      label: Layer 0 trace (Article V.4)
+      description: The extension in one plain-language sentence a non-specialist can evaluate (Article II).
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence_layer
+    attributes:
+      label: Evidence layer of any empirical claim in this proposal (Article IV)
+      options: ["L0 — Illustration", "L1 — Practitioner observation", "L2 — Designed pilot", "L3 — Pilot with reliability", "L4 — Controlled study", "No empirical claim"]
+    validations:
+      required: true
+  - type: textarea
+    id: substrate_scope
+    attributes:
+      label: Substrate scope (Article III)
+      description: If the extension is restricted to a substrate (model, modality, platform), declare the restriction as scope, not definition.
