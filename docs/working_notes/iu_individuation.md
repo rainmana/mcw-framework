@@ -27,7 +27,7 @@ Worse, the definitions are mutually circular: an IU is "the minimal transferable
 > An IU is what the parties ground as a unit: the span presented and accepted as one contribution, in the sense of Clark & Schaefer's (1989) contribution model.
 
 - **Strengths:** inherits a worked-out theory with decades of use; the acceptance phase gives an observable boundary signal (acknowledgment, continuation, clarification directed at the span).
-- **Weaknesses:** imports the grounding machinery wholesale — awkward for a framework whose [one novel bet](../related_work.md) is where grounding theory underdetermines; ratification units in human–LLM interaction are noisy because LLMs over-acknowledge (they "accept" everything, so acceptance boundaries blur — precisely the grounding-gap finding of Shaikh et al. 2024 cited in the related-work page).
+- **Weaknesses:** imports the grounding machinery wholesale — awkward for a framework whose [one novel bet](../related_work.md) is where grounding theory underdetermines; and ratification units are hard to segment in human–LLM interaction because LLMs produce far *fewer* explicit grounding acts than humans (the grounding-gap finding of Shaikh et al. 2024, cited in the related-work page) — acceptance boundaries are under-marked, so C2's observable boundary signal is sparse exactly where this framework needs it. (An earlier version of this note claimed the opposite — that LLMs "over-acknowledge" — which misused the citation; corrected. Generic agreeable openers are not grounding acts, and were never what Shaikh et al. measured.)
 
 ### C3 — Propositional idea-unit coding
 
