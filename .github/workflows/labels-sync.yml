@@ -15,7 +15,10 @@ on:
       - '.github/workflows/labels-sync.yml'
   workflow_dispatch:
 
+# A top-level permissions block zeroes every omitted scope, so contents: read
+# must be granted explicitly or actions/checkout fails before the sync runs.
 permissions:
+  contents: read
   issues: write
 
 jobs:
