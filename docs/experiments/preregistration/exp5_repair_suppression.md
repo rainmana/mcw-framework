@@ -51,7 +51,10 @@ The original graded-outcome table read every cell as framework-consistent, inclu
 | **Inverted effect (suppression arm shows better coordination outcomes)** | **Counts against the hypothesis.** No framework-friendly reading is registered for this cell. |
 | **Post-midpoint equivalence between (d) and (c) on clarifying-question rate AND coordination outcomes** | **Falsifies the proposed Repair-Norm Restoration repair operation** ([mapping page](../../failure_repair_mapping.md#proposed-extension-repair-norm-restoration)): explicit re-authorization neither recovered the question rate nor improved outcomes. Reported against the extension — and only the extension; the failure-mode claim lives in the (c) vs. (b) contrast. |
 
-**Decision rule across sessions:** if the aggregate TOST declares equivalence on the (c) vs. (b) contrast for clarifying-question rate and for both coordination outcomes, the falsification condition is triggered.
+**Decision rules across sessions** (one per claim, decided independently):
+
+- *Failure-mode falsification* triggers if the aggregate TOST declares equivalence on the (c) vs. (b) contrast for clarifying-question rate and for both coordination outcomes.
+- *Repair-operation falsification* (Repair-Norm Restoration) triggers if the aggregate TOST declares **post-midpoint** equivalence on the (d) vs. (c) contrast for clarifying-question rate and for both coordination outcomes — the aggregate rule that makes the losable cell in the table above actionable, not merely stated.
 
 ## Ethics: engineered social pressure, consent, debrief, wellbeing
 
