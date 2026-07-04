@@ -1,10 +1,10 @@
 # Label taxonomy — Constitution-as-Code Phase 0
 # (docs/constitution_as_code.md, Part 1).
 #
-# GitHub labels live in repository settings, not in git. This file is the
-# versioned source of truth; sync it manually (Settings → Labels) or with
-# any label-sync action (e.g. crazy-max/ghaction-github-labeler reads this
-# format). Syncing automatically is deliberately NOT part of Phase 0.
+# This file is the versioned source of truth. It is synced automatically to
+# the repository's label settings by .github/workflows/labels-sync.yml
+# (scripts/sync_labels.py) on every push to main that touches it — create
+# and update only; labels not listed here are reported, never deleted.
 
 - name: "article:I"
   color: "5319e7"
