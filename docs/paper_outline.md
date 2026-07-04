@@ -66,7 +66,7 @@ The MCW framework does not compete with alignment, safety, or prompt engineering
 HCI focuses on usability, affordances, and task completion. MCW addresses coordination dynamics that persist even when interfaces are well-designed.
 
 ### 2.2 Computer-Supported Cooperative Work (CSCW)
-CSCW studies shared artifacts and breakdowns in collaboration. MCW is actor-agnostic and minimal by design — applicable to human–human, human–AI, and AI–AI systems without presupposing social structure.
+CSCW studies shared artifacts and breakdowns in collaboration. The IU model and failure taxonomy are substrate-independent — applicable to human–human, human–AI, and AI–AI systems without presupposing social structure — while the MCW construct itself is canonically scoped to HCW–ACW coupling (Constitution v1.1, Article III), with generalizations as declared extensions.
 
 ### 2.3 Common Ground Theory (Clark & Brennan, 1991)
 Common ground describes the mutual knowledge, beliefs, and assumptions shared by communication partners. MCW extends this to non-human actors and formalizes it through IU exchange and information-theoretic degradation.
