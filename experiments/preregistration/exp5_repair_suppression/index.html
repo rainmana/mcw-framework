@@ -1423,11 +1423,12 @@
 <li><strong>(a) Baseline</strong> — no time pressure, no scripted behavior; the confederate collaborates naturally.</li>
 <li><strong>(b) Time-pressure-only</strong> — a visible countdown and periodic neutral time reminders ("10 minutes left"); the confederate answers clarification attempts normally.</li>
 <li><strong>(c) Time-pressure + suppression</strong> — identical time pressure, plus the confederate responds to clarification attempts with scripted deflections bounded to task logistics ("we don't have time for questions — let's keep moving," "let's sort that out later").</li>
+<li><strong>(d) Time-pressure + suppression + re-authorization</strong> <em>(registered July 2026, before any data collection — this is the direct test of the proposed <a href="../../../failure_repair_mapping/#proposed-extension-repair-norm-restoration">Repair-Norm Restoration</a> repair operation)</em> — identical to (c) through the pre-declared midpoint (end of exchange 10), at which the confederate delivers a scripted re-authorization: <em>"Actually — I was wrong to wave off questions earlier. Please ask whenever something's unclear; better now than later."</em> and answers clarification attempts normally thereafter. The operation contrast is <strong>(d) vs. (c)</strong>, on the post-midpoint segment.</li>
 </ol>
 </li>
-<li><strong>Task.</strong> A fixed collaborative task with a planted ambiguity (as in <a href="../exp1_false_alignment/">Experiment 1</a>) whose late discovery is costly: the work product must be partially redone if the ambiguity survives past a pre-declared decision point. Task pack frozen before the first session.</li>
+<li><strong>Task.</strong> A fixed collaborative task with a planted ambiguity (as in <a href="../exp1_false_alignment/">Experiment 1</a>) whose late discovery is costly: the work product must be partially redone if the ambiguity survives past a pre-declared decision point. Task pack (including the re-authorization script and midpoint position) frozen before the first session.</li>
 <li><strong>Participants.</strong> One naive participant per dyad; the partner is a trained confederate. Cover story: "collaboration under deadline conditions."</li>
-<li><strong>Minimal N.</strong> 8 dyads per arm (24 total) — a feasibility-based pilot size, powered only for large effects, and stated as such.</li>
+<li><strong>Minimal N.</strong> 8 dyads per arm (32 total) — a feasibility-based pilot size, powered only for large effects, and stated as such.</li>
 </ul>
 <h2 id="measures">Measures<a class="headerlink" href="#measures" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1441,7 +1442,8 @@
 <h2 id="analysis-plan">Analysis plan<a class="headerlink" href="#analysis-plan" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Suppression contrast, (c) vs. (b): Mann–Whitney U on clarifying-question rate, D, R, and task outcome, one-sided per registered direction, α = 0.05. The (b) vs. (a) contrast estimates the time-pressure main effect and is reported descriptively.</li>
-<li>Equivalence (falsification decision): TOST on clarifying-question rate (margin: ±1 question per 10 exchanges) and on D and R (shared ±0.5 margins), all on the (c) vs. (b) contrast.</li>
+<li><strong>Restoration contrast, (d) vs. (c), post-midpoint segment only:</strong> Mann–Whitney U on post-midpoint clarifying-question rate (one-sided: higher in (d)), and on D and R measured from the midpoint onward (one-sided: lower in (d)), α = 0.05. Pre-midpoint segments of (c) and (d) are pooled as a manipulation check (they should not differ; a difference flags a script-delivery inconsistency).</li>
+<li>Equivalence (falsification decisions): TOST on clarifying-question rate (margin: ±1 question per 10 exchanges) and on D and R (shared ±0.5 margins) — applied separately to the (c)-vs-(b) contrast (failure-mode claim) and the post-midpoint (d)-vs-(c) contrast (repair-operation claim). The two claims are decided independently; no result may be double-counted across them.</li>
 </ul>
 <h2 id="pre-committed-outcome-interpretation-the-losable-bets">Pre-committed outcome interpretation (the losable bets)<a class="headerlink" href="#pre-committed-outcome-interpretation-the-losable-bets" title="Permanent link">&para;</a></h2>
 <p>The original graded-outcome table read every cell as framework-consistent, including outcome D ("speed improves, quality harms — supports explicit 'uncertainty budget' concept" — a term defined nowhere in the framework and not used on this page). Those readings are rescinded. Registered readings:</p>
@@ -1473,9 +1475,17 @@
 <td><strong>Inverted effect (suppression arm shows better coordination outcomes)</strong></td>
 <td><strong>Counts against the hypothesis.</strong> No framework-friendly reading is registered for this cell.</td>
 </tr>
+<tr>
+<td><strong>Post-midpoint equivalence between (d) and (c) on clarifying-question rate AND coordination outcomes</strong></td>
+<td><strong>Falsifies the proposed Repair-Norm Restoration repair operation</strong> (<a href="../../../failure_repair_mapping/#proposed-extension-repair-norm-restoration">mapping page</a>): explicit re-authorization neither recovered the question rate nor improved outcomes. Reported against the extension — and only the extension; the failure-mode claim lives in the (c) vs. (b) contrast.</td>
+</tr>
 </tbody>
 </table>
-<p><strong>Decision rule across sessions:</strong> if the aggregate TOST declares equivalence on the (c) vs. (b) contrast for clarifying-question rate and for both coordination outcomes, the falsification condition is triggered.</p>
+<p><strong>Decision rules across sessions</strong> (one per claim, decided independently):</p>
+<ul>
+<li><em>Failure-mode falsification</em> triggers if the aggregate TOST declares equivalence on the (c) vs. (b) contrast for clarifying-question rate and for both coordination outcomes.</li>
+<li><em>Repair-operation falsification</em> (Repair-Norm Restoration) triggers if the aggregate TOST declares <strong>post-midpoint</strong> equivalence on the (d) vs. (c) contrast for clarifying-question rate and for both coordination outcomes — the aggregate rule that makes the losable cell in the table above actionable, not merely stated.</li>
+</ul>
 <h2 id="ethics-engineered-social-pressure-consent-debrief-wellbeing">Ethics: engineered social pressure, consent, debrief, wellbeing<a class="headerlink" href="#ethics-engineered-social-pressure-consent-debrief-wellbeing" title="Permanent link">&para;</a></h2>
 <p>This is the framework's most ethically loaded design: it deliberately subjects a participant to dismissive treatment under time pressure, with a confederate posing as a peer. The original page contained no ethics discussion; that gap was a flagged defect, and the following requirements are registered as part of the design — they are the floor, not the ceiling:</p>
 <ol>
@@ -1484,9 +1494,10 @@
 <li><strong>Mandatory immediate debrief:</strong> the confederate role, the scripts, the time-pressure framing, and the purpose are disclosed in full; it is made explicit that the deflections were scripted and unrelated to the quality of the participant's questions.</li>
 <li><strong>Withdrawal and wellbeing:</strong> the participant may withdraw their data on the spot without justification; the debrief includes an explicit wellbeing check, and any sign of more-than-transient distress is recorded and reported with the study.</li>
 <li>Where an institutional review process is available, it applies before any session runs; where it is not, these provisions still bind.</li>
+<li><strong>Arm (d) note:</strong> the re-authorization arm <em>reduces</em> participant burden relative to (c) — suppression is explicitly lifted mid-session — and its script doubles as an in-session corrective. All other protections apply unchanged, including the full debrief.</li>
 </ol>
 <h2 id="stopping-rule-and-deviations">Stopping rule and deviations<a class="headerlink" href="#stopping-rule-and-deviations" title="Permanent link">&para;</a></h2>
-<p>Collection stops at 24 dyads. Deviations are logged and demote the study's claimable evidence layer per the <a href="../#shared-standards">shared standards</a>.</p>
+<p>Collection stops at 32 dyads (8 per arm). Deviations are logged and demote the study's claimable evidence layer per the <a href="../#shared-standards">shared standards</a>.</p>
 <h2 id="what-running-this-buys">What running this buys<a class="headerlink" href="#what-running-this-buys" title="Permanent link">&para;</a></h2>
 <p>Run as registered: <strong>L2</strong> (proxy claims capped at L2 per the blinding declaration above; the clarifying-question rate and task outcomes are objectively countable and can reach L3 with the reliability protocol met). The three-arm structure means a positive bundled result can no longer masquerade as a suppression effect — and the "signals suppressed, nothing got worse" cell gives the framework a specific, uncomfortable way to lose. That is the point.</p>
 
