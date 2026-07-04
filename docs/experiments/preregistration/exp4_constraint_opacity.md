@@ -19,14 +19,18 @@ The original setup ("a known constraint boundary, e.g., policy restriction") con
 - **Arms (between-subject — disclosure cannot be unlearned):**
     1. **Disclosed arm** — the participant is told: "the assistant operates under a constraint set by the experimenters that limits part of what it can tell you; it will not name the constraint's content." (The *existence* is disclosed; the content is not — this matches the framework's claim that acknowledging a constraint's existence and effect is what matters, not full transparency.)
     2. **Undisclosed arm** — the participant is told nothing about any constraint.
-- **Task.** One fixed planning task in which the planted constraint is load-bearing: at least two of the task's pre-declared decision points cannot be completed cleanly without bumping into it. Task pack (brief, system prompts for both arms, decision points, planted constraint, wrong-cause coding guide) is frozen before the first session.
-- **AI system.** One fixed model and configuration; both arms use the *same* system prompt except for zero differences — disclosure happens in the participant briefing, not in the prompt, so the assistant's behavior is drawn from the same distribution in both arms.
+    3. **Mid-interaction disclosure arm** *(registered July 2026, before any data collection — this is the direct test of the proposed [Constraint Disclosure](../../failure_repair_mapping.md#proposed-extension-constraint-disclosure) repair operation)* — briefed exactly like the undisclosed arm; the assistant's system prompt additionally instructs it to perform a scripted disclosure at its **first constraint-shaped response**: *"Part of this task is constrained for me — I can't say how, but it limits what I can provide on this point."* The operation contrast is **arm 3 vs. arm 2**, on the windows *after* the first constraint-shaped response.
+- **Task.** One fixed planning task in which the planted constraint is load-bearing: at least two of the task's pre-declared decision points cannot be completed cleanly without bumping into it. Task pack (brief, system prompts for all arms, decision points, planted constraint, disclosure script, wrong-cause coding guide) is frozen before the first session.
+- **AI system.** One fixed model and configuration. Arms 1 and 2 use the *same* system prompt (disclosure happens in the participant briefing, not the prompt), so their assistant behavior is drawn from the same distribution. Arm 3's prompt differs by exactly one added instruction — the disclosure script above; any residual behavioral side-effects of that addition are a declared limitation of the arm-3 contrast, stated here rather than discovered later.
 - **Participants.** Naive participants; cover story: "planning tasks with AI assistants." Random assignment to arm.
-- **Minimal N.** 10 participants per arm (20 total) — a feasibility-based pilot size, powered only for large effects, and stated as such.
+- **Minimal N.** 10 participants per arm (30 total) — a feasibility-based pilot size, powered only for large effects, and stated as such.
 
 ## Measures
 
-- H, D, and M per 5-exchange window; R per repair episode; R\_ev per 10 exchanges — per the [anchored rubrics](../hrdm_rubrics.md), two independent raters. Transcripts are rateable condition-blind in this design: the disclosure happened in the briefing, not in the transcript. Any transcript that internally reveals the arm (e.g., the participant mentions the briefing) is flagged and its proxy scores included only in a sensitivity analysis.
+- H, D, and M per 5-exchange window; R per repair episode; R\_ev per 10 exchanges — per the [anchored rubrics](../hrdm_rubrics.md), two independent raters.
+- **Blinding, registered per contrast** (an earlier wording claimed transcript-level blinding for the whole design, which arm 3 makes impossible — corrected):
+    - *Failure-mode contrast (arms 1 vs. 2):* rateable condition-blind — the disclosure happened in the briefing, not the transcript. An arm-1/2 transcript that internally reveals its arm (e.g., the participant mentions the briefing) is flagged and its proxy scores enter a sensitivity analysis only.
+    - *Repair-operation contrast (arms 3 vs. 2):* **arm 3 is condition-legible by design** — the scripted disclosure is in the transcript. Declared override, as in [Experiment 3](exp3_overcompression.md) and [Experiment 5](exp5_repair_suppression.md): raters remain blinded to the hypothesis and expected-signature tables and rate from the anchors only, and proxy-based claims from this contrast are **capped at L2** regardless of inter-rater reliability. The flag-and-exclude rule above does *not* apply to arm 3's scripted disclosure — excluding condition-revealing transcripts there would empty the registered contrast; it applies only to unscripted leakage in arms 1 and 2.
 - **Registered behavioral outcomes:**
     - **Wrong-cause repair attempts:** count of repair-initiating turns addressing a variable other than the planted constraint (e.g., rephrasing for clarity, simplifying the task, correcting presumed model misunderstanding) *after* the constraint has first shaped an assistant response. Coded per a frozen wrong-cause coding guide included in the task pack.
     - **Time-to-correct-attribution:** number of exchanges from the first constraint-shaped assistant response until the participant states (or asks) that a restriction/constraint may exist. Right-censored at session end if never.
@@ -34,8 +38,9 @@ The original setup ("a known constraint boundary, e.g., policy restriction") con
 
 ## Analysis plan
 
-- Disclosed vs. undisclosed: Mann–Whitney U on M, wrong-cause repair attempts, and time-to-correct-attribution (censored times handled by rank-based comparison with censored values ranked highest), one-sided per registered direction, α = 0.05.
-- Equivalence (falsification decision): TOST on M (shared ±0.5 margin) and on wrong-cause repair attempts (margin: ±1 attempt per session).
+- **Failure-mode contrast (arm 1 vs. arm 2):** Mann–Whitney U on M, wrong-cause repair attempts, and time-to-correct-attribution (censored times handled by rank-based comparison with censored values ranked highest), one-sided per registered direction, α = 0.05.
+- **Repair-operation contrast (arm 3 vs. arm 2):** Mann–Whitney U on post-onset M and post-onset wrong-cause repair attempts (windows after the first constraint-shaped response only), one-sided (arm 3 lower), α = 0.05.
+- Equivalence (falsification decisions): TOST on M (shared ±0.5 margin) and on wrong-cause repair attempts (margin: ±1 attempt per session) — applied separately to each contrast; the two claims are decided independently and no result may be double-counted across them (per the [mapping page's](../../failure_repair_mapping.md) no-double-counting rule).
 
 ## Pre-committed outcome interpretation (the losable bets)
 
@@ -47,8 +52,9 @@ The original graded-outcome table read every cell as framework-consistent, inclu
 | Differences present but attenuated | Weak support; report as such, no narrative upgrades. |
 | **Equivalence within margins between arms on M and wrong-cause repair attempts** | **Falsification condition met: constraint opacity is not a meaningful MCW variable. This counts against the framework and is reported as such.** |
 | **Inverted effect (disclosed arm shows worse coordination — H lower, M higher, or more wrong-cause repair)** | **Counts against the hypothesis, and specifically against Principle 4's claim that partial disclosure always reduces coordination entropy relative to opacity.** That principle's universal "always" is on the line in this cell; the result would be reported as evidence against it, not explained away. |
+| **Equivalence within margins between arms 3 and 2 on post-onset M and post-onset wrong-cause repair** | **Falsifies the proposed Constraint Disclosure repair operation** ([mapping page](../../failure_repair_mapping.md#proposed-extension-constraint-disclosure)): mid-interaction disclosure did not repair misdirected attribution. Reported against the extension — and only the extension; it does not decide the failure-mode claim, which lives in the arm 1 vs. 2 contrast. |
 
-**Decision rule across sessions:** if the aggregate TOST declares equivalence on both M and wrong-cause repair attempts, the falsification condition is triggered.
+**Decision rules across sessions:** the failure-mode falsification triggers if the aggregate TOST declares equivalence on both M and wrong-cause repair for arm 1 vs. arm 2; the repair-operation falsification triggers if it does so for post-onset M and post-onset wrong-cause repair for arm 3 vs. arm 2.
 
 ## Ethics: incomplete disclosure, consent, debrief
 
@@ -60,7 +66,7 @@ The undisclosed arm withholds the existence of a planted constraint; no confeder
 
 ## Stopping rule and deviations
 
-Collection stops at 20 participants. Deviations are logged and demote the study's claimable evidence layer per the [shared standards](index.md#shared-standards).
+Collection stops at 30 participants (10 per arm). Deviations are logged and demote the study's claimable evidence layer per the [shared standards](index.md#shared-standards).
 
 ## What running this buys
 
