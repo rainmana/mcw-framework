@@ -1,0 +1,146 @@
+{
+  "_generated_by": "integrations/soulwindow-hearth/generate_concepts.py",
+  "concepts": [
+    {
+      "category": "core",
+      "definition_text": "**Definition:** The ACW is the bounded computational context that an AI system (typically a large language model) maintains during an interaction. It includes: - active tokens and embeddings - retrieved information (e.g., via RAG) - model weights and prior training - attention patterns over the current input **Key characteristic:** The ACW is **enumerable and formally bounded**. It advances only when input arrives — where input includes user messages, tool results, retrieved content, and scheduled invocations — and never spontaneously. In agentic and background configurations the ACW can therefore advance *between conversational turns*; what it cannot do is advance without input. The coordination-relevant asymmetry with the HCW is not turn-boundedness but **spontaneity**: the HCW advances continuously and unpromptedly; the ACW advances discretely and only on input.\n",
+      "frozen_sha256": "fdc048c55c32be4cb02a1b1dc6178884be7c9d3cb57060eedef150e359fee67f",
+      "snapshot_path": "governance/canon/artificial-context-window-acw.txt",
+      "term": "Artificial Context Window (ACW)"
+    },
+    {
+      "category": "failure_mode",
+      "definition_text": "**Definition:** One actor's context window advances — typically through off-turn reasoning or access to external information — without that advancement being externalized to the other party. This creates a phase lag between HCW and ACW.\n",
+      "frozen_sha256": "4c239e168dc9f0e3da796a0a9aa0ce204b18fe0f7e6ec937368a21ea4784d1d1",
+      "snapshot_path": "governance/canon/asymmetric-state-advancement.txt",
+      "term": "Asymmetric State Advancement"
+    },
+    {
+      "category": "failure_mode",
+      "definition_text": "**Definition:** Hidden variables — such as undisclosed system constraints, policy restrictions, or unstated assumptions — influence one party's behavior without being legible to the other. These act as exogenous constraints on the coupling function.\n",
+      "frozen_sha256": "e266d15dc476fc1e33e04f2d399e5162db30fad18a0da919702515eb365a72c2",
+      "snapshot_path": "governance/canon/constraint-opacity.txt",
+      "term": "Constraint Opacity"
+    },
+    {
+      "category": "repair_op",
+      "definition_text": "**Definition:** Expanding a compressed IU bundle back into its component IUs. Reverses overcompression by recovering lost distinctions.\n",
+      "frozen_sha256": "530f5e4b5d5f222b0eec1145633eef777627554b94cbf2deb795f18413c8c455",
+      "snapshot_path": "governance/canon/decompression.txt",
+      "term": "Decompression"
+    },
+    {
+      "category": "repair_op",
+      "definition_text": "**Definition:** Splitting an overloaded IU into its distinct components. Addresses false alignment caused by shared language with divergent meaning.\n",
+      "frozen_sha256": "5ccc8ace52f4d9fa84a1a930027dd6f4f666c93aae7f399877d91679f819cdda",
+      "snapshot_path": "governance/canon/disambiguation.txt",
+      "term": "Disambiguation"
+    },
+    {
+      "category": "failure_mode",
+      "definition_text": "**Definition:** Gradual, unacknowledged divergence between participating context windows. Neither party recognizes that their shared state is degrading.\n",
+      "frozen_sha256": "bb95bea4dfee9ac5c8ce11ea5857d16e38f2f3cd96ba6b28064bfab83c249f74",
+      "snapshot_path": "governance/canon/drift-silent-desynchronization.txt",
+      "term": "Drift (Silent Desynchronization)"
+    },
+    {
+      "category": "proxy",
+      "definition_text": "Speed at which the shared coordination state diverges. Higher values indicate faster degradation. `0 = stable / 3 = rapid`\n",
+      "frozen_sha256": "2b3eaa896c0bf2e3a5383eaccae5cb8e5ed395dbace10e92385ff72fac661fa4",
+      "snapshot_path": "governance/canon/drift-rate-d.txt",
+      "term": "Drift Rate (D)"
+    },
+    {
+      "category": "meta",
+      "definition_text": "**Definition:** A five-rung ladder declaring the strength of evidence behind any empirical claim about MCW dynamics. The definitions are fixed by Article IV of the Constitution: - **L0 — Illustration:** Naturalistic observation, no controls; used to demonstrate recognizability only - **L1 — Practitioner observation:** Extended personal use; subject to positionality bias; not generalizable - **L2 — Designed pilot:** Structured observation with hypothesis; single observer or small N; no inter-rater reliability - **L3 — Pilot with reliability:** Multi-rater pilot; inter-rater reliability reported; generalizable with caution - **L4 — Controlled study:** Random assignment, control conditions, validated instruments; generalizable with stated scope **Usage convention:** empirical assertions in framework documents carry an inline tag– at the claim site, and pages that make empirical claims state their overall evidence layer in a Status line. No claim may be stated above the layer its supporting data occupies (Article IV). The current framework is at L0–L1 for all empirical claims. Marker *presence* is checked mechanically in CI once [Constitution as Code](constitution_as_code.md) Phase 0 is in place; until every page is tagged, an untagged empirical sentence anywhere in the framework is a defect to be tagged, downgraded, or withdrawn — not an exemption from this convention. **What evidence layers are not:** - Not the [OSI Layers of Understanding](#osi-layers-of-understanding) (the accessibility ladder, written A0–A5): accessibility layers describe how compressed a *presentation* is; evidence layers describe how strong the *support* for a claim is. Bare `L`*n* notation always means an evidence layer - Not a quality score: an honestly tagged L0 claim is fully legitimate; an L1 claim dressed as L3 is not\n",
+      "frozen_sha256": "9b765b4ccf7c80cdf1c27103919901c4c070b341c11e1af2bb0b14539bce6504",
+      "snapshot_path": "governance/canon/evidence-layers-l0l4.txt",
+      "term": "Evidence Layers (L0–L4)"
+    },
+    {
+      "category": "failure_mode",
+      "definition_text": "**Definition:** A state in which both parties believe they are coordinated when they are not. Shared language masks divergent interpretation; agreement is inferred rather than verified.\n",
+      "frozen_sha256": "b0d78f6f36a49d0d052c938a72dc344240e88221be2929138982c640fe5c2778",
+      "snapshot_path": "governance/canon/false-alignment.txt",
+      "term": "False Alignment"
+    },
+    {
+      "category": "core",
+      "definition_text": "**Definition:** The HCW is the set of information a human actively holds when engaging in an interaction. It includes: - working memory - attention and salience weighting - active goals and intent - unspoken assumptions - emotional state and timing **Key characteristic:** The HCW is **not enumerable** and advances **continuously** — including between conversational turns. A human may update their internal context window without externalizing that update.\n",
+      "frozen_sha256": "2f54b583ee798918f8275ccd7e06d7c2a733de5fd70d4776b7802ca8aeb23b54",
+      "snapshot_path": "governance/canon/human-context-window-hcw.txt",
+      "term": "Human Context Window (HCW)"
+    },
+    {
+      "category": "core",
+      "definition_text": "**Definition:** > An Information Unit is the minimal transferable element of information that can influence coordination state between actors. IUs are the atomic elements through which MCWs form, degrade, and are repaired. **Key properties:** - **Substrate-independent:** an IU can exist in text, speech, symbols, prices, signals, or gestures - **Representation-dependent:** the same IU is encoded differently in different systems (tokens for AI, concepts for humans) - **Context-sensitive:** an IU's meaning depends on surrounding IUs and prior state - **Composable:** IUs combine into higher-order structures (arguments, plans, prompts, beliefs) - **Lossy under transfer:** IU exchange is never perfectly faithful — compression, omission, and distortion are inherent **What IUs are not:** - Not tokens (tokens are one *representation* of IUs) - Not facts (facts may span many IUs) - Not beliefs (beliefs are stabilized IU networks) - Not values (values shape IU weighting, not IU identity) - Not meanings in isolation (meaning is relational)\n",
+      "frozen_sha256": "4917812ffa03af2f119ec3f4d48ad1ba079936b45b771b2e4e9719e49295cade",
+      "snapshot_path": "governance/canon/information-unit-iu.txt",
+      "term": "Information Unit (IU)"
+    },
+    {
+      "category": "proxy",
+      "definition_text": "Perceived shared understanding between participants. Higher values indicate stronger alignment. `0 = broken / 3 = strong`\n",
+      "frozen_sha256": "7b533d7175e6d8731328d0a51741b598163ce0b418325f16128f6c77bd3528c7",
+      "snapshot_path": "governance/canon/mcw-health-h.txt",
+      "term": "MCW Health (H)"
+    },
+    {
+      "category": "core",
+      "definition_text": "**Definition:** > The Meta-Context Window is the dynamically maintained shared state of meaning, salience, intent, and continuity that emerges through ongoing interaction between one or more human context windows (HCWs) and one or more artificial context windows (ACWs). More formally, MCW is a **coupling function**: > **MCW = f(HCW₁…HCWₙ, ACW₁…ACWₘ, T, C)** Where T is time/interaction history and C is communication channel constraints (bandwidth, latency, modality, noise). **Key properties:** - **Emergent:** MCW does not exist in either party alone; it arises from interaction - **Bidirectional:** neither party owns it; both can degrade or repair it - **Temporal:** exists in time, not in storage; decays without maintenance - **Lossy:** not all internal state is transmitted; compression and omission are inherent - **Not a sum or product:** MCW captures interaction dynamics that simple aggregation cannot represent **What MCW is not:** | What it is not | Why the distinction matters | |---|---| | Not the AI's context window (ACW) | Increasing token limits does not automatically improve MCW | | Not chat history | A transcript is a record; MCW is a living coordination state | | Not memory | Memory stores information; MCW aligns interpretation and relevance | | Not RAG or retrieval | RAG can improve ACW while actively harming MCW | | Not UI/UX | UI/UX influences bandwidth; MCW is the resulting shared state | | Not prompt quality | Good prompts help *initialize* MCW; they cannot maintain or repair it | | Not alignment or ethics | Those are *contents* that pass through MCW; MCW is the transport/synchronization layer |\n",
+      "frozen_sha256": "9b07e301154d54eca71f8c47f844fad1cd636ef61b1037aba1151799c1ccb7ff",
+      "snapshot_path": "governance/canon/meta-context-window-mcw.txt",
+      "term": "Meta-Context Window (MCW)"
+    },
+    {
+      "category": "proxy",
+      "definition_text": "Tendency to blame coordination failures on agent capability rather than shared context. Higher values indicate more frequent mislabeling. `0 = none / 3 = frequent`\n",
+      "frozen_sha256": "44de8896f47c94f993757372529372ccf653afc8d69e182d7cd1a5d3f3c9bbc6",
+      "snapshot_path": "governance/canon/misattribution-m.txt",
+      "term": "Misattribution (M)"
+    },
+    {
+      "category": "failure_mode",
+      "definition_text": "**Definition:** Critical IU distinctions are lost due to premature or aggressive summarization. Nuance is sacrificed for efficiency; edge cases disappear from the shared state.\n",
+      "frozen_sha256": "74c53f9142dea495b30aee3cb801150c10ac825a2d1a840bae363058e32541dc",
+      "snapshot_path": "governance/canon/overcompression.txt",
+      "term": "Overcompression"
+    },
+    {
+      "category": "repair_op",
+      "definition_text": "**Definition:** Reintroducing foundational IUs to restore a shared reference point. Typically involves restating goals, assumptions, and scope.\n",
+      "frozen_sha256": "009b45bb4f11a60cc5af1e6a3257d7c69bbbd868dd68be860c43997a83303797",
+      "snapshot_path": "governance/canon/re-grounding.txt",
+      "term": "Re-grounding"
+    },
+    {
+      "category": "repair_op",
+      "definition_text": "**Definition:** Explicitly adjusting IU salience — clarifying which information matters most and which can be safely deprioritized.\n",
+      "frozen_sha256": "d6a2c9aecf3e46e306016e6655aae8fead813f1872e3aba390210543a551026e",
+      "snapshot_path": "governance/canon/re-weighting.txt",
+      "term": "Re-weighting"
+    },
+    {
+      "category": "proxy",
+      "definition_text": "Effort required to realign after a coordination failure. Higher values indicate more costly repair. `0 = low / 3 = high`\n",
+      "frozen_sha256": "a669b57c97f14c200607d9da26cea23b6c4446c826c6641033b652df20e9cffa",
+      "snapshot_path": "governance/canon/repair-cost-r.txt",
+      "term": "Repair Cost (R)"
+    },
+    {
+      "category": "failure_mode",
+      "definition_text": "**Definition:** Signals that would normally trigger MCW repair — clarifying questions, expressions of uncertainty, requests for restatement — are discouraged, ignored, or penalized.\n",
+      "frozen_sha256": "1c4c023b12abf2b0664d31f8855af29f9037dfa95023c7c221f329b8ee190c21",
+      "snapshot_path": "governance/canon/repair-suppression.txt",
+      "term": "Repair Suppression"
+    },
+    {
+      "category": "repair_op",
+      "definition_text": "**Definition:** Aligning the IU timelines of participating actors — surfacing off-turn state changes to close asymmetric state advancement.\n",
+      "frozen_sha256": "946437323d40f97984c56cce37c89c4c928dd67daff85319e9cc33ef88d7ae98",
+      "snapshot_path": "governance/canon/synchronization.txt",
+      "term": "Synchronization"
+    }
+  ],
+  "upstream_commit": "480d2a441e5ce527486b97e2211d67a3f413485e"
+}
