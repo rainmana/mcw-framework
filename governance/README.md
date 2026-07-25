@@ -38,8 +38,10 @@ python scripts/constitution_lint.py --update
 ## Downstream consumers
 
 Implementations that freeze this vocabulary (e.g., `rainmana/smolbrain`,
-which encodes it as typed invariants) can vendor `canon/*.txt` +
-`canon_hashes.json` and compare against this repository in their own CI, so
-upstream definitional drift fails their build rather than silently
-propagating. That pinning test lives downstream; this directory is its
-source of truth.
+which encodes it as typed invariants, and `rainmana/mcw-engine`, whose
+`mcw-canon` crate fails compilation on pin divergence — see
+[`integrations/mcw-engine/`](../integrations/mcw-engine/README.md)) can
+vendor `canon/*.txt` + `canon_hashes.json` and compare against this
+repository in their own CI, so upstream definitional drift fails their
+build rather than silently propagating. That pinning test lives downstream;
+this directory is its source of truth.
