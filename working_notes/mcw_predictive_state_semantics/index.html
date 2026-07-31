@@ -1,0 +1,2845 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A coordination framework for human–AI collaboration failures">
+      
+      
+        <meta name="author" content="W. Alec Akin">
+      
+      
+        <link rel="canonical" href="https://rainmana.github.io/mcw-framework/working_notes/mcw_predictive_state_semantics/">
+      
+      
+        <link rel="prev" href="../iu_individuation/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Working Note — MCW Predictive-State Semantics - Meta-Context Window (MCW) Framework</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#working-note-mcw-predictive-state-semantics-and-context-topology" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Meta-Context Window (MCW) Framework" class="md-header__button md-logo" aria-label="Meta-Context Window (MCW) Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Meta-Context Window (MCW) Framework
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Working Note — MCW Predictive-State Semantics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rainmana/mcw-framework" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rainmana/mcw-framework
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../diagrams/" class="md-tabs__link">
+          
+  
+  
+  Framework
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../paper_outline/" class="md-tabs__link">
+          
+  
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Meta-Context Window (MCW) Framework" class="md-nav__button md-logo" aria-label="Meta-Context Window (MCW) Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Meta-Context Window (MCW) Framework
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rainmana/mcw-framework" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rainmana/mcw-framework
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Framework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Framework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagrams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../failure_repair_mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Failure ↔ Repair Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../constitution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constitution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../constitution_as_code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constitution as Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../related_work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Related Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paper_outline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paper Outline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system_prompt_derivation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Prompt Derivation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/toy_experiments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toy Experiments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/hrdm_rubrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    H/R/D/M Rubrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pre-Registration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pre-Registration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp1_false_alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 1 — False Alignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp2_asymmetric_advancement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 2 — Asymmetric Advancement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp3_overcompression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 3 — Overcompression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp4_constraint_opacity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 4 — Constraint Opacity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp5_repair_suppression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 5 — Repair Suppression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp6_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 6 — Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/prompt_predictions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Predictions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../test_bed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Bed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iu_individuation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working Note — IU Individuation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working Note — MCW Predictive-State Semantics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working Note — MCW Predictive-State Semantics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a0-the-idea-without-mathematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A0 — The idea without mathematics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-formalize-this-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why formalize this way?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-a-typed-context-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. A typed context topology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. A typed context topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a1-gloss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A1 gloss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actor-relative-accessible-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actor-relative accessible context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effective-context-is-scope-relative" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effective context is scope-relative
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-controlled-partially-observed-dynamics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Controlled, partially observed dynamics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-declaring-the-coordination-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Declaring the coordination scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-predictive-state-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Predictive-state semantics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Predictive-state semantics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a1-gloss_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A1 gloss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-1-exact-predictive-coordination-equivalence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition 1 — Exact predictive coordination equivalence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-1-exact-predictive-equivalence-is-an-equivalence-relation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 1 — Exact predictive equivalence is an equivalence relation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-2-minimal-predictive-sufficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 2 — Minimal predictive sufficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-2a-when-the-quotient-supports-recursive-dynamics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 2a — When the quotient supports recursive dynamics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-distance-without-fake-equivalence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Distance without fake equivalence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Distance without fake equivalence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warning-epsilon-closeness-is-not-generally-transitive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Warning — \(\epsilon\)-closeness is not generally transitive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-3-bounded-outcome-preservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 3 — Bounded-outcome preservation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-actor-beliefs-are-not-the-relational-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Actor beliefs are not the relational state
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-hcw-elicitation-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. HCW elicitation and observability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. HCW elicitation and observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a0-gloss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A0 gloss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-2-hcw-observability-envelope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition 2 — HCW observability envelope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#articulation-as-a-lossy-channel-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Articulation as a lossy channel family
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-replace-catch-all-uncertainty-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Replace catch-all uncertainty terms
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-compression-as-a-proposed-state-folding-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Compression as a proposed state-folding operation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Compression as a proposed state-folding operation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predictive-sufficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predictive sufficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operational-preservation-after-reinjection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational preservation after reinjection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-4-irreversible-predictive-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 4 — Irreversible predictive merge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-5-compositional-distortion-bound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 5 — Compositional distortion bound
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-constrained-ratedistortion-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task-constrained rate–distortion question
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-repair-as-control-rather-than-guaranteed-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Repair as control rather than guaranteed reset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-what-mathematics-can-establish-before-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. What mathematics can establish before experiments
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. What mathematics can establish before experiments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-mathematics-cannot-establish-alone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What mathematics cannot establish alone
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-bridge-to-non-destructive-state-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Bridge to non-destructive state reconstruction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-losable-claims-and-retirement-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Losable claims and retirement conditions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-open-decisions-before-promotion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Open decisions before promotion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mathematical-ancestry-and-methodological-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mathematical ancestry and methodological references
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-note-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working-note summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a0-the-idea-without-mathematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A0 — The idea without mathematics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-formalize-this-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why formalize this way?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-a-typed-context-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. A typed context topology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. A typed context topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a1-gloss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A1 gloss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actor-relative-accessible-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actor-relative accessible context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effective-context-is-scope-relative" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effective context is scope-relative
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-controlled-partially-observed-dynamics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Controlled, partially observed dynamics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-declaring-the-coordination-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Declaring the coordination scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-predictive-state-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Predictive-state semantics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Predictive-state semantics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a1-gloss_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A1 gloss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-1-exact-predictive-coordination-equivalence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition 1 — Exact predictive coordination equivalence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-1-exact-predictive-equivalence-is-an-equivalence-relation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 1 — Exact predictive equivalence is an equivalence relation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-2-minimal-predictive-sufficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 2 — Minimal predictive sufficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-2a-when-the-quotient-supports-recursive-dynamics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 2a — When the quotient supports recursive dynamics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-distance-without-fake-equivalence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Distance without fake equivalence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Distance without fake equivalence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warning-epsilon-closeness-is-not-generally-transitive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Warning — \(\epsilon\)-closeness is not generally transitive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-3-bounded-outcome-preservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 3 — Bounded-outcome preservation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-actor-beliefs-are-not-the-relational-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Actor beliefs are not the relational state
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-hcw-elicitation-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. HCW elicitation and observability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. HCW elicitation and observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a0-gloss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A0 gloss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-2-hcw-observability-envelope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition 2 — HCW observability envelope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#articulation-as-a-lossy-channel-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Articulation as a lossy channel family
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-replace-catch-all-uncertainty-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Replace catch-all uncertainty terms
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-compression-as-a-proposed-state-folding-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Compression as a proposed state-folding operation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Compression as a proposed state-folding operation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predictive-sufficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predictive sufficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operational-preservation-after-reinjection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational preservation after reinjection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-4-irreversible-predictive-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 4 — Irreversible predictive merge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposition-5-compositional-distortion-bound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposition 5 — Compositional distortion bound
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-constrained-ratedistortion-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task-constrained rate–distortion question
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-repair-as-control-rather-than-guaranteed-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Repair as control rather than guaranteed reset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-what-mathematics-can-establish-before-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. What mathematics can establish before experiments
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. What mathematics can establish before experiments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-mathematics-cannot-establish-alone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What mathematics cannot establish alone
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-bridge-to-non-destructive-state-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Bridge to non-destructive state reconstruction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-losable-claims-and-retirement-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Losable claims and retirement conditions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-open-decisions-before-promotion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Open decisions before promotion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mathematical-ancestry-and-methodological-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mathematical ancestry and methodological references
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-note-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working-note summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/rainmana/mcw-framework/edit/main/docs/working_notes/mcw_predictive_state_semantics.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="working-note-mcw-predictive-state-semantics-and-context-topology">Working Note — MCW Predictive-State Semantics and Context Topology<a class="headerlink" href="#working-note-mcw-predictive-state-semantics-and-context-topology" title="Permanent link">&para;</a></h1>
+<p><strong>Status:</strong> Working note · Evidence: L0 — mathematical construction and adjacent-layer proposal, not empirical validation or canon. Nothing in this note replaces or redefines the canonical <a href="../../glossary/#meta-context-window-mcw">MCW</a>, <a href="../../glossary/#human-context-window-hcw">HCW</a>, <a href="../../glossary/#artificial-context-window-acw">ACW</a>, <a href="../../glossary/#information-unit-iu">IU</a>, failure modes, repair operations, or H/R/D/M proxies. The object defined below is an <strong>operational predictive projection of evidence about coordination state</strong>, not the canonical MCW itself.</p>
+<p><strong>Working label:</strong> MCW Predictive-State Semantics (MCW-PSS). The label is provisional. This note follows the declaration, non-contradiction, falsifiability, and traceability discipline of Constitution <a href="../../constitution/">Articles II, V, and VIII</a>, but it is not yet a declared extension.</p>
+<hr />
+<h2 id="a0-the-idea-without-mathematics">A0 — The idea without mathematics<a class="headerlink" href="#a0-the-idea-without-mathematics" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Two complete context conditions count as the same operational coordination state when no allowed future coordination test can tell them apart.</p>
+</blockquote>
+<p>The context affecting a human–AI interaction is not confined to the text presently visible to a model. It can be distributed across humans, AI agents, retrieval systems, memories, tools, compressors, routers, policies, interfaces, and environments. Each component sees or transforms only part of that context.</p>
+<p>This note asks whether the resulting coordination state can be represented by what it predicts: how the system will respond to future ordinary exchanges, diagnostic questions, repairs, channel changes, and task interventions. Histories with identical relevant futures may be folded together. Histories with distinguishable futures must remain separate.</p>
+<p>This does <strong>not</strong> claim that:</p>
+<ul>
+<li>every component is an actor or owns a canonical context window;</li>
+<li>the full human cognitive state can be read or enumerated;</li>
+<li>an observed transcript is the MCW;</li>
+<li>MCW is a product capability possessed by a model, prompt, RAG system, or architecture;</li>
+<li>a finite or low-dimensional coordination state always exists;</li>
+<li>mathematical consistency supplies empirical validation.</li>
+</ul>
+<hr />
+<h2 id="1-why-formalize-this-way">1. Why formalize this way?<a class="headerlink" href="#1-why-formalize-this-way" title="Permanent link">&para;</a></h2>
+<p>The canonical glossary currently writes</p>
+<div class="arithmatex">\[
+\mathrm{MCW}=f(\mathrm{HCW}_1,\ldots,\mathrm{HCW}_n,
+\mathrm{ACW}_1,\ldots,\mathrm{ACW}_m,T,C),
+\]</div>
+<p>and correctly marks that expression as a mnemonic rather than mathematics: it has no declared codomain, metric, or functional form. This note does not silently upgrade that expression. It introduces a separate operational model with:</p>
+<ol>
+<li>a declared system boundary;</li>
+<li>typed state, intervention, and observation spaces;</li>
+<li>a probability law for state change and observation;</li>
+<li>actor-relative information sets;</li>
+<li>an exact future-behavior equivalence relation;</li>
+<li>an explicit distinction between exact and approximate folding;</li>
+<li>identifiable limits on elicitation, compression, and reconstruction.</li>
+</ol>
+<p>The objective is not to mathematize every human meaning. It is to define exactly which distinctions a particular coordination inquiry requires and what evidence could or could not recover them.</p>
+<hr />
+<h2 id="2-a-typed-context-topology">2. A typed context topology<a class="headerlink" href="#2-a-typed-context-topology" title="Permanent link">&para;</a></h2>
+<h3 id="a1-gloss">A1 gloss<a class="headerlink" href="#a1-gloss" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Context can be stored, selected, transformed, routed, hidden, or interpreted by different parts of a system; agency is only one role in that network.</p>
+</blockquote>
+<p>Fix a declared system boundary and a typed directed graph</p>
+<div class="arithmatex">\[
+G=(V,E,\tau),
+\]</div>
+<p>where <span class="arithmatex">\(V\)</span> is a set of components, <span class="arithmatex">\(E\)</span> is a set of directed information or control paths, and <span class="arithmatex">\(\tau\)</span> assigns roles. Candidate roles include:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Examples</th>
+<th>Context function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Participant</td>
+<td>Human, AI agent</td>
+<td>Interprets observations and can select actions</td>
+</tr>
+<tr>
+<td>Reservoir</td>
+<td>Transcript, vector store, long-term memory, model parameters</td>
+<td>Holds potentially reachable context</td>
+</tr>
+<tr>
+<td>Aperture</td>
+<td>Retrieval query, attention allocation, token budget, human attention</td>
+<td>Selects what becomes locally available</td>
+</tr>
+<tr>
+<td>Operator</td>
+<td>Compressor, ranker, policy filter, MoE router</td>
+<td>Transforms, weights, suppresses, or routes context</td>
+</tr>
+<tr>
+<td>Channel</td>
+<td>UI, API, STT/TTS, BCI, agent message bus</td>
+<td>Carries a representation between components</td>
+</tr>
+<tr>
+<td>Integrator</td>
+<td>Human, model, agent, orchestrator</td>
+<td>Incorporates a received representation into future state</td>
+</tr>
+<tr>
+<td>Governor</td>
+<td>System instruction, permission boundary, safety policy, budget</td>
+<td>Constrains allowed transitions or observations</td>
+</tr>
+</tbody>
+</table>
+<p>A component may have several roles. Role names are descriptive extensions, not new canonical MCW constructs.</p>
+<p>Assume <span class="arithmatex">\(V\)</span> is finite or countable. For every component <span class="arithmatex">\(v\in V\)</span>, let <span class="arithmatex">\((\mathcal X_v,\Sigma_v)\)</span> be its measurable local state space. The global state space is</p>
+<div class="arithmatex">\[
+(\mathcal X,\Sigma)
+=
+\prod_{v\in V}(\mathcal X_v,\Sigma_v),
+\qquad
+X_t=(X_t^v)_{v\in V}.
+\]</div>
+<p>For mathematical convenience, assume these are standard Borel spaces unless a particular application supplies different structure. Finite or countable products then remain standard Borel. This assumption supports regular conditional probabilities; it does not assert that an analyst can inspect every coordinate of <span class="arithmatex">\(X_t\)</span>.</p>
+<h3 id="actor-relative-accessible-context">Actor-relative accessible context<a class="headerlink" href="#actor-relative-accessible-context" title="Permanent link">&para;</a></h3>
+<p>For participant <span class="arithmatex">\(i\)</span>, define the information available by time <span class="arithmatex">\(t\)</span> as a filtration</p>
+<div class="arithmatex">\[
+\mathcal F_t^i
+=
+\sigma(\text{observations, actions, memories, and signals available to }i\text{ by }t).
+\]</div>
+<p>This supplies one formal interpretation of a bounded local context: the information on which that participant’s next action can condition. A component can still affect context without being a participant. A compressor, retriever, router, or hidden governor may alter <span class="arithmatex">\(\mathcal F_t^i\)</span> or the future transition law even if it has no goals or repair behavior of its own.</p>
+<h3 id="effective-context-is-scope-relative">Effective context is scope-relative<a class="headerlink" href="#effective-context-is-scope-relative" title="Permanent link">&para;</a></h3>
+<p>“All context” must not expand to the entire universe. Fix a coordination scope <span class="arithmatex">\(\kappa\)</span>. If an interventional model is available, component state <span class="arithmatex">\(X_t^v\)</span> is <strong>effective context</strong> for <span class="arithmatex">\(\kappa\)</span> when some admissible change to that state changes a relevant future law:</p>
+<div class="arithmatex">\[
+X_t^v\in\operatorname{Ctx}_\kappa
+\quad\Longleftrightarrow\quad
+\exists\,\pi,z,z' :
+\mathbb P^\pi(Z^\kappa\mid \operatorname{do}(X_t^v=z))
+\neq
+\mathbb P^\pi(Z^\kappa\mid \operatorname{do}(X_t^v=z')).
+\]</div>
+<p>The <span class="arithmatex">\(\operatorname{do}\)</span> notation requires an explicit causal model. Without one, the weaker and purely predictive question is whether observing <span class="arithmatex">\(X_t^v\)</span> refines the law of a relevant future after the other declared observations are held fixed.</p>
+<p>An unretrieved document can therefore be <em>reachable</em> context if an admissible query could retrieve it. A file that cannot affect any declared future is outside the scope, even if it exists somewhere in the environment.</p>
+<hr />
+<h2 id="3-controlled-partially-observed-dynamics">3. Controlled, partially observed dynamics<a class="headerlink" href="#3-controlled-partially-observed-dynamics" title="Permanent link">&para;</a></h2>
+<p>Let <span class="arithmatex">\((\mathcal U,\Sigma_{\mathcal U})\)</span> be an intervention space and <span class="arithmatex">\((\mathcal Y,\Sigma_{\mathcal Y})\)</span> an observation space. An intervention may be an IU exchange, prompt, tool event, retrieval, channel change, elicitation, repair operation, model reset, or environmental action.</p>
+<p>Represent the bounded system as a controlled stochastic process:</p>
+<div class="arithmatex">\[
+X_0\sim\mu_0,
+\qquad
+X_{t+1}\sim P_t(\,\cdot\mid X_t,U_t),
+\qquad
+Y_{t+1}\sim Q_t(\,\cdot\mid X_{t+1},U_t),
+\]</div>
+<p>where <span class="arithmatex">\(\mu_0\)</span> is an initial law, <span class="arithmatex">\(P_t\)</span> is a transition kernel, and <span class="arithmatex">\(Q_t\)</span> an observation kernel. Time dependence permits nonstationarity. A deterministic system is the special case in which the kernels are point masses. Coordination outcomes are produced by a declared measurable map <span class="arithmatex">\(g_\kappa\)</span>, for example <span class="arithmatex">\(Z_t^\kappa=g_\kappa(Y_{1:t},U_{0:t-1})\)</span>; the map may retain an entire outcome path rather than a scalar score.</p>
+<p>If a chosen <span class="arithmatex">\(X_t\)</span> is not Markov, it can always be augmented by enough history to make the process Markov formally. That move may create an enormous or infinite-dimensional state and therefore does not solve estimation or implementation.</p>
+<p>The observable history is</p>
+<div class="arithmatex">\[
+h_t=(u_0,y_1,u_1,y_2,\ldots,u_{t-1},y_t)\in\mathcal H.
+\]</div>
+<p>Formally, <span class="arithmatex">\(\mathcal H=\bigsqcup_{t\ge0}(\mathcal U\times\mathcal Y)^t\)</span> with the corresponding disjoint-union sigma-algebra. Historical actions in <span class="arithmatex">\(h_t\)</span> are treated as realized interventions; the policy that originally selected them is not part of a future comparison unless the scope declares it as state.</p>
+<p>A probe policy <span class="arithmatex">\(\pi=(\pi_j)_{j\ge0}\)</span> is a sequence of nonanticipating measurable kernels that chooses each later intervention from the <strong>future suffix</strong> observed after the comparison time. The same policy is initialized at <span class="arithmatex">\(h\)</span> and <span class="arithmatex">\(h'\)</span>: it may adapt to later observations, but it may not inspect the identity of the initial prefix and deliberately branch on whether it received <span class="arithmatex">\(h\)</span> or <span class="arithmatex">\(h'\)</span>. Policies may otherwise be open-loop scripts or adaptive question-and-repair strategies.</p>
+<hr />
+<h2 id="4-declaring-the-coordination-scope">4. Declaring the coordination scope<a class="headerlink" href="#4-declaring-the-coordination-scope" title="Permanent link">&para;</a></h2>
+<p>Every formal state claim is indexed by a scope</p>
+<div class="arithmatex">\[
+\kappa=(G,\mathcal Z^\kappa,\Pi^\kappa,L^\kappa,D^\kappa),
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(G\)</span> is the bounded context topology;</li>
+<li><span class="arithmatex">\(\mathcal Z^\kappa\)</span> is the space of coordination-relevant outcomes produced by the declared measurable outcome map <span class="arithmatex">\(g_\kappa\)</span>;</li>
+<li><span class="arithmatex">\(\Pi^\kappa\)</span> is the allowed family of future probe or intervention policies;</li>
+<li><span class="arithmatex">\(L^\kappa\in\mathbb N\cup\{\infty\}\)</span> is the future horizon;</li>
+<li><span class="arithmatex">\(D^\kappa\)</span> is a declared metric on future-outcome laws when the pseudometric and error-bound results below are invoked. Other divergences or losses may be useful, but do not inherit those results automatically.</li>
+</ul>
+<p>Candidate observable consequences of the canonical MCW dimensions include:</p>
+<ul>
+<li><strong>meaning:</strong> referent selection, paraphrase prediction, or interpretation-sensitive action;</li>
+<li><strong>salience:</strong> priority rankings and behavior under constrained time or tokens;</li>
+<li><strong>intent:</strong> goal, commitment, and predicted-next-action compatibility;</li>
+<li><strong>continuity:</strong> correct resumption, chronology, correction incorporation, and reopening conditions;</li>
+<li><strong>repair:</strong> clarification behavior, repair outcome, and effort under a declared cost model.</li>
+</ul>
+<p>These are candidate operationalizations, not validated replacements for H/R/D/M. Raw text similarity alone is not a sufficient coordination outcome.</p>
+<hr />
+<h2 id="5-predictive-state-semantics">5. Predictive-state semantics<a class="headerlink" href="#5-predictive-state-semantics" title="Permanent link">&para;</a></h2>
+<h3 id="a1-gloss_1">A1 gloss<a class="headerlink" href="#a1-gloss_1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>A coordination state is what must be remembered about the past to predict every relevant future we agreed to test.</p>
+</blockquote>
+<p>Let <span class="arithmatex">\(\mathcal H^\kappa\subseteq\mathcal H\)</span> contain the admissible histories for which the controlled generative model defines a continuation. For every <span class="arithmatex">\(\pi\in\Pi^\kappa\)</span>, fix a measurable continuation kernel</p>
+<div class="arithmatex">\[
+\Gamma_\kappa^\pi:
+\mathcal H^\kappa\times\Sigma_{(\mathcal Z^\kappa)^{L^\kappa}}
+\longrightarrow[0,1],
+\qquad
+\mathbb P_h^\pi(\,\cdot\,):=\Gamma_\kappa^\pi(h,\,\cdot\,),
+\]</div>
+<p>where <span class="arithmatex">\(\mathbb P_h^\pi\)</span> is the law of the coordination-relevant future <span class="arithmatex">\(Z_{1:L^\kappa}\)</span> when the system continues from <span class="arithmatex">\(h\)</span> under the same suffix policy <span class="arithmatex">\(\pi\)</span>.</p>
+<p>If a history is reached only through a null-probability event, either use a structural/generative version of <span class="arithmatex">\(\Gamma_\kappa^\pi\)</span>, fix a version of the relevant regular conditional law, or exclude that history from <span class="arithmatex">\(\mathcal H^\kappa\)</span>. Statements involving observationally derived conditional laws are therefore understood up to the declared version and almost-sure equivalence.</p>
+<h3 id="definition-1-exact-predictive-coordination-equivalence">Definition 1 — Exact predictive coordination equivalence<a class="headerlink" href="#definition-1-exact-predictive-coordination-equivalence" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+h\sim_\kappa h'
+\quad\Longleftrightarrow\quad
+\mathbb P_h^\pi=\mathbb P_{h'}^\pi
+\quad\text{for every }\pi\in\Pi^\kappa.
+\]</div>
+<p>The operational predictive coordination state is the equivalence class</p>
+<div class="arithmatex">\[
+S_t^\kappa=[h_t]_{\sim_\kappa}
+\in
+\mathcal S^\kappa:=\mathcal H^\kappa/\!\sim_\kappa.
+\]</div>
+<p>Equivalently, it can be represented as the prediction-valued object</p>
+<div class="arithmatex">\[
+\sigma_\kappa(h)
+=
+(\mathbb P_h^\pi)_{\pi\in\Pi^\kappa},
+\]</div>
+<p>whose codomain is a product of spaces of probability measures. This codomain may be infinite-dimensional. Nothing in the definition guarantees a finite state machine.</p>
+<p>Equip <span class="arithmatex">\(\mathcal S^\kappa\)</span> with the quotient sigma-algebra. The quotient need not itself be standard Borel. Any claim that a measurable estimator, posterior kernel, or recursive implementation exists requires additional regularity; the prediction-valued representation <span class="arithmatex">\(\sigma_\kappa(h)\)</span> can be used directly when those conditions are available.</p>
+<p><strong>Interpretation boundary:</strong> <span class="arithmatex">\(S_t^\kappa\)</span> is a task-relative behavioral projection supported by future laws. It is not asserted to be the complete canonical MCW, a complete human mental state, a neural coordinate, or a participant’s own belief.</p>
+<h3 id="proposition-1-exact-predictive-equivalence-is-an-equivalence-relation">Proposition 1 — Exact predictive equivalence is an equivalence relation<a class="headerlink" href="#proposition-1-exact-predictive-equivalence-is-an-equivalence-relation" title="Permanent link">&para;</a></h3>
+<p><strong>Claim.</strong> <span class="arithmatex">\(\sim_\kappa\)</span> is reflexive, symmetric, and transitive.</p>
+<p><strong>Proof sketch.</strong> Each property follows from equality of the complete indexed family <span class="arithmatex">\((\mathbb P_h^\pi)_{\pi\in\Pi^\kappa}\)</span>. In particular, if every future law from <span class="arithmatex">\(h\)</span> equals the corresponding law from <span class="arithmatex">\(h'\)</span>, and every law from <span class="arithmatex">\(h'\)</span> equals the corresponding law from <span class="arithmatex">\(h''\)</span>, then every law from <span class="arithmatex">\(h\)</span> equals the corresponding law from <span class="arithmatex">\(h''\)</span>. <span class="arithmatex">\(\square\)</span></p>
+<h3 id="proposition-2-minimal-predictive-sufficiency">Proposition 2 — Minimal predictive sufficiency<a class="headerlink" href="#proposition-2-minimal-predictive-sufficiency" title="Permanent link">&para;</a></h3>
+<p>Call a measurable representation <span class="arithmatex">\(\phi:\mathcal H^\kappa\to\mathcal E\)</span> <strong>predictively sufficient</strong> when, for every <span class="arithmatex">\(\pi\in\Pi^\kappa\)</span>, there is a measurable probability kernel <span class="arithmatex">\(R_\pi\)</span> such that</p>
+<div class="arithmatex">\[
+\mathbb P_h^\pi(\,\cdot\,)
+=
+R_\pi(\phi(h),\,\cdot\,)
+\qquad
+\text{for every }h\in\mathcal H^\kappa,
+\]</div>
+<p>or almost surely when the representation is defined only relative to a history distribution.</p>
+<p><strong>Claim.</strong> <span class="arithmatex">\(S_t^\kappa\)</span> is sufficient in the set-theoretic sense for the declared future laws. Moreover, any predictively sufficient representation <span class="arithmatex">\(\phi(h)\)</span> must refine the predictive quotient: there is a map <span class="arithmatex">\(r\)</span> such that</p>
+<div class="arithmatex">\[
+S_t^\kappa=r(\phi(h_t)).
+\]</div>
+<p><strong>Proof sketch.</strong> Sufficiency holds by construction because all histories in one class have identical declared future laws. If <span class="arithmatex">\(\phi(h)=\phi(h')\)</span> but the two histories were in different predictive classes, some allowed policy would distinguish their future laws, contradicting sufficiency of <span class="arithmatex">\(\phi\)</span>. Thus <span class="arithmatex">\(r\)</span> exists as a set map. Its measurability requires compatible measurable structures on the representation and quotient. <span class="arithmatex">\(\square\)</span></p>
+<p>This is the direct mathematical bridge to evaluation-tree folding: histories can be merged exactly when no allowed future subtree distinguishes them.</p>
+<h3 id="proposition-2a-when-the-quotient-supports-recursive-dynamics">Proposition 2a — When the quotient supports recursive dynamics<a class="headerlink" href="#proposition-2a-when-the-quotient-supports-recursive-dynamics" title="Permanent link">&para;</a></h3>
+<p>A predictive quotient at one fixed horizon is not automatically a reusable state machine. Suppose instead that equivalence compares all finite future horizons—or the complete infinite future path—and that:</p>
+<ol>
+<li><span class="arithmatex">\(\Pi^\kappa\)</span> contains every admissible finite continuation policy and is closed under conditioning on an action and observation;</li>
+<li>the future law contains the observations used to update the state;</li>
+<li>the continuation kernels arise from one jointly measurable, dynamically consistent controlled law, and <span class="arithmatex">\(\mathcal H^\kappa\)</span> is closed under every supported admissible one-step extension;</li>
+<li>the quotient admits a standard-Borel measurable realization <span class="arithmatex">\(q_\kappa:\mathcal H^\kappa\to\mathcal S^\kappa\)</span> whose fibers are exactly the <span class="arithmatex">\(\sim_\kappa\)</span> classes;</li>
+<li>the induced one-step history dynamics are <strong>strongly lumpable</strong> through <span class="arithmatex">\(q_\kappa\)</span>.</li>
+</ol>
+<p>Let <span class="arithmatex">\(K_\kappa^Y(dy\mid h,u)\)</span> be the immediate-observation kernel induced by the controlled process after history <span class="arithmatex">\(h\)</span> and intervention <span class="arithmatex">\(u\)</span>, and let <span class="arithmatex">\(u\star\pi\)</span> denote the policy that applies <span class="arithmatex">\(u\)</span> once and then follows suffix policy <span class="arithmatex">\(\pi\)</span>. Dynamic consistency means that this policy composition obeys the disintegration</p>
+<div class="arithmatex">\[
+\mathbb P_h^{u\star\pi}
+\!\left(Y_1\in A,Z_{2:}\in C\right)
+=
+\int_A
+\mathbb P_{huy}^{\pi}(Z_{2:}\in C)
+K_\kappa^Y(dy\mid h,u)
+\]</div>
+<p>for the declared future events and chosen structural versions. Strong lumpability then means that there is a measurable quotient transition kernel</p>
+<div class="arithmatex">\[
+\overline K_\kappa:
+\mathcal S^\kappa\times\mathcal U
+\rightsquigarrow
+\mathcal Y\times\mathcal S^\kappa
+\]</div>
+<p>such that, for every admissible <span class="arithmatex">\(h,u\)</span> and measurable <span class="arithmatex">\(A\subseteq\mathcal Y\)</span>, <span class="arithmatex">\(B\subseteq\mathcal S^\kappa\)</span>,</p>
+<div class="arithmatex">\[
+\overline K_\kappa(A\times B\mid q_\kappa(h),u)
+=
+\int_A
+\mathbf 1_B\!\left(q_\kappa(huy)\right)
+K_\kappa^Y(dy\mid h,u),
+\]</div>
+<p>and the right-hand side is identical for every representative of <span class="arithmatex">\(q_\kappa(h)\)</span>. Under these conditions the quotient is a controlled Markov state in the kernel sense. This joint kernel—not a pointwise successor selector—is the recursive object used below. A probabilistic-bisimulation construction is one sufficient route to this factorization.</p>
+<p>Equality of future laws and existence of pairwise regular conditional probabilities do <strong>not</strong> alone establish this kernel. With continuous observations or uncountable policy families or equivalence classes, the exceptional null set may depend on the policy and representative pair; there need not be one common full-measure set on which a point update is representative-independent.</p>
+<p>Only if there additionally exists a jointly measurable map</p>
+<div class="arithmatex">\[
+F_\kappa:
+\mathcal S^\kappa\times\mathcal U\times\mathcal Y
+\longrightarrow
+\mathcal S^\kappa
+\]</div>
+<p>such that</p>
+<div class="arithmatex">\[
+q_\kappa(huy)=F_\kappa(q_\kappa(h),u,y)
+\]</div>
+<p>for <span class="arithmatex">\(K_\kappa^Y(\,\cdot\mid h,u)\)</span>-almost every <span class="arithmatex">\(y\)</span> for every admissible <span class="arithmatex">\((h,u)\)</span>, with one representative-independent choice of versions, may the quotient be represented by the point update <span class="arithmatex">\(T_\kappa([h],u,y)=F_\kappa([h],u,y)\)</span>. A countable determining family can help construct such a common version when the remaining regularity conditions also hold. For countable discrete observations, equality is pointwise on every shared positive-probability observation.</p>
+<p>If the scope uses only a bounded horizon <span class="arithmatex">\(L^\kappa\)</span>, the remaining horizon must be included in the state—or a family <span class="arithmatex">\(S^{\kappa,\ell}\)</span> must be used for <span class="arithmatex">\(0\le\ell\le L^\kappa\)</span>. Otherwise the quotient is a horizon-specific predictive statistic, not a stationary automaton. The correctly typed default is then a kernel</p>
+<div class="arithmatex">\[
+\overline K_{\kappa,\ell}:
+\mathcal S^{\kappa,\ell}\times\mathcal U
+\rightsquigarrow
+\mathcal Y\times\mathcal S^{\kappa,\ell-1},
+\qquad 1\le\ell\le L^\kappa.
+\]</div>
+<p>Only under the stronger common-version condition may this kernel be realized by a deterministic observation-indexed update</p>
+<div class="arithmatex">\[
+T_{\kappa,\ell}:
+\mathcal S^{\kappa,\ell}\times\mathcal U\times\mathcal Y
+\longrightarrow
+\mathcal S^{\kappa,\ell-1}.
+\]</div>
+<hr />
+<h2 id="6-distance-without-fake-equivalence">6. Distance without fake equivalence<a class="headerlink" href="#6-distance-without-fake-equivalence" title="Permanent link">&para;</a></h2>
+<p>Exact equality is fragile in stochastic or estimated systems. Choose a metric <span class="arithmatex">\(D^\kappa\)</span> on future probability laws—for example, total variation on general measurable outcomes or a task-justified Wasserstein metric on a metric outcome space—and define</p>
+<div class="arithmatex">\[
+d_\kappa(h,h')
+=
+\sup_{\pi\in\Pi^\kappa}
+D^\kappa(\mathbb P_h^\pi,\mathbb P_{h'}^\pi).
+\]</div>
+<p>If <span class="arithmatex">\(d_\kappa(H,H')\)</span> will itself be used as a random variable or optimized, assume <span class="arithmatex">\(\Pi^\kappa\)</span> is countable, has a countable dense subfamily that preserves the supremum, or satisfies joint-measurability conditions ensuring that this supremum is measurable.</p>
+<p>When <span class="arithmatex">\(D^\kappa\)</span> is a bounded metric—or its supremum is finite over the declared policy family—<span class="arithmatex">\(d_\kappa\)</span> is a pseudometric on histories. Without that finiteness condition it is an extended pseudometric, permitted to take the value <span class="arithmatex">\(+\infty\)</span>. In either case,</p>
+<div class="arithmatex">\[
+h\sim_\kappa h'
+\quad\Longleftrightarrow\quad
+d_\kappa(h,h')=0.
+\]</div>
+<p>For total variation, this note uses</p>
+<div class="arithmatex">\[
+D_{\mathrm{TV}}(P,Q)=\sup_A|P(A)-Q(A)|,
+\]</div>
+<p>which equals one half of the <span class="arithmatex">\(L^1\)</span> distance when densities exist.</p>
+<h3 id="warning-epsilon-closeness-is-not-generally-transitive">Warning — <span class="arithmatex">\(\epsilon\)</span>-closeness is not generally transitive<a class="headerlink" href="#warning-epsilon-closeness-is-not-generally-transitive" title="Permanent link">&para;</a></h3>
+<p>The relation <span class="arithmatex">\(d_\kappa(h,h')\le\epsilon\)</span> is not necessarily an equivalence relation. For one Bernoulli future outcome with parameters <span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(0.4\)</span>, and <span class="arithmatex">\(0.8\)</span>, adjacent pairs have total-variation distance <span class="arithmatex">\(0.4\)</span>, while the endpoints have distance <span class="arithmatex">\(0.8\)</span>. With <span class="arithmatex">\(\epsilon=0.4\)</span>, the first is “close” to the second and the second to the third, but the first is not close to the third.</p>
+<p>Approximate folding therefore requires an explicit abstraction rule, such as:</p>
+<ul>
+<li>clusters whose maximum within-cluster diameter is at most <span class="arithmatex">\(\epsilon\)</span>;</li>
+<li>representative states with a declared maximum radius;</li>
+<li>probabilistic bisimulation metrics with downstream error bounds;</li>
+<li>covers rather than quotient classes.</li>
+</ul>
+<p>It must not silently call pairwise <span class="arithmatex">\(\epsilon\)</span>-closeness an equivalence relation.</p>
+<h3 id="proposition-3-bounded-outcome-preservation">Proposition 3 — Bounded-outcome preservation<a class="headerlink" href="#proposition-3-bounded-outcome-preservation" title="Permanent link">&para;</a></h3>
+<p>If <span class="arithmatex">\(D^\kappa\)</span> is total variation, <span class="arithmatex">\(d_\kappa(h,h')\le\epsilon\)</span>, and <span class="arithmatex">\(g\)</span> is any measurable future coordination utility with <span class="arithmatex">\(0\le g\le1\)</span>, then for every allowed policy <span class="arithmatex">\(\pi\)</span>,</p>
+<div class="arithmatex">\[
+\left|
+\mathbb E_h^\pi[g]-\mathbb E_{h'}^\pi[g]
+\right|
+\le\epsilon.
+\]</div>
+<p>This gives <span class="arithmatex">\(\epsilon\)</span> an operational interpretation: it bounds the change in every normalized future quantity measurable in the declared scope.</p>
+<hr />
+<h2 id="7-actor-beliefs-are-not-the-relational-state">7. Actor beliefs are not the relational state<a class="headerlink" href="#7-actor-beliefs-are-not-the-relational-state" title="Permanent link">&para;</a></h2>
+<p>No participant need know the predictive coordination state. For measurable <span class="arithmatex">\(B\subseteq\mathcal S^\kappa\)</span>, participant <span class="arithmatex">\(i\)</span> has the eventwise actor-relative conditional belief</p>
+<div class="arithmatex">\[
+b_t^i(B)
+=
+\mathbb P(S_t^\kappa\in B\mid\mathcal F_t^i).
+\]</div>
+<p>An analyst has a different belief based on the instrumentation available to the study:</p>
+<div class="arithmatex">\[
+b_t^{\mathrm{obs}}(B)
+=
+\mathbb P(S_t^\kappa\in B\mid\mathcal F_t^{\mathrm{obs}}).
+\]</div>
+<p>These conditional probabilities exist eventwise as conditional expectations. Treating <span class="arithmatex">\(B\mapsto b_t^i(B)\)</span> as a regular posterior probability kernel requires the additional standard-Borel or measurable-prediction representation conditions noted above.</p>
+<p>This separates at least three objects that broad appeals to “subjectivity” often collapse:</p>
+<ol>
+<li>the relational future-behavior class;</li>
+<li>the human’s belief about that class;</li>
+<li>the AI’s belief about that class.</li>
+</ol>
+<p>A candidate formal signature of <a href="../../glossary/#false-alignment">False Alignment</a>, to be treated as an extension rather than a replacement definition, is that both actors assign high probability to successful coordination while held-out future laws reveal incompatible interpretation or action.</p>
+<hr />
+<h2 id="8-hcw-elicitation-and-observability">8. HCW elicitation and observability<a class="headerlink" href="#8-hcw-elicitation-and-observability" title="Permanent link">&para;</a></h2>
+<h3 id="a0-gloss">A0 gloss<a class="headerlink" href="#a0-gloss" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>We cannot directly see everything a person is holding in mind, but we can ask, observe, and measure; each method reveals a selective view, and asking may itself change the person’s state.</p>
+</blockquote>
+<p>Let <span class="arithmatex">\(H_t\)</span> denote latent human context state, <span class="arithmatex">\(q_t\)</span> an elicitation, and <span class="arithmatex">\(c_t\)</span> a modality such as text, speech, gesture, behavioral choice, physiological sensing, or BCI. A response is generated through an elicitation/observation kernel</p>
+<div class="arithmatex">\[
+R_t\sim E_{c_t}(\,\cdot\mid H_t,q_t),
+\]</div>
+<p>while elicitation may also change the human:</p>
+<div class="arithmatex">\[
+H_{t+1}\sim T_H(\,\cdot\mid H_t,q_t,R_t).
+\]</div>
+<p>This distinguishes passive readout from reactive measurement. A question may retrieve a prior belief, change salience, introduce framing, construct a new opinion, or prompt revision during articulation.</p>
+<h3 id="definition-2-hcw-observability-envelope">Definition 2 — HCW observability envelope<a class="headerlink" href="#definition-2-hcw-observability-envelope" title="Permanent link">&para;</a></h3>
+<p>For an elicitation-policy family <span class="arithmatex">\(\mathcal Q\)</span>, modality family <span class="arithmatex">\(\mathcal C\)</span>, and horizon <span class="arithmatex">\(L\)</span>, define</p>
+<div class="arithmatex">\[
+\eta\equiv_{\mathcal Q,\mathcal C,L}\eta'
+\]</div>
+<p>when every allowed adaptive elicitation policy produces the same response law from candidate human-context conditions <span class="arithmatex">\(\eta\)</span> and <span class="arithmatex">\(\eta'\)</span> through horizon <span class="arithmatex">\(L\)</span>. As above, the same nonanticipating policy is initialized in each candidate condition, and observationally constructed continuation laws require declared regular-conditional versions. The resulting classes are the human-context distinctions observable under that protocol—not the complete HCW.</p>
+<p>A BCI refines the envelope only when it distinguishes task-relevant states that the previous channel family could not. More measurements or bandwidth alone do not establish greater decision-relevant informativeness.</p>
+<h3 id="articulation-as-a-lossy-channel-family">Articulation as a lossy channel family<a class="headerlink" href="#articulation-as-a-lossy-channel-family" title="Permanent link">&para;</a></h3>
+<p>For a single noninteractive transfer, consider the Markov chain</p>
+<div class="arithmatex">\[
+H_t
+\longrightarrow I_t^{\mathrm{selected}}
+\longrightarrow S_t^{\mathrm{encoded}}
+\longrightarrow S_t^{\mathrm{transmitted}}
+\longrightarrow \widehat I_t^{A}.
+\]</div>
+<p>Under the stated Markov assumption and without external side information, the data-processing inequality gives</p>
+<div class="arithmatex">\[
+I(H_t;\widehat I_t^A)
+\le
+I(H_t;S_t^{\mathrm{transmitted}})
+\le
+I(H_t;S_t^{\mathrm{encoded}})
+\le
+I(H_t;I_t^{\mathrm{selected}}).
+\]</div>
+<p>This does not imply that every individual transfer loses information or that an IU existed fully formed inside the human. It states that downstream processing cannot increase mutual information about <span class="arithmatex">\(H_t\)</span> without side information. Interactive questioning can add side information and alter <span class="arithmatex">\(H_t\)</span>, which must be modeled separately.</p>
+<hr />
+<h2 id="9-replace-catch-all-uncertainty-terms">9. Replace catch-all uncertainty terms<a class="headerlink" href="#9-replace-catch-all-uncertainty-terms" title="Permanent link">&para;</a></h2>
+<p>“Subjective” and “non-deterministic” should not be used where a more specific mechanism is available.</p>
+<table>
+<thead>
+<tr>
+<th>Broad phrase</th>
+<th>More precise object</th>
+<th>Observable consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subjective viewpoint</td>
+<td>Actor-relative information set <span class="arithmatex">\(\mathcal F_t^i\)</span></td>
+<td>Actors condition on different evidence</td>
+</tr>
+<tr>
+<td>Subjective interpretation</td>
+<td>Actor-specific decoding or observation kernel</td>
+<td>Same signal produces different inferred IUs</td>
+</tr>
+<tr>
+<td>Personal importance</td>
+<td>Actor-specific salience or utility functional</td>
+<td>Priority differs under constrained resources</td>
+</tr>
+<tr>
+<td>Hidden inner state</td>
+<td>Latent variable with a declared measurement model</td>
+<td>Several latent states fit the same observation</td>
+</tr>
+<tr>
+<td>Non-deterministic output</td>
+<td>Aleatoric transition or emission kernel</td>
+<td>Repeated controlled trials vary</td>
+</tr>
+<tr>
+<td>Unknown state or parameter</td>
+<td>Epistemic posterior uncertainty</td>
+<td>Additional evidence can change the estimate</td>
+</tr>
+<tr>
+<td>Partial observability</td>
+<td>Non-injective observation channel</td>
+<td>Distinct states remain observationally aliased</td>
+</tr>
+<tr>
+<td>Channel noise</td>
+<td>Stochastic corruption kernel</td>
+<td>Repeated transmissions disagree</td>
+</tr>
+<tr>
+<td>Representation loss</td>
+<td>Many-to-one encoding or compression map</td>
+<td>A distinction cannot be recovered without side information</td>
+</tr>
+<tr>
+<td>Ambiguity</td>
+<td>Multiple admissible semantic decoding maps</td>
+<td>Several interpretations remain consistent</td>
+</tr>
+<tr>
+<td>Drift over time</td>
+<td>Nonstationary kernel or hidden state transition</td>
+<td>The same nominal probe changes distribution over time</td>
+</tr>
+<tr>
+<td>Asking changes the answer</td>
+<td>Endogenous elicitation/intervention</td>
+<td>Measurement changes later response laws</td>
+</tr>
+<tr>
+<td>Different people respond differently</td>
+<td>Actor- or dyad-conditioned parameters</td>
+<td>Effects fail to transport without a population model</td>
+</tr>
+<tr>
+<td>Model form is uncertain</td>
+<td>Structural/model-class uncertainty</td>
+<td>Different mechanisms induce similar observed laws</td>
+</tr>
+</tbody>
+</table>
+<p>This taxonomy does not deny stochasticity or lived perspective. It prevents those words from acting as undifferentiated explanations.</p>
+<hr />
+<h2 id="10-compression-as-a-proposed-state-folding-operation">10. Compression as a proposed state-folding operation<a class="headerlink" href="#10-compression-as-a-proposed-state-folding-operation" title="Permanent link">&para;</a></h2>
+<p>Let the deterministic measurable map <span class="arithmatex">\(K_B\)</span> compress history <span class="arithmatex">\(H\)</span> into an artifact with budget <span class="arithmatex">\(B\)</span>. Let <span class="arithmatex">\(J_e\)</span> reinject that artifact using declared downstream side information <span class="arithmatex">\(e\)</span>. Require <span class="arithmatex">\(J_e(K_B(h))\)</span> to produce an admissible comparison history or initialization in the same scope, environment, clock, and remaining horizon as <span class="arithmatex">\(h\)</span>. The side information must not secretly encode which source history produced the artifact.</p>
+<h3 id="predictive-sufficiency">Predictive sufficiency<a class="headerlink" href="#predictive-sufficiency" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(K_B\)</span> is predictively sufficient for the declared future family when, for every <span class="arithmatex">\(\pi\in\Pi^\kappa\)</span>, there is a measurable probability kernel <span class="arithmatex">\(R_\pi\)</span> satisfying</p>
+<div class="arithmatex">\[
+\mathbb P_h^\pi(\,\cdot\,)
+=
+R_\pi(K_B(h),\,\cdot\,)
+\qquad
+\text{for every }h\in\mathcal H^\kappa.
+\]</div>
+<p>Under a declared distribution over histories, the corresponding almost-sure statement is equivalent, subject to the regular-conditional assumptions above, to</p>
+<div class="arithmatex">\[
+Z_{\mathrm{future}}^\pi
+\perp\!\!\!\perp
+H
+\mid K_B(H)
+\qquad
+\text{for every }\pi\in\Pi^\kappa.
+\]</div>
+<p>For deterministic <span class="arithmatex">\(K_B\)</span>, predictive sufficiency is also equivalent set-theoretically—and almost surely in the distribution-relative version—to recoverability of the predictive state from the artifact: there is a map <span class="arithmatex">\(r\)</span> such that</p>
+<div class="arithmatex">\[
+S^\kappa(H)=r(K_B(H)).
+\]</div>
+<h3 id="operational-preservation-after-reinjection">Operational preservation after reinjection<a class="headerlink" href="#operational-preservation-after-reinjection" title="Permanent link">&para;</a></h3>
+<p>Even an informationally sufficient artifact may be ignored or misread downstream. Define operational distortion</p>
+<div class="arithmatex">\[
+\Delta_\kappa(h;K_B,J_e)
+=
+d_\kappa\bigl(h,J_e(K_B(h))\bigr).
+\]</div>
+<p>This separates two failure sources:</p>
+<ol>
+<li>the artifact omitted a predictive distinction;</li>
+<li>the continuing system received the distinction but failed to use it.</li>
+</ol>
+<h3 id="proposition-4-irreversible-predictive-merge">Proposition 4 — Irreversible predictive merge<a class="headerlink" href="#proposition-4-irreversible-predictive-merge" title="Permanent link">&para;</a></h3>
+<p><strong>Claim.</strong> Suppose deterministic compression maps <span class="arithmatex">\(h\)</span> and <span class="arithmatex">\(h'\)</span> to the same artifact while <span class="arithmatex">\(h\not\sim_\kappa h'\)</span>. No common continuation procedure that receives only that artifact and source-independent side information can exactly preserve both original predictive classes.</p>
+<p><strong>Proof sketch.</strong> Because <span class="arithmatex">\(h\not\sim_\kappa h'\)</span>, choose a policy <span class="arithmatex">\(\pi^*\)</span> witnessing <span class="arithmatex">\(\mathbb P_h^{\pi^*}\neq\mathbb P_{h'}^{\pi^*}\)</span>. Identical artifacts, the same decoder, and source-independent side information induce the same reconstructed law under <span class="arithmatex">\(\pi^*\)</span> for both histories. That single law cannot equal both distinct original laws. <span class="arithmatex">\(\square\)</span></p>
+<p>This is a precise candidate signature of <a href="../../glossary/#overcompression">Overcompression</a>: a compression operator merged distinctions that matter to at least one declared future.</p>
+<h3 id="proposition-5-compositional-distortion-bound">Proposition 5 — Compositional distortion bound<a class="headerlink" href="#proposition-5-compositional-distortion-bound" title="Permanent link">&para;</a></h3>
+<p>For sequential context transformations producing admissible comparison conditions <span class="arithmatex">\(x_0,x_1,\ldots,x_n\in\mathcal H^\kappa\)</span> under the same policy family, outcome space, clock, and remaining horizon,</p>
+<div class="arithmatex">\[
+d_\kappa(x_0,x_n)
+\le
+\sum_{j=1}^{n}d_\kappa(x_{j-1},x_j).
+\]</div>
+<p>This follows pointwise from the triangle inequality. For stochastic transformations, expectations may be taken only after the pointwise conditions and measurability assumptions hold. The bound is not a claim that actual loss grows monotonically or that later transformations cannot repair earlier damage using side information.</p>
+<h3 id="task-constrained-ratedistortion-question">Task-constrained rate–distortion question<a class="headerlink" href="#task-constrained-ratedistortion-question" title="Permanent link">&para;</a></h3>
+<p>Once a distribution over histories and a valid distortion are declared, compression can be posed as</p>
+<div class="arithmatex">\[
+\min_{K_B}\;\mathbb E[\ell(K_B(H))]
+\qquad
+\text{subject to}\qquad
+\mathbb E[\Delta_\kappa(H;K_B,J_e)]\le\epsilon,
+\]</div>
+<p>where <span class="arithmatex">\(\ell\)</span> is code length, token cost, latency, or another declared resource. This is a research program, not a claim that the needed distributions or optimal compressor are already known.</p>
+<hr />
+<h2 id="11-repair-as-control-rather-than-guaranteed-reset">11. Repair as control rather than guaranteed reset<a class="headerlink" href="#11-repair-as-control-rather-than-guaranteed-reset" title="Permanent link">&para;</a></h2>
+<p>Let <span class="arithmatex">\(\mathcal U_R\subseteq\mathcal U\)</span> contain the five canonical repair operations: re-grounding, decompression, re-weighting, disambiguation, and synchronization. In this model they are controlled interventions. Their effects remain stochastic and context-dependent.</p>
+<p>For the state-based control expressions below, assume the measurable quotient transition kernel in Proposition 2a exists—whether by strong lumpability, probabilistic bisimulation, or the stronger common-version point update—and that admissible repair policies are measurable. A pointwise successor map is not required. Without that kernel, repair can still be compared through history-indexed continuation laws, but <span class="arithmatex">\(S_t^\kappa\)</span> must not be treated as a controlled Markov state.</p>
+<p>Choose a measurable target set <span class="arithmatex">\(\mathcal G\subseteq\mathcal S^\kappa\)</span> representing an acceptable predictive coordination region. For repair policy <span class="arithmatex">\(\rho\)</span>, define the hitting time</p>
+<div class="arithmatex">\[
+\tau_{\mathcal G}=\inf\{t\ge0:S_t^\kappa\in\mathcal G\},
+\]</div>
+<p>and, if a nonnegative measurable cost function <span class="arithmatex">\(c\)</span> is justified, expected repair cost</p>
+<div class="arithmatex">\[
+V_\rho(s)
+=
+\mathbb E_s^\rho
+\left[
+\sum_{t=0}^{\tau_{\mathcal G}-1}c(S_t^\kappa,U_t)
+\right].
+\]</div>
+<p>A repair can also be tested by whether the post-repair state lies within a declared predictive radius of a synchronized reference under held-out probes.</p>
+<p>Nothing in the present axioms implies that repair cost is non-decreasing in discovery lag. Later information can reveal an easy correction, a disagreement can self-resolve, or side information can restore a distinction. A monotonic repair-lag theorem would require additional assumptions such as irreversible loss or monotone accumulation and should not be inferred from this note.</p>
+<hr />
+<h2 id="12-what-mathematics-can-establish-before-experiments">12. What mathematics can establish before experiments<a class="headerlink" href="#12-what-mathematics-can-establish-before-experiments" title="Permanent link">&para;</a></h2>
+<p>Conditional on the declared spaces, policies, kernels, and observables, mathematics can establish:</p>
+<ol>
+<li>exact predictive equivalence is an equivalence relation;</li>
+<li>its quotient is the coarsest sufficient predictive state for the declared future family;</li>
+<li>approximate pairwise closeness is not generally an equivalence relation;</li>
+<li>total-variation distance bounds changes in bounded future outcomes;</li>
+<li>a deterministic compressor that merges distinct predictive classes cannot preserve both without side information;</li>
+<li>sequential transformation error obeys a triangle-inequality budget;</li>
+<li>observationally equivalent latent models cannot be distinguished by any estimator restricted to the allowed observations;</li>
+<li>under continuation closure or a compatible bisimulation condition, a finite predictive quotient yields a valid candidate for Jess-style finite-state folding; a bounded-horizon quotient alone does not.</li>
+</ol>
+<p>These are conditional mathematical results, not toy arithmetic. They expose exactly which assumptions carry each conclusion.</p>
+<h3 id="what-mathematics-cannot-establish-alone">What mathematics cannot establish alone<a class="headerlink" href="#what-mathematics-cannot-establish-alone" title="Permanent link">&para;</a></h3>
+<p>Mathematics alone cannot establish:</p>
+<ul>
+<li>that the selected outcomes operationalize meaning, salience, intent, or continuity;</li>
+<li>that the predictive quotient is nontrivial, finite, estimable, or useful in real interactions;</li>
+<li>that the topology variables improve prediction beyond transcripts and actor-level context;</li>
+<li>the actual human, model, retrieval, routing, or channel kernels;</li>
+<li>whether an elicitation method distinguishes relevant HCW conditions;</li>
+<li>whether BCI decoding tracks coordination-relevant meaning;</li>
+<li>whether the canonical failure modes are reliably discriminable;</li>
+<li>whether a proposed repair improves coordination;</li>
+<li>whether an MCW-guided compressor outperforms matched alternatives;</li>
+<li>whether this formal projection captures something not already handled by common ground, distributed cognition, predictive-state, or stochastic-control theories.</li>
+</ul>
+<p>The fact that measurement can alter the measured interaction does not eliminate empirical contact. It means the measurement or elicitation policy belongs in <span class="arithmatex">\(U_t\)</span> and its state-changing effect belongs in <span class="arithmatex">\(P_t\)</span>.</p>
+<hr />
+<h2 id="13-bridge-to-non-destructive-state-reconstruction">13. Bridge to non-destructive state reconstruction<a class="headerlink" href="#13-bridge-to-non-destructive-state-reconstruction" title="Permanent link">&para;</a></h2>
+<p>Smith et al.’s non-destructive finite-state-machine reconstruction supplies the motivating algorithmic pattern: apply controlled inputs, observe outputs, expand future behavior, and fold indistinguishable subtrees.</p>
+<p>For MCW-PSS:</p>
+<ol>
+<li>histories are nodes in an intervention–observation tree;</li>
+<li>ordinary exchanges, elicitation, channel changes, and repair operations form the intervention family;</li>
+<li>task-grounded coordination consequences form the observations;</li>
+<li><span class="arithmatex">\(\sim_\kappa\)</span> determines exact folds;</li>
+<li><span class="arithmatex">\(d_\kappa\)</span> supports bounded approximations with explicit error;</li>
+<li>trusted-versus-candidate quotient graphs expose altered transitions, reachable states, compression failures, or repair behavior.</li>
+</ol>
+<p>Internal model features—activations, attention, retrieval traces, MoE routing, memory access—may improve exploration or explain a split. They do not define predictive equivalence unless the declared coordination outcome itself includes those measurements.</p>
+<hr />
+<h2 id="14-losable-claims-and-retirement-conditions">14. Losable claims and retirement conditions<a class="headerlink" href="#14-losable-claims-and-retirement-conditions" title="Permanent link">&para;</a></h2>
+<p>The formal definitions are stipulations; their usefulness is losable. This line of work should be narrowed or abandoned if:</p>
+<ol>
+<li><strong>Actor-only sufficiency:</strong> transcript and actor-level variables predict every declared future as well as the distributed topology. Then the non-actor topology adds no operational MCW value.</li>
+<li><strong>No emergent residue:</strong> yoked outsiders with the same transcript and task materials predict and resolve the interaction as well as insiders. Then transcript plus individual models may suffice.</li>
+<li><strong>Trivial quotient:</strong> all histories collapse into one class or nearly every history remains unique under plausible scopes. Then the representation offers no useful compression.</li>
+<li><strong>No estimable abstraction:</strong> every finite or bounded-complexity approximation violates held-out predictive error limits.</li>
+<li><strong>No compression benefit:</strong> MCW-derived state-transfer artifacts do not preserve held-out futures better than matched ordinary summaries or extractive baselines.</li>
+<li><strong>No repair specificity:</strong> failure-matched repairs do not outperform generic clarification, additional time, or additional context.</li>
+<li><strong>Redundancy:</strong> established common-ground, distributed-cognition, predictive-state, or decentralized-control models explain the same observables with equal or better parsimony.</li>
+</ol>
+<p>These are empirical retirement conditions for the research program, not logical falsifications of an equivalence relation.</p>
+<hr />
+<h2 id="15-open-decisions-before-promotion">15. Open decisions before promotion<a class="headerlink" href="#15-open-decisions-before-promotion" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Should MCW-PSS remain a model <strong>of evidence about MCW</strong>, become a declared extension, or motivate a future canonical amendment?</li>
+<li>Should the context topology live inside a broadened ACW, outside MCW as an adjacent substrate, or become part of MCW’s canonical ontology?</li>
+<li>Which coordination outcomes and probe families are legitimate for the first scoped instance?</li>
+<li>Should exact equivalence be history-based, latent-state-based, or both with an explicit realization theorem?</li>
+<li>Which probability-law metric is appropriate for mixed text, action, ranking, and repair outcomes?</li>
+<li>Which assumptions would justify a finite-state approximation?</li>
+<li>How should reactive elicitation record whether an IU was retrieved, constructed, reframed, or revised?</li>
+<li>Which frozen statements concerning HCW/ACW “enumerability” and universal transfer loss require separate amendment proposals?</li>
+</ol>
+<hr />
+<h2 id="mathematical-ancestry-and-methodological-references">Mathematical ancestry and methodological references<a class="headerlink" href="#mathematical-ancestry-and-methodological-references" title="Permanent link">&para;</a></h2>
+<p>This proposal inherits substantial machinery and should claim only the MCW-specific operationalization and synthesis:</p>
+<ul>
+<li>Åström, K. J. (1965). “Optimal Control of Markov Processes with Incomplete State Information I.” <em>Journal of Mathematical Analysis and Applications</em>, 10, 174–205. https://doi.org/10.1016/0022-247X(65)90154-X</li>
+<li>Blackwell, D. (1953). “Equivalent Comparisons of Experiments.” <em>The Annals of Mathematical Statistics</em>, 24(2), 265–272. https://doi.org/10.1214/aoms/1177729032</li>
+<li>Ferns, N., Panangaden, P., &amp; Precup, D. (2004). “Metrics for Finite Markov Decision Processes.” <em>Proceedings of UAI 2004</em>. https://arxiv.org/abs/1207.4114</li>
+<li>Littman, M. L., Sutton, R. S., &amp; Singh, S. (2001). “Predictive Representations of State.” <em>Advances in Neural Information Processing Systems 14</em>. https://papers.nips.cc/paper_files/paper/2001/hash/1e4d36177d71bbb3558e43af9577d70e-Abstract.html</li>
+<li>Nayyar, A., Mahajan, A., &amp; Teneketzis, D. (2013). “Decentralized Stochastic Control with Partial History Sharing: A Common Information Approach.” <em>IEEE Transactions on Automatic Control</em>, 58(7), 1644–1658. https://doi.org/10.1109/TAC.2013.2239000</li>
+<li>Shalizi, C. R., &amp; Crutchfield, J. P. (2001). “Computational Mechanics: Pattern and Prediction, Structure and Simplicity.” <em>Journal of Statistical Physics</em>, 104, 817–879. https://doi.org/10.1023/A:1010388907793</li>
+<li>Smith, J., Oler, K., Miller, C., &amp; Manz, D. (2017). “Reverse Engineering Integrated Circuits Using Finite State Machine Analysis.” <em>Proceedings of HICSS-50</em>. https://aisel.aisnet.org/hicss-50/eg/supply_chain_security/4/</li>
+<li>Tishby, N., Pereira, F. C., &amp; Bialek, W. (1999). “The Information Bottleneck Method.” <em>Proceedings of the 37th Annual Allerton Conference on Communication, Control, and Computing</em>, 368–377. https://arxiv.org/abs/physics/0004057</li>
+</ul>
+<p>Related traditions still requiring a dedicated comparison include probabilistic bisimulation, controlled Nerode equivalence, partially observable stochastic games, dynamic epistemic logic, active system identification, causal abstraction, psychometrics, measurement invariance, and reactive measurement.</p>
+<hr />
+<h2 id="working-note-summary">Working-note summary<a class="headerlink" href="#working-note-summary" title="Permanent link">&para;</a></h2>
+<p>The central proposal is:</p>
+<blockquote>
+<p>Treat evidence about MCW as a task-relative predictive state of a typed, partially observed context topology. Fold histories only under exact future-law equivalence; approximate them only with explicit error bounds. Treat elicitation, compression, and repair as interventions whose effects are included in the process rather than dismissed as “subjective” or “non-deterministic.”</p>
+</blockquote>
+<p>This construction is mathematically coherent under its stated assumptions. Whether it is empirically useful, distinct from prior frameworks, finite enough to estimate, or faithful to lived human–AI coordination remains open.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rainmana" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
