@@ -4,6 +4,9 @@
 
 **Working label:** MCW Predictive-State Semantics (MCW-PSS). The label is provisional. This note follows the declaration, non-contradiction, falsifiability, and traceability discipline of Constitution [Articles II, V, and VIII](../constitution.md), but it is not yet a declared extension.
 
+!!! tip "New to the mathematics?"
+    Begin with the [ground-up MCW-PSS mathematics guide](mcw_predictive_state_semantics_guide.md). It develops the idea from one ordinary scheduling conversation, explains how to say and read the core equations, defines the notation symbol by symbol, and links each simplified statement back to this formal note.
+
 ---
 
 ## A0 — The idea without mathematics
@@ -431,16 +434,16 @@ A candidate formal signature of [False Alignment](../glossary.md#false-alignment
 
 > We cannot directly see everything a person is holding in mind, but we can ask, observe, and measure; each method reveals a selective view, and asking may itself change the person’s state.
 
-Let $H_t$ denote latent human context state, $q_t$ an elicitation, and $c_t$ a modality such as text, speech, gesture, behavioral choice, physiological sensing, or BCI. A response is generated through an elicitation/observation kernel
+Let $H_t$ denote latent human context state, $a_t^{\mathrm{elicit}}$ an elicitation action, and $c_t$ a modality such as text, speech, gesture, behavioral choice, physiological sensing, or BCI. A response is generated through an elicitation/observation kernel
 
 $$
-R_t\sim E_{c_t}(\,\cdot\mid H_t,q_t),
+R_t\sim E_{c_t}(\,\cdot\mid H_t,a_t^{\mathrm{elicit}}),
 $$
 
 while elicitation may also change the human:
 
 $$
-H_{t+1}\sim T_H(\,\cdot\mid H_t,q_t,R_t).
+H_{t+1}\sim T_H(\,\cdot\mid H_t,a_t^{\mathrm{elicit}},R_t).
 $$
 
 This distinguishes passive readout from reactive measurement. A question may retrieve a prior belief, change salience, introduce framing, construct a new opinion, or prompt revision during articulation.
@@ -512,16 +515,16 @@ This taxonomy does not deny stochasticity or lived perspective. It prevents thos
 
 ## 10. Compression as a proposed state-folding operation
 
-Let the deterministic measurable map $K_B$ compress history $H$ into an artifact with budget $B$. Let $J_e$ reinject that artifact using declared downstream side information $e$. Require $J_e(K_B(h))$ to produce an admissible comparison history or initialization in the same scope, environment, clock, and remaining horizon as $h$. The side information must not secretly encode which source history produced the artifact.
+Let the deterministic measurable map $C_B$ compress history $H$ into an artifact with budget $B$. Let $J_e$ reinject that artifact using declared downstream side information $e$. Require $J_e(C_B(h))$ to produce an admissible comparison history or initialization in the same scope, environment, clock, and remaining horizon as $h$. The side information must not secretly encode which source history produced the artifact.
 
 ### Predictive sufficiency
 
-$K_B$ is predictively sufficient for the declared future family when, for every $\pi\in\Pi^\kappa$, there is a measurable probability kernel $R_\pi$ satisfying
+$C_B$ is predictively sufficient for the declared future family when, for every $\pi\in\Pi^\kappa$, there is a measurable probability kernel $R_\pi$ satisfying
 
 $$
 \mathbb P_h^\pi(\,\cdot\,)
 =
-R_\pi(K_B(h),\,\cdot\,)
+R_\pi(C_B(h),\,\cdot\,)
 \qquad
 \text{for every }h\in\mathcal H^\kappa.
 $$
@@ -532,15 +535,15 @@ $$
 Z_{\mathrm{future}}^\pi
 \perp\!\!\!\perp
 H
-\mid K_B(H)
+\mid C_B(H)
 \qquad
 \text{for every }\pi\in\Pi^\kappa.
 $$
 
-For deterministic $K_B$, predictive sufficiency is also equivalent set-theoretically—and almost surely in the distribution-relative version—to recoverability of the predictive state from the artifact: there is a map $r$ such that
+For deterministic $C_B$, predictive sufficiency is also equivalent set-theoretically—and almost surely in the distribution-relative version—to recoverability of the predictive state from the artifact: there is a map $r$ such that
 
 $$
-S^\kappa(H)=r(K_B(H)).
+S^\kappa(H)=r(C_B(H)).
 $$
 
 ### Operational preservation after reinjection
@@ -548,9 +551,9 @@ $$
 Even an informationally sufficient artifact may be ignored or misread downstream. Define operational distortion
 
 $$
-\Delta_\kappa(h;K_B,J_e)
+\Delta_\kappa(h;C_B,J_e)
 =
-d_\kappa\bigl(h,J_e(K_B(h))\bigr).
+d_\kappa\bigl(h,J_e(C_B(h))\bigr).
 $$
 
 This separates two failure sources:
@@ -583,10 +586,10 @@ This follows pointwise from the triangle inequality. For stochastic transformati
 Once a distribution over histories and a valid distortion are declared, compression can be posed as
 
 $$
-\min_{K_B}\;\mathbb E[\ell(K_B(H))]
+\min_{C_B}\;\mathbb E[\ell(C_B(H))]
 \qquad
 \text{subject to}\qquad
-\mathbb E[\Delta_\kappa(H;K_B,J_e)]\le\epsilon,
+\mathbb E[\Delta_\kappa(H;C_B,J_e)]\le\epsilon,
 $$
 
 where $\ell$ is code length, token cost, latency, or another declared resource. This is a research program, not a claim that the needed distributions or optimal compressor are already known.

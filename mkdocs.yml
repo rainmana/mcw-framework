@@ -61,6 +61,7 @@ nav:
       - Prompt Predictions: experiments/preregistration/prompt_predictions.md
     - Test Bed: test_bed.md
     - Working Note — IU Individuation: working_notes/iu_individuation.md
+    - Start Here — MCW Predictive-State Mathematics: working_notes/mcw_predictive_state_semantics_guide.md
     - Working Note — MCW Predictive-State Semantics: working_notes/mcw_predictive_state_semantics.md
 
 markdown_extensions:
