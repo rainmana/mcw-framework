@@ -256,35 +256,85 @@ $$
 
 This is the direct mathematical bridge to evaluation-tree folding: histories can be merged exactly when no allowed future subtree distinguishes them.
 
-### Proposition 2a — When the quotient supports recursive state updates
+### Proposition 2a — When the quotient supports recursive dynamics
 
 A predictive quotient at one fixed horizon is not automatically a reusable state machine. Suppose instead that equivalence compares all finite future horizons—or the complete infinite future path—and that:
 
 1. $\Pi^\kappa$ contains every admissible finite continuation policy and is closed under conditioning on an action and observation;
 2. the future law contains the observations used to update the state;
-3. regular conditional probabilities exist.
+3. the continuation kernels arise from one jointly measurable, dynamically consistent controlled law, and $\mathcal H^\kappa$ is closed under every supported admissible one-step extension;
+4. the quotient admits a standard-Borel measurable realization $q_\kappa:\mathcal H^\kappa\to\mathcal S^\kappa$ whose fibers are exactly the $\sim_\kappa$ classes;
+5. the induced one-step history dynamics are **strongly lumpable** through $q_\kappa$.
 
-Then the same-space update
+Let $K_\kappa^Y(dy\mid h,u)$ be the immediate-observation kernel induced by the controlled process after history $h$ and intervention $u$, and let $u\star\pi$ denote the policy that applies $u$ once and then follows suffix policy $\pi$. Dynamic consistency means that this policy composition obeys the disintegration
 
 $$
-T_\kappa([h],u,y)=[huy]
+\mathbb P_h^{u\star\pi}
+\!\left(Y_1\in A,Z_{2:}\in C\right)
+=
+\int_A
+\mathbb P_{huy}^{\pi}(Z_{2:}\in C)
+K_\kappa^Y(dy\mid h,u)
 $$
 
-is well-defined for almost every $y$ under the common immediate-observation law. If $h\sim_\kappa h'$, equality of every joint future law implies equality of the immediate observation law under $u$ and almost-sure equality of the conditional continuation laws. Thus $huy\sim_\kappa h'uy$ almost surely; for discrete observations, this includes every shared positive-probability $y$.
+for the declared future events and chosen structural versions. Strong lumpability then means that there is a measurable quotient transition kernel
 
-If the scope uses only a bounded horizon $L^\kappa$, the remaining horizon must be included in the state—or a family $S^{\kappa,\ell}$ must be used for $0\le\ell\le L^\kappa$. Otherwise the quotient is a horizon-specific predictive statistic, not a stationary automaton. A probabilistic-bisimulation relation is another route to a well-defined folded controlled process.
+$$
+\overline K_\kappa:
+\mathcal S^\kappa\times\mathcal U
+\rightsquigarrow
+\mathcal Y\times\mathcal S^\kappa
+$$
 
-For that bounded-horizon family, the correctly typed update is
+such that, for every admissible $h,u$ and measurable $A\subseteq\mathcal Y$, $B\subseteq\mathcal S^\kappa$,
+
+$$
+\overline K_\kappa(A\times B\mid q_\kappa(h),u)
+=
+\int_A
+\mathbf 1_B\!\left(q_\kappa(huy)\right)
+K_\kappa^Y(dy\mid h,u),
+$$
+
+and the right-hand side is identical for every representative of $q_\kappa(h)$. Under these conditions the quotient is a controlled Markov state in the kernel sense. This joint kernel—not a pointwise successor selector—is the recursive object used below. A probabilistic-bisimulation construction is one sufficient route to this factorization.
+
+Equality of future laws and existence of pairwise regular conditional probabilities do **not** alone establish this kernel. With continuous observations or uncountable policy families or equivalence classes, the exceptional null set may depend on the policy and representative pair; there need not be one common full-measure set on which a point update is representative-independent.
+
+Only if there additionally exists a jointly measurable map
+
+$$
+F_\kappa:
+\mathcal S^\kappa\times\mathcal U\times\mathcal Y
+\longrightarrow
+\mathcal S^\kappa
+$$
+
+such that
+
+$$
+q_\kappa(huy)=F_\kappa(q_\kappa(h),u,y)
+$$
+
+for $K_\kappa^Y(\,\cdot\mid h,u)$-almost every $y$ for every admissible $(h,u)$, with one representative-independent choice of versions, may the quotient be represented by the point update $T_\kappa([h],u,y)=F_\kappa([h],u,y)$. A countable determining family can help construct such a common version when the remaining regularity conditions also hold. For countable discrete observations, equality is pointwise on every shared positive-probability observation.
+
+If the scope uses only a bounded horizon $L^\kappa$, the remaining horizon must be included in the state—or a family $S^{\kappa,\ell}$ must be used for $0\le\ell\le L^\kappa$. Otherwise the quotient is a horizon-specific predictive statistic, not a stationary automaton. The correctly typed default is then a kernel
+
+$$
+\overline K_{\kappa,\ell}:
+\mathcal S^{\kappa,\ell}\times\mathcal U
+\rightsquigarrow
+\mathcal Y\times\mathcal S^{\kappa,\ell-1},
+\qquad 1\le\ell\le L^\kappa.
+$$
+
+Only under the stronger common-version condition may this kernel be realized by a deterministic observation-indexed update
 
 $$
 T_{\kappa,\ell}:
 \mathcal S^{\kappa,\ell}\times\mathcal U\times\mathcal Y
 \longrightarrow
-\mathcal S^{\kappa,\ell-1},
-\qquad 1\le\ell\le L^\kappa,
+\mathcal S^{\kappa,\ell-1}.
 $$
-
-again defined only almost surely unless structural continuation versions are supplied.
 
 ---
 
@@ -547,7 +597,7 @@ where $\ell$ is code length, token cost, latency, or another declared resource. 
 
 Let $\mathcal U_R\subseteq\mathcal U$ contain the five canonical repair operations: re-grounding, decompression, re-weighting, disambiguation, and synchronization. In this model they are controlled interventions. Their effects remain stochastic and context-dependent.
 
-For the state-based control expressions below, assume Proposition 2a’s recursive-update conditions or a compatible measurable Markov/bisimulation representation. Without those conditions, repair can still be compared through history-indexed continuation laws, but $S_t^\kappa$ must not be treated as a controlled Markov state.
+For the state-based control expressions below, assume the measurable quotient transition kernel in Proposition 2a exists—whether by strong lumpability, probabilistic bisimulation, or the stronger common-version point update—and that admissible repair policies are measurable. A pointwise successor map is not required. Without that kernel, repair can still be compared through history-indexed continuation laws, but $S_t^\kappa$ must not be treated as a controlled Markov state.
 
 Choose a measurable target set $\mathcal G\subseteq\mathcal S^\kappa$ representing an acceptable predictive coordination region. For repair policy $\rho$, define the hitting time
 
