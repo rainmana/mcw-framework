@@ -15,9 +15,9 @@ The framework's [OSI Layers of Understanding](../glossary.md#osi-layers-of-under
 
 | Accessibility layer | What this guide gives you | A reasonable stopping point |
 |---|---|---|
-| **A0 — Intuition** | One sentence and no required notation | You want the central idea |
-| **A1 — Concepts** | A complete worked example from an ordinary conversation | You want to explain or discuss the proposal |
-| **A2 — Formalization** | The core equations, spoken aloud and unpacked line by line | You want to read the formal note |
+| **A0 — Intuition** | An AI-system orientation and one sentence with no notation | You want the central idea |
+| **A1 — Concepts** | A complete worked example in ordinary language | You want to explain or discuss the proposal |
+| **A2 — Formalization** | Symbols introduced only after their concepts, then the core equations read aloud | You want to read the formal note |
 | **A3 — Research model** | Probability kernels, recursive state, measurement, compression, and the full symbol reference | You want to design or critique research |
 | **A4 — Implementation** | Not yet claimed: the working note does not provide a validated estimator or production implementation | You want to build a prototype after the assumptions are settled |
 | **A5 — Domain application** | Not yet claimed: domain-specific evidence must come from separately scoped studies | You want to apply the model in a real field |
@@ -26,15 +26,59 @@ Stopping early is not failing to understand the framework. A3 vocabulary is need
 
 ---
 
-## A0 — The idea in one sentence
+## Orientation — What kind of AI interaction are we modeling?
 
-> Two interaction histories count as the same operational state when every future test we agreed matters would behave the same way from either history.
+You do not need to know how a neural network is trained to follow this guide. The construction compares what a bounded system may do next under controlled actions; it does not begin by assuming that we can inspect or explain every internal mechanism.
 
-That sentence has three guardrails:
+| Term | Meaning in this guide | Important boundary |
+|---|---|---|
+| **AI model** | A learned software component that produces predictions, decisions, or generated content from inputs | It is one component, not automatically the whole product a person uses |
+| **AI assistant** | The user-facing system that receives requests and returns responses | It may include a model plus instructions, safety rules, retrieval, memory, tools, and an interface |
+| **AI agent** | A system permitted to choose actions across multiple steps, often using tools or observing an environment | “Agent” describes an operational role; it does not establish personhood or independent agency |
+| **token** | One unit of text representation processed by a language model | A token is not reliably the same thing as a word |
+| **bounded system** | The components and environment that a study explicitly places inside its boundary | It is not the whole universe and need not be only the neural model |
 
-1. **Operational state:** this is a task-relative model of evidence about coordination, not the complete canonical MCW or anyone's full inner state.
-2. **Tests we agreed matter:** sameness is always relative to a declared scope; it is not universal sameness.
-3. **Would behave the same way:** we compare possible futures, including their probabilities, rather than merely comparing how similar two transcripts sound.
+[Google's introductory machine-learning guide](https://developers.google.com/machine-learning/intro-to-ml/what-is-ml) describes a model as software trained from data to make predictions or generate content. The [NIST AI Risk Management Framework](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf) treats deployed AI systems as socio-technical: behavior and risk can arise from technical components, people, use, and environment together. MCW-PSS therefore declares a system boundary instead of silently treating “the AI” as one isolated box.
+
+An interaction alternates between something done to or by the bounded system and something observed afterward. The study records some of that past, chooses what may be done next, and declares which consequences count as relevant outcomes.
+
+```mermaid
+flowchart LR
+    H["Recorded past: history"] --> A["Allowed next action or test"]
+    A --> S["Bounded human–AI system"]
+    S --> O["Observed response or event"]
+    O --> Z["Outcome selected by the scope"]
+    O -. "may guide a later action" .-> A
+```
+
+The diagram is only a visual restatement of the preceding sentence; none of the guide's meaning depends on seeing it.
+
+### Eight words used throughout the guide
+
+| Word | Meaning here | It does **not** automatically mean |
+|---|---|---|
+| **system boundary** | Which components, people, channels, tools, and environment are included | Everything that exists |
+| **history** | The declared record of past actions and observations | Complete hidden state, every stored fact, or everything a human remembers |
+| **test or intervention** | An allowed thing done next to probe or change the process | Only an exam or a textual prompt |
+| **observation** | What becomes visible to the study | Ground truth or complete access |
+| **outcome** | The selected consequence that the study compares | Everything that happens |
+| **policy** | A rule for choosing later interventions using only permitted information | A company rule or necessarily one fixed prompt |
+| **horizon** | How many future steps the comparison covers | How long the computer takes to respond |
+| **state** | A grouping that preserves the past distinctions needed for the declared future comparison | A transcript, memory record, feeling, or activation vector by definition |
+
+---
+
+## A0 — The idea with no notation
+
+> Two different past conversations may be treated as the same for a particular task when nothing we are allowed to do next reveals a task-relevant difference between them.
+
+In an uncertain system, “no difference” means the same relevant possible results with the same probabilities—not merely that two sampled replies happened to match.
+
+That idea has three guardrails:
+
+1. **For a particular task:** this is a task-relative model of evidence about coordination, not the complete canonical MCW or anyone's full inner state.
+2. **Allowed to do next:** sameness is always relative to a declared boundary, tests, outcomes, and horizon; it is not universal sameness.
+3. **Task-relevant difference:** we compare declared consequences, not merely whether two transcripts use similar words.
 
 Formal destination: [Definition 1 — Exact predictive coordination equivalence](mcw_predictive_state_semantics.md#definition-1-exact-predictive-coordination-equivalence).
 
@@ -42,91 +86,67 @@ Formal destination: [Definition 1 — Exact predictive coordination equivalence]
 
 ## A1 — Build the idea from one ordinary conversation
 
-This is a deliberately small, deterministic teaching fixture. It demonstrates the logic; it is not evidence that MCW-PSS is empirically valid.
+This deliberately small teaching fixture uses fixed answers so that its logic is visible. It is not evidence that MCW-PSS is empirically valid, and it is not yet a realistic model of a stochastic AI system.
 
-Within this fixture, the first scope $\kappa$ declares all of the following:
-
-- the only admissible histories are $\mathcal H^\kappa=\{h_A,h_B,h_C\}$;
-- the horizon is one assistant answer, so $L^\kappa=1$;
-- the relevant outcome is the immediate answer category shown in the tables below;
-- the allowed policy family is $\Pi^\kappa=\{\pi_1,\pi_2\}$;
-- the assistant, configuration, tools, environment, and system boundary are held fixed; and
-- exact equality is the folding rule, with total-variation distance available if we later compare unequal outcome distributions.
-
-Those declarations are intentionally artificial. Their purpose is to make every moving part visible before the guide introduces a realistic stochastic system.
-
-### Step 1: Begin with three different histories
+### Step 1: Begin with three different past conversations
 
 Imagine an assistant helping schedule a meeting.
 
-| Name | What the interaction history contains |
+| Name | What the past conversation contains |
 |---|---|
-| $h_A$ | “Schedule **Thursday**. Priya is unavailable Monday through Wednesday.” |
-| $h_B$ | “Schedule **Thursday**. The venue is unavailable Tuesday.” |
-| $h_C$ | “Schedule **Friday**. Priya is unavailable Monday through Wednesday.” |
+| **Past A** | “Schedule **Thursday**. Priya is unavailable Monday through Wednesday.” |
+| **Past B** | “Schedule **Thursday**. The venue is unavailable Tuesday.” |
+| **Past C** | “Schedule **Friday**. Priya is unavailable Monday through Wednesday.” |
 
-The letter $h$ means **history**. The subscripts $A$, $B$, and $C$ are just labels.
+### Step 2: Declare the comparison in ordinary language
 
-### Step 2: Declare which future tests matter
-
-The first scope allows exactly the two tests in $\Pi^\kappa$:
-
-| Test | What it does |
+| Scope question | Answer for this teaching fixture |
 |---|---|
-| $\pi_1$ | Ask, “Which day should I put on the calendar?” |
-| $\pi_2$ | Ask, “Can Tuesday work?” |
+| What system stays fixed? | The same assistant, instructions, tools, and environment |
+| Which pasts are considered? | Only Past A, Past B, and Past C |
+| What may we do next? | Ask either of the two questions below |
+| How far ahead do we look? | One assistant answer |
+| What result do we record? | The answer category displayed in the result table |
+| What counts as the same? | Exact agreement for both allowed questions |
 
-The Greek letter $\pi$, pronounced “pie,” labels a **policy**: a rule for choosing a test or later action. The scope containing these tests is labeled $\kappa$, pronounced “kappa.”
+These choices form the **scope**. Changing one of them can change which pasts count as the same state.
 
-### Step 3: Compare the relevant futures
+### Step 3: Ask the two allowed next questions
 
-| Starting history | Result under $\pi_1$ | Result under $\pi_2$ |
+| Question | What it asks |
+|---|---|
+| **Question 1** | “Which day should I put on the calendar?” |
+| **Question 2** | “Can Tuesday work?” |
+
+| Starting past | Result for Question 1 | Result for Question 2 |
 |---|---|---|
-| $h_A$ | Thursday | No |
-| $h_B$ | Thursday | No |
-| $h_C$ | Friday | No |
+| **Past A** | Thursday | No |
+| **Past B** | Thursday | No |
+| **Past C** | Friday | No |
 
-For this deliberately narrow scope, no allowed test distinguishes $h_A$ from $h_B$. The test $\pi_1$ does distinguish $h_C$ from both.
+The allowed questions cannot tell Past A from Past B. Question 1 can tell Past C from both.
 
-We therefore write
+### Step 4: Group only the pasts that the allowed questions cannot separate
 
-$$
-h_A\sim_\kappa h_B,
-\qquad
-h_A\not\sim_\kappa h_C.
-$$
+Among the three displayed pasts, the fixture produces exactly two groups:
 
-**Say it aloud:** “History A is predictively equivalent to history B under scope kappa; history A is not predictively equivalent to history C under that scope.”
+- one predictive state containing Past A and Past B;
+- another predictive state containing Past C.
 
-### Step 4: Fold only the histories that the declared tests cannot separate
+The first state is **not** the text of either conversation. It is the group of pasts that have the same declared futures. The pasts can differ internally while remaining equivalent for a particular purpose.
 
-Among these three admissible histories, the first scope produces exactly two groups:
+This “keep states separate only when some future continuation distinguishes them” pattern is related to finite-state minimization. Cornell's [DFA minimization notes](https://www.cs.cornell.edu/courses/cs4120/2023sp/notes/leximpl/#dfa-minimization) give an accessible deterministic example of merging states that accept the same remaining input suffixes.
 
-- one predictive state containing $h_A$ and $h_B$;
-- another predictive state containing $h_C$.
+### Step 5: Add another question and watch the grouping change
 
-The first state is **not** the text of $h_A$ or the text of $h_B$. It is the class of histories that have the same declared futures. The histories can differ internally while remaining equivalent for a particular purpose.
+Keep every other scope choice fixed, but add Question 3: “Why can't Tuesday work?”
 
-This “keep states separate only when some future suffix distinguishes them” pattern is related to finite-state minimization. Cornell's [DFA minimization notes](https://www.cs.cornell.edu/courses/cs4120/2023sp/notes/leximpl/#dfa-minimization) give an accessible deterministic example of merging states that accept the same remaining input suffixes.
+- From Past A, the answer is “Priya is unavailable.”
+- From Past B, the answer is “The venue is unavailable.”
 
-### Step 5: Change the scope and watch the fold break
+The expanded scope can now distinguish pasts that the original scope grouped together. This demonstrates four central facts:
 
-Now declare an expanded scope, $\kappa'$, that keeps every other field fixed and changes only the policy family by adding a third allowed test:
-
-$$
-\Pi^{\kappa'}=\Pi^\kappa\cup\{\pi_3\},
-\qquad
-\pi_3=\text{“Why can't Tuesday work?”}
-$$
-
-- From $h_A$, the answer is “Priya is unavailable.”
-- From $h_B$, the answer is “The venue is unavailable.”
-
-The expanded scope distinguishes histories that the original scope treated as one state. Thus $h_A\not\sim_{\kappa'} h_B$ under the new scope, even though $h_A\sim_\kappa h_B$ under the original one.
-
-This demonstrates four central facts:
-
-1. predictive equivalence is relative to the tests, outcomes, and horizon in the scope;
+1. predictive equivalence is relative to the tests, outcomes, horizon, and system boundary in the scope;
 2. adding tests can split a state into finer states;
 3. removing tests can merge states into coarser states;
 4. “same state” never means “identical in every possible respect.”
@@ -139,7 +159,7 @@ Suppose a compressor preserves only:
 
 > Thursday; Tuesday unavailable.
 
-Under a decoder that maps this artifact to the displayed answers, it is informationally sufficient for $\pi_1$ and $\pi_2$. It destroys the distinction needed for $\pi_3$. Operational preservation still depends on how the continuing system reinjects, interprets, and uses the artifact.
+Under a decoder that maps this artifact to the displayed answers, it retains the information needed for Questions 1 and 2. It destroys the distinction needed for Question 3. Operational preservation still depends on how the continuing system reinjects, interprets, and uses the artifact.
 
 Compression quality therefore cannot be judged only by whether a summary sounds faithful. It must be judged against the futures the artifact is supposed to preserve.
 
@@ -147,15 +167,112 @@ Formal destination: [Compression as a proposed state-folding operation](mcw_pred
 
 ### What changes when outcomes are uncertain?
 
-The example above always returns one answer. Mathematics treats a deterministic answer as a probability distribution concentrated entirely on that answer.
+The fixture above gives one fixed answer. A real assistant may vary because of sampling, hidden conditions, environmental changes, or incomplete knowledge.
 
-A stochastic assistant might schedule Thursday with probability $0.90$ from one history and $0.88$ from another. Exact equivalence asks whether the whole declared future distributions are equal. Approximation asks how far apart they are under a declared metric and error rule.
+| Starting past and question | Thursday | Friday |
+|---|---:|---:|
+| Fixed teaching fixture | 100% | 0% |
+| Uncertain version after Past A | 90% | 10% |
+| Uncertain version after Past B | 88% | 12% |
+
+The percentages describe a distribution of possible outputs, not the assistant's self-reported confidence. Exact equivalence asks whether the complete declared distributions are equal. Approximation asks how far apart they are under a declared distance and error rule.
 
 “We failed to notice a difference” is not the same as “we established equivalence.” For an otherwise unknown stochastic system, finite experimental samples can support a bounded statistical decision, not prove equality over every possible future. Exhaustive finite models or separately justified structural assumptions are different cases.
 
 ---
 
-## A2 — Read the mathematical language
+## A2 — Translate the example into mathematics
+
+### What a mathematical symbol is
+
+A mathematical symbol is a compact name for an object or relationship. The object might be one history, a collection of possible histories, a rule, or a probability distribution. An equation states a relationship among those objects.
+
+The choice of a letter does **not** make the thing observable, finite, measurable, physical, or stored inside an AI system. Those properties require separate definitions or assumptions. The same construction could be written with different letters if every occurrence were renamed consistently.
+
+Mathematicians still choose letters for useful reasons:
+
+- a **mnemonic** choice helps recall a meaning, such as $h$ for history;
+- a **conventional** choice follows a pattern many readers recognize, such as $\mathbb P$ for probability or $\pi$ for a policy;
+- a **neutral** choice avoids smuggling in an unintended meaning, such as $\kappa$ for the complete comparison scope.
+
+Four kinds of object appear repeatedly:
+
+| Kind of object | What it means | Ordinary-language example | Mathematical example |
+|---|---|---|---|
+| **one item** | A single object that has been named | Past A | $h_A$ |
+| **a collection or space** | A set of permitted objects; a “space” may also carry structure needed to compare or measure them | all histories allowed by this scope | $\mathcal H^\kappa$ |
+| **a function or rule** | A rule that specifies one output for each permitted input | compress a history into an artifact | $C_B$ |
+| **a probability law** | A complete assignment of chances to the declared possible results; in a finite table those chances total 100% | the chances assigned to all declared future results | $\mathbb P_h^\pi$ |
+
+A **variable** is a symbol whose value may differ across situations, such as which history occurred or which answer was observed. It is not automatically an unknown number that the reader is expected to solve. A set or space need not be small, finite, or literally stored anywhere.
+
+### A small notation survival kit
+
+Start with the marks needed to translate the scheduling fixture. The fuller reference comes later.
+
+| Notation | Say it aloud | What it does here | Why this notation was chosen |
+|---|---|---|---|
+| $h_A$ | “history A” | Names the history called Past A | $h$ is mnemonic for **history**; the subscript labels which one |
+| $h'$ | “h-prime” | Names a second history being compared with $h$ | A prime commonly marks another object of the same kind; here it is **not** a derivative |
+| $\mathcal H$ | “script H” | Names a collection, or space, of possible histories | Script capitals conventionally distinguish a space from one lowercase item |
+| $\mathbb P$ | “probability” | Names a probability measure or future law | Blackboard-bold $P$ is a standard probability convention |
+| $\pi$ | “pi” | Names one policy for choosing allowed future actions | Lowercase pi is a common policy convention in decision theory |
+| $\Pi$ | “capital pi” | Names a collection of policies | The matching capital letter distinguishes the family from one member |
+| $\kappa$ | “kappa” | Labels the complete declared comparison scope | It is deliberately neutral: no single English initial should stand for the whole scope |
+| $L$ | “L” | Names the future horizon | $L$ is mnemonic for a sequence **length** |
+| $=$ | “equals” | Asserts exact equality | It does not mean “looks close in these samples” |
+| $\{a,b\}$ | “the set containing a and b” | Collects objects without making either the preferred one | Curly braces conventionally denote a set |
+| $a\in A$ | “a is in A” | Says one item belongs to a collection | $\in$ is the standard membership symbol |
+| $A\cup B$ | “A union B” | Combines the items in two collections | $\cup$ resembles two sets joined together |
+| $h\sim_\kappa h'$ | “h is equivalent to h-prime under kappa” | Places two histories in the same scoped predictive group | $\sim$ denotes a declared relation; the subscript says which scope governs it |
+| $h\not\sim_\kappa h'$ | “h is not equivalent to h-prime under kappa” | Says some allowed future comparison separates them | The slash negates the relation; it does not mean merely “not textually similar” |
+| $[h]_{\sim_\kappa}$ | “the equivalence class of h under kappa” | Names the whole group containing $h$ | Brackets collect all histories related to the displayed representative |
+
+Subscripts appear **below** a symbol and usually label an item, time, participant, or condition. Superscripts appear **above** it and usually record a dependency such as the scope or policy. A superscript is an exponent only when the local definition says it is. For example, the $\pi$ in $\mathbb P_h^\pi$ is a policy label, not an instruction to raise probability to a power.
+
+### Translate the scheduling scope
+
+Call the original scope $\kappa$. The three pasts, one-step horizon, and two allowed one-step policies can be written
+
+$$
+\mathcal H^\kappa=\{h_A,h_B,h_C\},
+\qquad
+L^\kappa=1,
+\qquad
+\Pi^\kappa=\{\pi_1,\pi_2\}.
+$$
+
+Read that as:
+
+- “The history space under scope kappa contains histories A, B, and C.”
+- “The horizon under scope kappa is one future step.”
+- “The allowed policy family under scope kappa contains policy 1 and policy 2.”
+
+In this one-step fixture, $\pi_1$ selects Question 1 and $\pi_2$ selects Question 2. In a multi-step system, a policy may choose each later intervention using only information it is permitted to observe.
+
+The result from A1 becomes
+
+$$
+h_A\sim_\kappa h_B,
+\qquad
+h_A\not\sim_\kappa h_C.
+$$
+
+Read that as: “A and B are equivalent under the original scope; A and C are not.” Past B need not contain the same words or facts as Past A. It belongs to the same state only because neither allowed policy produces a different declared future result.
+
+Now call the expanded scope with Question 3 $\kappa'$. Its policy family is
+
+$$
+\Pi^{\kappa'}=\Pi^\kappa\cup\{\pi_3\},
+$$
+
+which says: “Take every policy in the original family and add policy 3.” Under that expanded scope,
+
+$$
+h_A\not\sim_{\kappa'}h_B.
+$$
+
+The prime on $\kappa'$ labels a second scope. The new scope did not alter either past; it altered what the comparison is allowed to reveal.
 
 ### Read the core equation from left to right
 
@@ -179,6 +296,14 @@ $$
 | $=$ | Equality of the entire distributions, not equality of one sampled answer |
 | $\Pi^\kappa$ | The collection of policies allowed by the declared scope |
 | “for every” | No allowed policy may distinguish the histories |
+
+Read $\mathbb P_h^\pi$ from the main letter outward:
+
+1. $\mathbb P$ — a probability law over the selected future outcomes;
+2. subscript $h$ — beginning after history $h$;
+3. superscript $\pi$ — while future actions are selected by policy $\pi$.
+
+So the central equation generalizes the fixed answer table from A1. Instead of comparing only one displayed answer for each question, it compares the **complete declared distribution of future trajectories** for every allowed policy.
 
 #### Why this is an equivalence relation
 
@@ -254,9 +379,22 @@ Under Proposition 2a's full closure, dynamic-consistency, measurability, and ver
 
 Formal destination: [Proposition 2a](mcw_predictive_state_semantics.md#proposition-2a-when-the-quotient-supports-recursive-dynamics). Stanford's [discrete introductory Markov decision process handout](https://web.stanford.edu/~cpiech/cs221/handouts/markovDecisions.html) explains states, actions, transition probabilities, policies, and finite horizons in approachable language; it is a conceptual bridge, not support for the quotient-kernel or lumpability result.
 
+### Where the teaching fixture stops being the full model
+
+| A1 teaching fixture | General MCW-PSS construction |
+|---|---|
+| Three displayed histories | A declared history space that may be very large or infinite |
+| One question selected at the only future step | A policy may adapt actions across several steps using permitted observations |
+| One fixed answer in each table cell | A probability law over complete relevant future trajectories |
+| Visible conversation text | Histories and latent conditions depend on the declared system boundary and instrumentation |
+| Directly group the rows with identical answers | Exact equivalence compares every allowed policy; approximate folding needs an explicit error rule |
+| Stop after one answer | Reusing the folded state recursively requires dynamic consistency, measurability, and lumpability assumptions |
+
+The small fixture is therefore an instance of the logic, not a proof that every real human–AI system admits a useful or learnable compressed predictive state.
+
 ---
 
-### How mathematical typography works here
+### Additional mathematical typography used in the formal note
 
 | Pattern | Say it aloud | Meaning in this note |
 |---|---|---|
