@@ -61,6 +61,7 @@ nav:
       - Prompt Predictions: experiments/preregistration/prompt_predictions.md
     - Test Bed: test_bed.md
     - Working Note — IU Individuation: working_notes/iu_individuation.md
+    - Start Here — MCW Predictive-State Mathematics: working_notes/mcw_predictive_state_semantics_guide.md
     - Working Note — MCW Predictive-State Semantics: working_notes/mcw_predictive_state_semantics.md
 
 markdown_extensions:
@@ -90,7 +91,7 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/mathjax.js
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js
 
 extra_css:
   - stylesheets/extra.css
