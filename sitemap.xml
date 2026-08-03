@@ -2,90 +2,94 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://rainmana.github.io/mcw-framework/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/constitution/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/constitution_as_code/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/diagrams/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/failure_repair_mapping/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/glossary/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/paper_outline/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/related_work/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/system_prompt_derivation/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/test_bed/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/experiments/hrdm_rubrics/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/experiments/toy_experiments/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/experiments/preregistration/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/experiments/preregistration/exp1_false_alignment/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/experiments/preregistration/exp2_asymmetric_advancement/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/experiments/preregistration/exp3_overcompression/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/experiments/preregistration/exp4_constraint_opacity/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/experiments/preregistration/exp5_repair_suppression/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/experiments/preregistration/exp6_drift/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/experiments/preregistration/prompt_predictions/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/working_notes/iu_individuation/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://rainmana.github.io/mcw-framework/working_notes/mcw_predictive_state_semantics/</loc>
-         <lastmod>2026-07-31</lastmod>
+         <lastmod>2026-08-03</lastmod>
+    </url>
+    <url>
+         <loc>https://rainmana.github.io/mcw-framework/working_notes/mcw_predictive_state_semantics_guide/</loc>
+         <lastmod>2026-08-03</lastmod>
     </url>
 </urlset>

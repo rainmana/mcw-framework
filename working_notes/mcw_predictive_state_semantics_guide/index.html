@@ -1,0 +1,4088 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A coordination framework for human–AI collaboration failures">
+      
+      
+        <meta name="author" content="W. Alec Akin">
+      
+      
+        <link rel="canonical" href="https://rainmana.github.io/mcw-framework/working_notes/mcw_predictive_state_semantics_guide/">
+      
+      
+        <link rel="prev" href="../iu_individuation/">
+      
+      
+        <link rel="next" href="../mcw_predictive_state_semantics/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Start Here — MCW Predictive-State Mathematics - Meta-Context Window (MCW) Framework</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#start-here-mcw-predictive-state-mathematics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Meta-Context Window (MCW) Framework" class="md-header__button md-logo" aria-label="Meta-Context Window (MCW) Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Meta-Context Window (MCW) Framework
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Start Here — MCW Predictive-State Mathematics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rainmana/mcw-framework" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rainmana/mcw-framework
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../diagrams/" class="md-tabs__link">
+          
+  
+  
+  Framework
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../paper_outline/" class="md-tabs__link">
+          
+  
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Meta-Context Window (MCW) Framework" class="md-nav__button md-logo" aria-label="Meta-Context Window (MCW) Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Meta-Context Window (MCW) Framework
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rainmana/mcw-framework" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rainmana/mcw-framework
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Framework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Framework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagrams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../failure_repair_mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Failure ↔ Repair Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../constitution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constitution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../constitution_as_code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constitution as Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../related_work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Related Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paper_outline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paper Outline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system_prompt_derivation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Prompt Derivation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/toy_experiments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toy Experiments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/hrdm_rubrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    H/R/D/M Rubrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pre-Registration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pre-Registration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp1_false_alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 1 — False Alignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp2_asymmetric_advancement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 2 — Asymmetric Advancement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp3_overcompression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 3 — Overcompression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp4_constraint_opacity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 4 — Constraint Opacity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp5_repair_suppression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 5 — Repair Suppression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/exp6_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exp 6 — Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiments/preregistration/prompt_predictions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Predictions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../test_bed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Bed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iu_individuation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working Note — IU Individuation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start Here — MCW Predictive-State Mathematics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start Here — MCW Predictive-State Mathematics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#choose-your-stopping-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose your stopping point
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orientation-what-kind-of-ai-interaction-are-we-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orientation — What kind of AI interaction are we modeling?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Orientation — What kind of AI interaction are we modeling?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eight-words-used-throughout-the-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eight words used throughout the guide
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a0-the-idea-with-no-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A0 — The idea with no notation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a1-build-the-idea-from-one-ordinary-conversation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A1 — Build the idea from one ordinary conversation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A1 — Build the idea from one ordinary conversation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-begin-with-three-different-past-conversations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Begin with three different past conversations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-declare-the-comparison-in-ordinary-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Declare the comparison in ordinary language
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-ask-the-two-allowed-next-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Ask the two allowed next questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-group-only-the-pasts-that-the-allowed-questions-cannot-separate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Group only the pasts that the allowed questions cannot separate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-add-another-question-and-watch-the-grouping-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Add another question and watch the grouping change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-see-why-this-matters-for-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: See why this matters for compression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-changes-when-outcomes-are-uncertain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changes when outcomes are uncertain?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a2-translate-the-example-into-mathematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A2 — Translate the example into mathematics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A2 — Translate the example into mathematics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-a-mathematical-symbol-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a mathematical symbol is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-small-notation-survival-kit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A small notation survival kit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translate-the-scheduling-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Translate the scheduling scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-the-core-equation-from-left-to-right" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read the core equation from left to right
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read the core equation from left to right">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-this-is-an-equivalence-relation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this is an equivalence relation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-the-brackets-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the brackets mean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-approximate-closeness-needs-a-different-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why approximate closeness needs a different rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-probability-kernel-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a probability kernel means
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-the-teaching-fixture-stops-being-the-full-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the teaching fixture stops being the full model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-mathematical-typography-used-in-the-formal-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional mathematical typography used in the formal note
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional mathematical typography used in the formal note">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capital-letters-lowercase-letters-and-script-letters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capital letters, lowercase letters, and script letters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-dummy-symbols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local dummy symbols
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a3-research-model-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A3 — Research-model reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A3 — Research-model reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symbol-by-symbol-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Symbol-by-symbol reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Symbol-by-symbol reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-topology-and-controlled-dynamics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context topology and controlled dynamics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-policies-prediction-and-folding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope, policies, prediction, and folding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distance-belief-and-uncertainty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance, belief, and uncertainty
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#human-elicitation-and-articulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Human elicitation and articulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compression-and-repair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compression and repair
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#about-overloaded-letters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About overloaded letters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concepts-beneath-the-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts beneath the notation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concepts beneath the notation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sets-functions-and-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sets, functions, and relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probability-distributions-and-conditioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Probability distributions and conditioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-action-observation-and-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State, action, observation, and policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partial-observability-measurement-and-belief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partial observability, measurement, and belief
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reviewer-only-measure-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reviewer-only measure theory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-learning-path-from-zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A learning path from zero
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primary-research-lineage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primary research lineage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-accessible-version-must-never-imply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the accessible version must never imply
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-and-document-accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web and document accessibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintenance-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maintenance checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcw_predictive_state_semantics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working Note — MCW Predictive-State Semantics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#choose-your-stopping-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose your stopping point
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orientation-what-kind-of-ai-interaction-are-we-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orientation — What kind of AI interaction are we modeling?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Orientation — What kind of AI interaction are we modeling?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eight-words-used-throughout-the-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eight words used throughout the guide
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a0-the-idea-with-no-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A0 — The idea with no notation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a1-build-the-idea-from-one-ordinary-conversation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A1 — Build the idea from one ordinary conversation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A1 — Build the idea from one ordinary conversation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-begin-with-three-different-past-conversations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Begin with three different past conversations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-declare-the-comparison-in-ordinary-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Declare the comparison in ordinary language
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-ask-the-two-allowed-next-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Ask the two allowed next questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-group-only-the-pasts-that-the-allowed-questions-cannot-separate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Group only the pasts that the allowed questions cannot separate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-add-another-question-and-watch-the-grouping-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Add another question and watch the grouping change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-see-why-this-matters-for-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: See why this matters for compression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-changes-when-outcomes-are-uncertain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changes when outcomes are uncertain?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a2-translate-the-example-into-mathematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A2 — Translate the example into mathematics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A2 — Translate the example into mathematics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-a-mathematical-symbol-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a mathematical symbol is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-small-notation-survival-kit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A small notation survival kit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translate-the-scheduling-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Translate the scheduling scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-the-core-equation-from-left-to-right" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read the core equation from left to right
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read the core equation from left to right">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-this-is-an-equivalence-relation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this is an equivalence relation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-the-brackets-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the brackets mean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-approximate-closeness-needs-a-different-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why approximate closeness needs a different rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-probability-kernel-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a probability kernel means
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-the-teaching-fixture-stops-being-the-full-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the teaching fixture stops being the full model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-mathematical-typography-used-in-the-formal-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional mathematical typography used in the formal note
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional mathematical typography used in the formal note">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capital-letters-lowercase-letters-and-script-letters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capital letters, lowercase letters, and script letters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-dummy-symbols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local dummy symbols
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a3-research-model-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A3 — Research-model reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A3 — Research-model reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symbol-by-symbol-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Symbol-by-symbol reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Symbol-by-symbol reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-topology-and-controlled-dynamics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context topology and controlled dynamics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-policies-prediction-and-folding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope, policies, prediction, and folding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distance-belief-and-uncertainty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance, belief, and uncertainty
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#human-elicitation-and-articulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Human elicitation and articulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compression-and-repair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compression and repair
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#about-overloaded-letters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About overloaded letters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concepts-beneath-the-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts beneath the notation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concepts beneath the notation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sets-functions-and-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sets, functions, and relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probability-distributions-and-conditioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Probability distributions and conditioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-action-observation-and-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State, action, observation, and policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partial-observability-measurement-and-belief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partial observability, measurement, and belief
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reviewer-only-measure-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reviewer-only measure theory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-learning-path-from-zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A learning path from zero
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primary-research-lineage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primary research lineage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-accessible-version-must-never-imply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the accessible version must never imply
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-and-document-accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web and document accessibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintenance-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maintenance checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/rainmana/mcw-framework/edit/main/docs/working_notes/mcw_predictive_state_semantics_guide.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="start-here-mcw-predictive-state-mathematics">Start Here — MCW Predictive-State Mathematics<a class="headerlink" href="#start-here-mcw-predictive-state-mathematics" title="Permanent link">&para;</a></h1>
+<p><strong>Status:</strong> Accessibility companion to the <a href="../mcw_predictive_state_semantics/">MCW Predictive-State Semantics working note</a> · Evidence: L0 — explanatory construction, not empirical validation or canon.</p>
+<p><strong>Purpose:</strong> You do not need a degree, a statistics course, or prior experience reading mathematical notation to use this guide. It explains the same proposal at increasing levels of precision. The formal note remains authoritative whenever this guide compresses away a qualification.</p>
+<div class="admonition note">
+<p class="admonition-title">This guide is intentionally lossy</p>
+<p>Plain language removes detail so that the main idea becomes visible. Every major simplification below links back to the formal definition that restores the omitted assumptions. If the simple and formal versions ever conflict, treat that as a defect to repair—not as permission to choose whichever version is convenient.</p>
+</div>
+<hr />
+<h2 id="choose-your-stopping-point">Choose your stopping point<a class="headerlink" href="#choose-your-stopping-point" title="Permanent link">&para;</a></h2>
+<p>The framework's <a href="../../glossary/#osi-layers-of-understanding">OSI Layers of Understanding</a> require the same construct to remain accessible at several compression levels.</p>
+<table>
+<thead>
+<tr>
+<th>Accessibility layer</th>
+<th>What this guide gives you</th>
+<th>A reasonable stopping point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A0 — Intuition</strong></td>
+<td>An AI-system orientation and one sentence with no notation</td>
+<td>You want the central idea</td>
+</tr>
+<tr>
+<td><strong>A1 — Concepts</strong></td>
+<td>A complete worked example in ordinary language</td>
+<td>You want to explain or discuss the proposal</td>
+</tr>
+<tr>
+<td><strong>A2 — Formalization</strong></td>
+<td>Symbols introduced only after their concepts, then the core equations read aloud</td>
+<td>You want to read the formal note</td>
+</tr>
+<tr>
+<td><strong>A3 — Research model</strong></td>
+<td>Probability kernels, recursive state, measurement, compression, and the full symbol reference</td>
+<td>You want to design or critique research</td>
+</tr>
+<tr>
+<td><strong>A4 — Implementation</strong></td>
+<td>Not yet claimed: the working note does not provide a validated estimator or production implementation</td>
+<td>You want to build a prototype after the assumptions are settled</td>
+</tr>
+<tr>
+<td><strong>A5 — Domain application</strong></td>
+<td>Not yet claimed: domain-specific evidence must come from separately scoped studies</td>
+<td>You want to apply the model in a real field</td>
+</tr>
+</tbody>
+</table>
+<p>Stopping early is not failing to understand the framework. A3 vocabulary is needed for reviewing the mathematical construction, not for recognizing its central idea.</p>
+<hr />
+<h2 id="orientation-what-kind-of-ai-interaction-are-we-modeling">Orientation — What kind of AI interaction are we modeling?<a class="headerlink" href="#orientation-what-kind-of-ai-interaction-are-we-modeling" title="Permanent link">&para;</a></h2>
+<p>You do not need to know how a neural network is trained to follow this guide. The construction compares what a bounded system may do next under controlled actions; it does not begin by assuming that we can inspect or explain every internal mechanism.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning in this guide</th>
+<th>Important boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI model</strong></td>
+<td>A learned software component that produces predictions, decisions, or generated content from inputs</td>
+<td>It is one component, not automatically the whole product a person uses</td>
+</tr>
+<tr>
+<td><strong>AI assistant</strong></td>
+<td>The user-facing system that receives requests and returns responses</td>
+<td>It may include a model plus instructions, safety rules, retrieval, memory, tools, and an interface</td>
+</tr>
+<tr>
+<td><strong>AI agent</strong></td>
+<td>A system permitted to choose actions across multiple steps, often using tools or observing an environment</td>
+<td>“Agent” describes an operational role; it does not establish personhood or independent agency</td>
+</tr>
+<tr>
+<td><strong>token</strong></td>
+<td>One unit of text representation processed by a language model</td>
+<td>A token is not reliably the same thing as a word</td>
+</tr>
+<tr>
+<td><strong>bounded system</strong></td>
+<td>The components and environment that a study explicitly places inside its boundary</td>
+<td>It is not the whole universe and need not be only the neural model</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://developers.google.com/machine-learning/intro-to-ml/what-is-ml">Google's introductory machine-learning guide</a> describes a model as software trained from data to make predictions or generate content. The <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf">NIST AI Risk Management Framework</a> treats deployed AI systems as socio-technical: behavior and risk can arise from technical components, people, use, and environment together. MCW-PSS therefore declares a system boundary instead of silently treating “the AI” as one isolated box.</p>
+<p>An interaction alternates between something done to or by the bounded system and something observed afterward. The study records some of that past, chooses what may be done next, and declares which consequences count as relevant outcomes.</p>
+<pre class="mermaid"><code>flowchart LR
+    H["Recorded past: history"] --&gt; A["Allowed next action or test"]
+    A --&gt; S["Bounded human–AI system"]
+    S --&gt; O["Observed response or event"]
+    O --&gt; Z["Outcome selected by the scope"]
+    O -. "may guide a later action" .-&gt; A</code></pre>
+<p>The diagram is only a visual restatement of the preceding sentence; none of the guide's meaning depends on seeing it.</p>
+<h3 id="eight-words-used-throughout-the-guide">Eight words used throughout the guide<a class="headerlink" href="#eight-words-used-throughout-the-guide" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>Meaning here</th>
+<th>It does <strong>not</strong> automatically mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>system boundary</strong></td>
+<td>Which components, people, channels, tools, and environment are included</td>
+<td>Everything that exists</td>
+</tr>
+<tr>
+<td><strong>history</strong></td>
+<td>The declared record of past actions and observations</td>
+<td>Complete hidden state, every stored fact, or everything a human remembers</td>
+</tr>
+<tr>
+<td><strong>test or intervention</strong></td>
+<td>An allowed thing done next to probe or change the process</td>
+<td>Only an exam or a textual prompt</td>
+</tr>
+<tr>
+<td><strong>observation</strong></td>
+<td>What becomes visible to the study</td>
+<td>Ground truth or complete access</td>
+</tr>
+<tr>
+<td><strong>outcome</strong></td>
+<td>The selected consequence that the study compares</td>
+<td>Everything that happens</td>
+</tr>
+<tr>
+<td><strong>policy</strong></td>
+<td>A rule for choosing later interventions using only permitted information</td>
+<td>A company rule or necessarily one fixed prompt</td>
+</tr>
+<tr>
+<td><strong>horizon</strong></td>
+<td>How many future steps the comparison covers</td>
+<td>How long the computer takes to respond</td>
+</tr>
+<tr>
+<td><strong>state</strong></td>
+<td>A grouping that preserves the past distinctions needed for the declared future comparison</td>
+<td>A transcript, memory record, feeling, or activation vector by definition</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a0-the-idea-with-no-notation">A0 — The idea with no notation<a class="headerlink" href="#a0-the-idea-with-no-notation" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Two different past conversations may be treated as the same for a particular task when nothing we are allowed to do next reveals a task-relevant difference between them.</p>
+</blockquote>
+<p>In an uncertain system, “no difference” means the same relevant possible results with the same probabilities—not merely that two sampled replies happened to match.</p>
+<p>That idea has three guardrails:</p>
+<ol>
+<li><strong>For a particular task:</strong> this is a task-relative model of evidence about coordination, not the complete canonical MCW or anyone's full inner state.</li>
+<li><strong>Allowed to do next:</strong> sameness is always relative to a declared boundary, tests, outcomes, and horizon; it is not universal sameness.</li>
+<li><strong>Task-relevant difference:</strong> we compare declared consequences, not merely whether two transcripts use similar words.</li>
+</ol>
+<p>Formal destination: <a href="../mcw_predictive_state_semantics/#definition-1-exact-predictive-coordination-equivalence">Definition 1 — Exact predictive coordination equivalence</a>.</p>
+<hr />
+<h2 id="a1-build-the-idea-from-one-ordinary-conversation">A1 — Build the idea from one ordinary conversation<a class="headerlink" href="#a1-build-the-idea-from-one-ordinary-conversation" title="Permanent link">&para;</a></h2>
+<p>This deliberately small teaching fixture uses fixed answers so that its logic is visible. It is not evidence that MCW-PSS is empirically valid, and it is not yet a realistic model of a stochastic AI system.</p>
+<h3 id="step-1-begin-with-three-different-past-conversations">Step 1: Begin with three different past conversations<a class="headerlink" href="#step-1-begin-with-three-different-past-conversations" title="Permanent link">&para;</a></h3>
+<p>Imagine an assistant helping schedule a meeting.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>What the past conversation contains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Past A</strong></td>
+<td>“Schedule <strong>Thursday</strong>. Priya is unavailable Monday through Wednesday.”</td>
+</tr>
+<tr>
+<td><strong>Past B</strong></td>
+<td>“Schedule <strong>Thursday</strong>. The venue is unavailable Tuesday.”</td>
+</tr>
+<tr>
+<td><strong>Past C</strong></td>
+<td>“Schedule <strong>Friday</strong>. Priya is unavailable Monday through Wednesday.”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-2-declare-the-comparison-in-ordinary-language">Step 2: Declare the comparison in ordinary language<a class="headerlink" href="#step-2-declare-the-comparison-in-ordinary-language" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Scope question</th>
+<th>Answer for this teaching fixture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What system stays fixed?</td>
+<td>The same assistant, instructions, tools, and environment</td>
+</tr>
+<tr>
+<td>Which pasts are considered?</td>
+<td>Only Past A, Past B, and Past C</td>
+</tr>
+<tr>
+<td>What may we do next?</td>
+<td>Ask either of the two questions below</td>
+</tr>
+<tr>
+<td>How far ahead do we look?</td>
+<td>One assistant answer</td>
+</tr>
+<tr>
+<td>What result do we record?</td>
+<td>The answer category displayed in the result table</td>
+</tr>
+<tr>
+<td>What counts as the same?</td>
+<td>Exact agreement for both allowed questions</td>
+</tr>
+</tbody>
+</table>
+<p>These choices form the <strong>scope</strong>. Changing one of them can change which pasts count as the same state.</p>
+<h3 id="step-3-ask-the-two-allowed-next-questions">Step 3: Ask the two allowed next questions<a class="headerlink" href="#step-3-ask-the-two-allowed-next-questions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>What it asks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Question 1</strong></td>
+<td>“Which day should I put on the calendar?”</td>
+</tr>
+<tr>
+<td><strong>Question 2</strong></td>
+<td>“Can Tuesday work?”</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Starting past</th>
+<th>Result for Question 1</th>
+<th>Result for Question 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Past A</strong></td>
+<td>Thursday</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Past B</strong></td>
+<td>Thursday</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Past C</strong></td>
+<td>Friday</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>The allowed questions cannot tell Past A from Past B. Question 1 can tell Past C from both.</p>
+<h3 id="step-4-group-only-the-pasts-that-the-allowed-questions-cannot-separate">Step 4: Group only the pasts that the allowed questions cannot separate<a class="headerlink" href="#step-4-group-only-the-pasts-that-the-allowed-questions-cannot-separate" title="Permanent link">&para;</a></h3>
+<p>Among the three displayed pasts, the fixture produces exactly two groups:</p>
+<ul>
+<li>one predictive state containing Past A and Past B;</li>
+<li>another predictive state containing Past C.</li>
+</ul>
+<p>The first state is <strong>not</strong> the text of either conversation. It is the group of pasts that have the same declared futures. The pasts can differ internally while remaining equivalent for a particular purpose.</p>
+<p>This “keep states separate only when some future continuation distinguishes them” pattern is related to finite-state minimization. Cornell's <a href="https://www.cs.cornell.edu/courses/cs4120/2023sp/notes/leximpl/#dfa-minimization">DFA minimization notes</a> give an accessible deterministic example of merging states that accept the same remaining input suffixes.</p>
+<h3 id="step-5-add-another-question-and-watch-the-grouping-change">Step 5: Add another question and watch the grouping change<a class="headerlink" href="#step-5-add-another-question-and-watch-the-grouping-change" title="Permanent link">&para;</a></h3>
+<p>Keep every other scope choice fixed, but add Question 3: “Why can't Tuesday work?”</p>
+<ul>
+<li>From Past A, the answer is “Priya is unavailable.”</li>
+<li>From Past B, the answer is “The venue is unavailable.”</li>
+</ul>
+<p>The expanded scope can now distinguish pasts that the original scope grouped together. This demonstrates four central facts:</p>
+<ol>
+<li>predictive equivalence is relative to the tests, outcomes, horizon, and system boundary in the scope;</li>
+<li>adding tests can split a state into finer states;</li>
+<li>removing tests can merge states into coarser states;</li>
+<li>“same state” never means “identical in every possible respect.”</li>
+</ol>
+<p>Formal destination: <a href="../mcw_predictive_state_semantics/#4-declaring-the-coordination-scope">Declaring the coordination scope</a>.</p>
+<h3 id="step-6-see-why-this-matters-for-compression">Step 6: See why this matters for compression<a class="headerlink" href="#step-6-see-why-this-matters-for-compression" title="Permanent link">&para;</a></h3>
+<p>Suppose a compressor preserves only:</p>
+<blockquote>
+<p>Thursday; Tuesday unavailable.</p>
+</blockquote>
+<p>Under a decoder that maps this artifact to the displayed answers, it retains the information needed for Questions 1 and 2. It destroys the distinction needed for Question 3. Operational preservation still depends on how the continuing system reinjects, interprets, and uses the artifact.</p>
+<p>Compression quality therefore cannot be judged only by whether a summary sounds faithful. It must be judged against the futures the artifact is supposed to preserve.</p>
+<p>Formal destination: <a href="../mcw_predictive_state_semantics/#10-compression-as-a-proposed-state-folding-operation">Compression as a proposed state-folding operation</a>.</p>
+<h3 id="what-changes-when-outcomes-are-uncertain">What changes when outcomes are uncertain?<a class="headerlink" href="#what-changes-when-outcomes-are-uncertain" title="Permanent link">&para;</a></h3>
+<p>The fixture above gives one fixed answer. A real assistant may vary because of sampling, hidden conditions, environmental changes, or incomplete knowledge.</p>
+<table>
+<thead>
+<tr>
+<th>Starting past and question</th>
+<th style="text-align: right;">Thursday</th>
+<th style="text-align: right;">Friday</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixed teaching fixture</td>
+<td style="text-align: right;">100%</td>
+<td style="text-align: right;">0%</td>
+</tr>
+<tr>
+<td>Uncertain version after Past A</td>
+<td style="text-align: right;">90%</td>
+<td style="text-align: right;">10%</td>
+</tr>
+<tr>
+<td>Uncertain version after Past B</td>
+<td style="text-align: right;">88%</td>
+<td style="text-align: right;">12%</td>
+</tr>
+</tbody>
+</table>
+<p>The percentages describe a distribution of possible outputs, not the assistant's self-reported confidence. Exact equivalence asks whether the complete declared distributions are equal. Approximation asks how far apart they are under a declared distance and error rule.</p>
+<p>“We failed to notice a difference” is not the same as “we established equivalence.” For an otherwise unknown stochastic system, finite experimental samples can support a bounded statistical decision, not prove equality over every possible future. Exhaustive finite models or separately justified structural assumptions are different cases.</p>
+<hr />
+<h2 id="a2-translate-the-example-into-mathematics">A2 — Translate the example into mathematics<a class="headerlink" href="#a2-translate-the-example-into-mathematics" title="Permanent link">&para;</a></h2>
+<h3 id="what-a-mathematical-symbol-is">What a mathematical symbol is<a class="headerlink" href="#what-a-mathematical-symbol-is" title="Permanent link">&para;</a></h3>
+<p>A mathematical symbol is a compact name for an object or relationship. The object might be one history, a collection of possible histories, a rule, or a probability distribution. An equation states a relationship among those objects.</p>
+<p>The choice of a letter does <strong>not</strong> make the thing observable, finite, measurable, physical, or stored inside an AI system. Those properties require separate definitions or assumptions. The same construction could be written with different letters if every occurrence were renamed consistently.</p>
+<p>Mathematicians still choose letters for useful reasons:</p>
+<ul>
+<li>a <strong>mnemonic</strong> choice helps recall a meaning, such as <span class="arithmatex">\(h\)</span> for history;</li>
+<li>a <strong>conventional</strong> choice follows a pattern many readers recognize, such as <span class="arithmatex">\(\mathbb P\)</span> for probability or <span class="arithmatex">\(\pi\)</span> for a policy;</li>
+<li>a <strong>neutral</strong> choice avoids smuggling in an unintended meaning, such as <span class="arithmatex">\(\kappa\)</span> for the complete comparison scope.</li>
+</ul>
+<p>Four kinds of object appear repeatedly:</p>
+<table>
+<thead>
+<tr>
+<th>Kind of object</th>
+<th>What it means</th>
+<th>Ordinary-language example</th>
+<th>Mathematical example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>one item</strong></td>
+<td>A single object that has been named</td>
+<td>Past A</td>
+<td><span class="arithmatex">\(h_A\)</span></td>
+</tr>
+<tr>
+<td><strong>a collection or space</strong></td>
+<td>A set of permitted objects; a “space” may also carry structure needed to compare or measure them</td>
+<td>all histories allowed by this scope</td>
+<td><span class="arithmatex">\(\mathcal H^\kappa\)</span></td>
+</tr>
+<tr>
+<td><strong>a function or rule</strong></td>
+<td>A rule that specifies one output for each permitted input</td>
+<td>compress a history into an artifact</td>
+<td><span class="arithmatex">\(C_B\)</span></td>
+</tr>
+<tr>
+<td><strong>a probability law</strong></td>
+<td>A complete assignment of chances to the declared possible results; in a finite table those chances total 100%</td>
+<td>the chances assigned to all declared future results</td>
+<td><span class="arithmatex">\(\mathbb P_h^\pi\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>variable</strong> is a symbol whose value may differ across situations, such as which history occurred or which answer was observed. It is not automatically an unknown number that the reader is expected to solve. A set or space need not be small, finite, or literally stored anywhere.</p>
+<h3 id="a-small-notation-survival-kit">A small notation survival kit<a class="headerlink" href="#a-small-notation-survival-kit" title="Permanent link">&para;</a></h3>
+<p>Start with the marks needed to translate the scheduling fixture. The fuller reference comes later.</p>
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Say it aloud</th>
+<th>What it does here</th>
+<th>Why this notation was chosen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(h_A\)</span></td>
+<td>“history A”</td>
+<td>Names the history called Past A</td>
+<td><span class="arithmatex">\(h\)</span> is mnemonic for <strong>history</strong>; the subscript labels which one</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(h'\)</span></td>
+<td>“h-prime”</td>
+<td>Names a second history being compared with <span class="arithmatex">\(h\)</span></td>
+<td>A prime commonly marks another object of the same kind; here it is <strong>not</strong> a derivative</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal H\)</span></td>
+<td>“script H”</td>
+<td>Names a collection, or space, of possible histories</td>
+<td>Script capitals conventionally distinguish a space from one lowercase item</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbb P\)</span></td>
+<td>“probability”</td>
+<td>Names a probability measure or future law</td>
+<td>Blackboard-bold <span class="arithmatex">\(P\)</span> is a standard probability convention</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\pi\)</span></td>
+<td>“pi”</td>
+<td>Names one policy for choosing allowed future actions</td>
+<td>Lowercase pi is a common policy convention in decision theory</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Pi\)</span></td>
+<td>“capital pi”</td>
+<td>Names a collection of policies</td>
+<td>The matching capital letter distinguishes the family from one member</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\kappa\)</span></td>
+<td>“kappa”</td>
+<td>Labels the complete declared comparison scope</td>
+<td>It is deliberately neutral: no single English initial should stand for the whole scope</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(L\)</span></td>
+<td>“L”</td>
+<td>Names the future horizon</td>
+<td><span class="arithmatex">\(L\)</span> is mnemonic for a sequence <strong>length</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(=\)</span></td>
+<td>“equals”</td>
+<td>Asserts exact equality</td>
+<td>It does not mean “looks close in these samples”</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\{a,b\}\)</span></td>
+<td>“the set containing a and b”</td>
+<td>Collects objects without making either the preferred one</td>
+<td>Curly braces conventionally denote a set</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(a\in A\)</span></td>
+<td>“a is in A”</td>
+<td>Says one item belongs to a collection</td>
+<td><span class="arithmatex">\(\in\)</span> is the standard membership symbol</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(A\cup B\)</span></td>
+<td>“A union B”</td>
+<td>Combines the items in two collections</td>
+<td><span class="arithmatex">\(\cup\)</span> resembles two sets joined together</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(h\sim_\kappa h'\)</span></td>
+<td>“h is equivalent to h-prime under kappa”</td>
+<td>Places two histories in the same scoped predictive group</td>
+<td><span class="arithmatex">\(\sim\)</span> denotes a declared relation; the subscript says which scope governs it</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(h\not\sim_\kappa h'\)</span></td>
+<td>“h is not equivalent to h-prime under kappa”</td>
+<td>Says some allowed future comparison separates them</td>
+<td>The slash negates the relation; it does not mean merely “not textually similar”</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\([h]_{\sim_\kappa}\)</span></td>
+<td>“the equivalence class of h under kappa”</td>
+<td>Names the whole group containing <span class="arithmatex">\(h\)</span></td>
+<td>Brackets collect all histories related to the displayed representative</td>
+</tr>
+</tbody>
+</table>
+<p>Subscripts appear <strong>below</strong> a symbol and usually label an item, time, participant, or condition. Superscripts appear <strong>above</strong> it and usually record a dependency such as the scope or policy. A superscript is an exponent only when the local definition says it is. For example, the <span class="arithmatex">\(\pi\)</span> in <span class="arithmatex">\(\mathbb P_h^\pi\)</span> is a policy label, not an instruction to raise probability to a power.</p>
+<h3 id="translate-the-scheduling-scope">Translate the scheduling scope<a class="headerlink" href="#translate-the-scheduling-scope" title="Permanent link">&para;</a></h3>
+<p>Call the original scope <span class="arithmatex">\(\kappa\)</span>. The three pasts, one-step horizon, and two allowed one-step policies can be written</p>
+<div class="arithmatex">\[
+\mathcal H^\kappa=\{h_A,h_B,h_C\},
+\qquad
+L^\kappa=1,
+\qquad
+\Pi^\kappa=\{\pi_1,\pi_2\}.
+\]</div>
+<p>Read that as:</p>
+<ul>
+<li>“The history space under scope kappa contains histories A, B, and C.”</li>
+<li>“The horizon under scope kappa is one future step.”</li>
+<li>“The allowed policy family under scope kappa contains policy 1 and policy 2.”</li>
+</ul>
+<p>In this one-step fixture, <span class="arithmatex">\(\pi_1\)</span> selects Question 1 and <span class="arithmatex">\(\pi_2\)</span> selects Question 2. In a multi-step system, a policy may choose each later intervention using only information it is permitted to observe.</p>
+<p>The result from A1 becomes</p>
+<div class="arithmatex">\[
+h_A\sim_\kappa h_B,
+\qquad
+h_A\not\sim_\kappa h_C.
+\]</div>
+<p>Read that as: “A and B are equivalent under the original scope; A and C are not.” Past B need not contain the same words or facts as Past A. It belongs to the same state only because neither allowed policy produces a different declared future result.</p>
+<p>Now call the expanded scope with Question 3 <span class="arithmatex">\(\kappa'\)</span>. Its policy family is</p>
+<div class="arithmatex">\[
+\Pi^{\kappa'}=\Pi^\kappa\cup\{\pi_3\},
+\]</div>
+<p>which says: “Take every policy in the original family and add policy 3.” Under that expanded scope,</p>
+<div class="arithmatex">\[
+h_A\not\sim_{\kappa'}h_B.
+\]</div>
+<p>The prime on <span class="arithmatex">\(\kappa'\)</span> labels a second scope. The new scope did not alter either past; it altered what the comparison is allowed to reveal.</p>
+<h3 id="read-the-core-equation-from-left-to-right">Read the core equation from left to right<a class="headerlink" href="#read-the-core-equation-from-left-to-right" title="Permanent link">&para;</a></h3>
+<p>The center of the proposal is</p>
+<div class="arithmatex">\[
+h\sim_\kappa h'
+\quad\Longleftrightarrow\quad
+\mathbb P_h^\pi=\mathbb P_{h'}^\pi
+\quad\text{for every }\pi\in\Pi^\kappa.
+\]</div>
+<p><strong>Say it aloud:</strong> “History h is equivalent under scope kappa to h-prime if and only if the future probability law from h equals the future probability law from h-prime for every allowed policy pi.”</p>
+<table>
+<thead>
+<tr>
+<th>Piece</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(h\)</span> and <span class="arithmatex">\(h'\)</span></td>
+<td>Two interaction histories being compared</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sim_\kappa\)</span></td>
+<td>“Counts as predictively equivalent under scope <span class="arithmatex">\(\kappa\)</span>”</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Longleftrightarrow\)</span></td>
+<td>“If and only if”; each side guarantees the other</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbb P_h^\pi\)</span></td>
+<td>The probability distribution over relevant futures after history <span class="arithmatex">\(h\)</span> when policy <span class="arithmatex">\(\pi\)</span> is used</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(=\)</span></td>
+<td>Equality of the entire distributions, not equality of one sampled answer</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Pi^\kappa\)</span></td>
+<td>The collection of policies allowed by the declared scope</td>
+</tr>
+<tr>
+<td>“for every”</td>
+<td>No allowed policy may distinguish the histories</td>
+</tr>
+</tbody>
+</table>
+<p>Read <span class="arithmatex">\(\mathbb P_h^\pi\)</span> from the main letter outward:</p>
+<ol>
+<li><span class="arithmatex">\(\mathbb P\)</span> — a probability law over the selected future outcomes;</li>
+<li>subscript <span class="arithmatex">\(h\)</span> — beginning after history <span class="arithmatex">\(h\)</span>;</li>
+<li>superscript <span class="arithmatex">\(\pi\)</span> — while future actions are selected by policy <span class="arithmatex">\(\pi\)</span>.</li>
+</ol>
+<p>So the central equation generalizes the fixed answer table from A1. Instead of comparing only one displayed answer for each question, it compares the <strong>complete declared distribution of future trajectories</strong> for every allowed policy.</p>
+<h4 id="why-this-is-an-equivalence-relation">Why this is an equivalence relation<a class="headerlink" href="#why-this-is-an-equivalence-relation" title="Permanent link">&para;</a></h4>
+<p>Exact predictive equivalence has the three properties needed to form coherent groups:</p>
+<ul>
+<li><strong>reflexive:</strong> every history is equivalent to itself;</li>
+<li><strong>symmetric:</strong> if <span class="arithmatex">\(h\)</span> is equivalent to <span class="arithmatex">\(h'\)</span>, then <span class="arithmatex">\(h'\)</span> is equivalent to <span class="arithmatex">\(h\)</span>;</li>
+<li><strong>transitive:</strong> if <span class="arithmatex">\(h\)</span> is equivalent to <span class="arithmatex">\(h'\)</span> and <span class="arithmatex">\(h'\)</span> to <span class="arithmatex">\(h''\)</span>, then <span class="arithmatex">\(h\)</span> is equivalent to <span class="arithmatex">\(h''\)</span>.</li>
+</ul>
+<p>MIT OpenCourseWare's free <a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/">Mathematics for Computer Science</a> develops sets, functions, relations, state machines, and discrete probability from introductory foundations.</p>
+<p>Formal destination: <a href="../mcw_predictive_state_semantics/#proposition-1-exact-predictive-equivalence-is-an-equivalence-relation">Proposition 1</a>.</p>
+<h4 id="what-the-brackets-mean">What the brackets mean<a class="headerlink" href="#what-the-brackets-mean" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[
+S_t^\kappa=[h_t]_{\sim_\kappa}
+\]</div>
+<p><strong>Say it aloud:</strong> “The predictive state at time t under scope kappa is the equivalence class containing the history at time t.”</p>
+<p>The brackets do not select one representative history. They mean <strong>the whole group of histories</strong> declared equivalent by <span class="arithmatex">\(\sim_\kappa\)</span>.</p>
+<p>The state space</p>
+<div class="arithmatex">\[
+\mathcal S^\kappa=\mathcal H^\kappa/\!\sim_\kappa
+\]</div>
+<p>is the collection of all such groups. The slash means “take the original history space and identify histories related by this equivalence rule.” This is called a <strong>quotient</strong>.</p>
+<h4 id="why-approximate-closeness-needs-a-different-rule">Why approximate closeness needs a different rule<a class="headerlink" href="#why-approximate-closeness-needs-a-different-rule" title="Permanent link">&para;</a></h4>
+<p>The note defines a worst-case future-law distance</p>
+<div class="arithmatex">\[
+d_\kappa(h,h')
+=
+\sup_{\pi\in\Pi^\kappa}
+D^\kappa(\mathbb P_h^\pi,\mathbb P_{h'}^\pi).
+\]</div>
+<p><strong>Say it aloud:</strong> “The distance between two histories is the largest distance between their future distributions over all allowed policies.”</p>
+<p>The symbol <span class="arithmatex">\(\sup\)</span> means <strong>supremum</strong>: the least upper bound, or informally the worst value the policy family can approach.</p>
+<p>Pairwise “within <span class="arithmatex">\(\epsilon\)</span>” closeness is not generally transitive. With future Bernoulli probabilities <span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(0.4\)</span>, and <span class="arithmatex">\(0.8\)</span>, each adjacent pair is within <span class="arithmatex">\(0.4\)</span>, while the endpoints are <span class="arithmatex">\(0.8\)</span> apart. Approximate folding therefore needs an explicit clustering, cover, representative-radius, or bisimulation rule.</p>
+<p>Formal destination: <a href="../mcw_predictive_state_semantics/#6-distance-without-fake-equivalence">Distance without fake equivalence</a>. Ferns, Panangaden, and Precup's paper on <a href="https://arxiv.org/abs/1207.4114">metrics for finite Markov decision processes</a> provides primary research lineage for bounded behavioral state similarity.</p>
+<h4 id="what-a-probability-kernel-means">What a probability kernel means<a class="headerlink" href="#what-a-probability-kernel-means" title="Permanent link">&para;</a></h4>
+<p>A <strong>probability kernel</strong> is a rule that takes a current condition as input and returns a probability distribution, rather than necessarily returning one fixed output.</p>
+<p>For example:</p>
+<blockquote>
+<p>current predictive state + next intervention → probabilities over the next observation and next predictive state</p>
+</blockquote>
+<p>The formal note writes that idea as</p>
+<div class="arithmatex">\[
+\overline K_\kappa:
+\mathcal S^\kappa\times\mathcal U
+\rightsquigarrow
+\mathcal Y\times\mathcal S^\kappa.
+\]</div>
+<p><strong>Say it aloud:</strong> “K-bar under scope kappa maps a predictive state and an intervention to a probability distribution over the next observation and next predictive state.”</p>
+<p>The hooked arrow <span class="arithmatex">\(\rightsquigarrow\)</span> signals “returns a probability distribution over,” while the ordinary arrow <span class="arithmatex">\(\to\)</span> signals an ordinary function that returns one output.</p>
+<p>Under Proposition 2a's full closure, dynamic-consistency, measurability, and version assumptions, <strong>strong lumpability</strong> requires every history in one folded state to induce the same joint probabilities for the next observation and next folded state under the same intervention. Together, those conditions make the folded process safe to use recursively.</p>
+<p>Formal destination: <a href="../mcw_predictive_state_semantics/#proposition-2a-when-the-quotient-supports-recursive-dynamics">Proposition 2a</a>. Stanford's <a href="https://web.stanford.edu/~cpiech/cs221/handouts/markovDecisions.html">discrete introductory Markov decision process handout</a> explains states, actions, transition probabilities, policies, and finite horizons in approachable language; it is a conceptual bridge, not support for the quotient-kernel or lumpability result.</p>
+<h3 id="where-the-teaching-fixture-stops-being-the-full-model">Where the teaching fixture stops being the full model<a class="headerlink" href="#where-the-teaching-fixture-stops-being-the-full-model" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>A1 teaching fixture</th>
+<th>General MCW-PSS construction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Three displayed histories</td>
+<td>A declared history space that may be very large or infinite</td>
+</tr>
+<tr>
+<td>One question selected at the only future step</td>
+<td>A policy may adapt actions across several steps using permitted observations</td>
+</tr>
+<tr>
+<td>One fixed answer in each table cell</td>
+<td>A probability law over complete relevant future trajectories</td>
+</tr>
+<tr>
+<td>Visible conversation text</td>
+<td>Histories and latent conditions depend on the declared system boundary and instrumentation</td>
+</tr>
+<tr>
+<td>Directly group the rows with identical answers</td>
+<td>Exact equivalence compares every allowed policy; approximate folding needs an explicit error rule</td>
+</tr>
+<tr>
+<td>Stop after one answer</td>
+<td>Reusing the folded state recursively requires dynamic consistency, measurability, and lumpability assumptions</td>
+</tr>
+</tbody>
+</table>
+<p>The small fixture is therefore an instance of the logic, not a proof that every real human–AI system admits a useful or learnable compressed predictive state.</p>
+<hr />
+<h3 id="additional-mathematical-typography-used-in-the-formal-note">Additional mathematical typography used in the formal note<a class="headerlink" href="#additional-mathematical-typography-used-in-the-formal-note" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Say it aloud</th>
+<th>Meaning in this note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathcal X\)</span></td>
+<td>“script X”</td>
+<td>A set or space of possible values</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(X_t\)</span></td>
+<td>“X at time t”</td>
+<td>A random variable or state at time <span class="arithmatex">\(t\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x\)</span></td>
+<td>“little x”</td>
+<td>One realized value</td>
+</tr>
+<tr>
+<td>superscript <span class="arithmatex">\(\kappa\)</span></td>
+<td>“under scope kappa”</td>
+<td>The object depends on the declared coordination scope</td>
+</tr>
+<tr>
+<td>subscript <span class="arithmatex">\(t\)</span></td>
+<td>“at time t”</td>
+<td>Time index</td>
+</tr>
+<tr>
+<td>subscript <span class="arithmatex">\(i\)</span> or <span class="arithmatex">\(v\)</span></td>
+<td>“for participant i” or “component v”</td>
+<td>Actor- or component-relative index</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\cdot\)</span></td>
+<td>“the open argument”</td>
+<td>A placeholder for a value or measurable event</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mid\)</span></td>
+<td>“given”</td>
+<td>Conditional on the information to the right</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(:=\)</span></td>
+<td>“is defined as”</td>
+<td>The left side receives the definition on the right</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\in\)</span></td>
+<td>“is an element of”</td>
+<td>A value belongs to a set</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\subseteq\)</span></td>
+<td>“is a subset of”</td>
+<td>Every item on the left also belongs to the right</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\forall\)</span></td>
+<td>“for every”</td>
+<td>Universal requirement</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\exists\)</span></td>
+<td>“there exists”</td>
+<td>At least one witness exists</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sim\)</span></td>
+<td>“is equivalent to”</td>
+<td>Related by the declared equivalence rule</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\not\sim\)</span></td>
+<td>“is not equivalent to”</td>
+<td>Some declared distinction remains</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\([h]_{\sim}\)</span></td>
+<td>“the equivalence class of h”</td>
+<td>Every history equivalent to <span class="arithmatex">\(h\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\to\)</span></td>
+<td>“maps to”</td>
+<td>An ordinary function returning one output</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\rightsquigarrow\)</span></td>
+<td>“returns a distribution over”</td>
+<td>A probability kernel</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbb P\)</span></td>
+<td>“probability”</td>
+<td>A probability measure or future law</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbb E\)</span></td>
+<td>“expected value”</td>
+<td>Probability-weighted average</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sup\)</span></td>
+<td>“supremum”</td>
+<td>Least upper bound; often the worst allowed case</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\inf\)</span></td>
+<td>“infimum”</td>
+<td>Greatest lower bound; often the earliest or smallest case</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\perp\!\!\!\perp\)</span></td>
+<td>“is conditionally independent of”</td>
+<td>Once the named condition is known, the other variable adds no predictive information</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\epsilon\)</span></td>
+<td>“epsilon”</td>
+<td>A declared nonnegative tolerance</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\infty\)</span></td>
+<td>“infinity”</td>
+<td>No finite bound is declared</td>
+</tr>
+</tbody>
+</table>
+<h4 id="capital-letters-lowercase-letters-and-script-letters">Capital letters, lowercase letters, and script letters<a class="headerlink" href="#capital-letters-lowercase-letters-and-script-letters" title="Permanent link">&para;</a></h4>
+<p>The note usually follows this convention:</p>
+<ul>
+<li>a script letter such as <span class="arithmatex">\(\mathcal Y\)</span> names a <strong>space of possibilities</strong>;</li>
+<li>a capital letter such as <span class="arithmatex">\(Y_t\)</span> names a <strong>random variable</strong> taking values in that space;</li>
+<li>a lowercase letter such as <span class="arithmatex">\(y_t\)</span> names <strong>one observed value</strong>.</li>
+</ul>
+<p>This convention is helpful but not universal across mathematics. Local definitions in the formal note always take priority.</p>
+<h4 id="local-dummy-symbols">Local dummy symbols<a class="headerlink" href="#local-dummy-symbols" title="Permanent link">&para;</a></h4>
+<p>Letters such as <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(B\)</span>, and <span class="arithmatex">\(C\)</span> sometimes mean arbitrary measurable events inside one equation or proof. They are local placeholders, not permanent MCW constructs. Similarly, <span class="arithmatex">\(x\)</span>, <span class="arithmatex">\(y\)</span>, <span class="arithmatex">\(z\)</span>, <span class="arithmatex">\(s\)</span>, <span class="arithmatex">\(u\)</span>, and <span class="arithmatex">\(h\)</span> usually denote individual values from the corresponding script-letter spaces.</p>
+<hr />
+<h2 id="a3-research-model-reference">A3 — Research-model reference<a class="headerlink" href="#a3-research-model-reference" title="Permanent link">&para;</a></h2>
+<h3 id="symbol-by-symbol-reference">Symbol-by-symbol reference<a class="headerlink" href="#symbol-by-symbol-reference" title="Permanent link">&para;</a></h3>
+<h4 id="context-topology-and-controlled-dynamics">Context topology and controlled dynamics<a class="headerlink" href="#context-topology-and-controlled-dynamics" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Say it aloud</th>
+<th>Meaning here</th>
+<th>It does <strong>not</strong> mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(G=(V,E,\tau)\)</span></td>
+<td>“G equals V, E, tau”</td>
+<td>Typed graph representing the bounded context topology</td>
+<td>The canonical MCW itself</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(V\)</span></td>
+<td>“V”</td>
+<td>Components or nodes in the topology</td>
+<td>Only actors</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(E\)</span></td>
+<td>“E”</td>
+<td>Directed information or control paths</td>
+<td>Expected value; that uses <span class="arithmatex">\(\mathbb E\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\tau\)</span></td>
+<td>“tau”</td>
+<td>Function assigning roles to topology components</td>
+<td>Repair hitting time; that uses <span class="arithmatex">\(\tau_{\mathcal G}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(v\)</span></td>
+<td>“component v”</td>
+<td>One component in <span class="arithmatex">\(V\)</span></td>
+<td>Necessarily a participant</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(i\)</span></td>
+<td>“participant i”</td>
+<td>One human or AI participant</td>
+<td>A universal observer</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\((\mathcal X_v,\Sigma_v)\)</span></td>
+<td>“local state space X-v and sigma-v”</td>
+<td>Possible local states and the events measurable for component <span class="arithmatex">\(v\)</span></td>
+<td>A claim that an analyst can inspect every state</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\((\mathcal X,\Sigma)\)</span></td>
+<td>“global state space X and sigma”</td>
+<td>Product of the component state spaces and its measurable events</td>
+<td>A finite vector by default</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(X_t^v\)</span></td>
+<td>“state of component v at time t”</td>
+<td>Local component state</td>
+<td>An actor belief</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(X_t\)</span></td>
+<td>“global state at time t”</td>
+<td>Distributed latent state inside the declared boundary</td>
+<td>A complete state of the universe</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal F_t^i\)</span></td>
+<td>“information available to i by time t”</td>
+<td>Actor-relative information set or filtration</td>
+<td>All information that exists in the system</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal F_t^{\mathrm{obs}}\)</span></td>
+<td>“observer information by time t”</td>
+<td>Information supplied by the declared study instrumentation</td>
+<td>Privileged or complete ground truth</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\operatorname{Ctx}_\kappa\)</span></td>
+<td>“effective context under kappa”</td>
+<td>Component state that can affect or predict a declared relevant future</td>
+<td>Every stored fact everywhere</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\operatorname{do}(X=z)\)</span></td>
+<td>“intervene to set X to z”</td>
+<td>Causal intervention notation, valid only with an explicit causal model</td>
+<td>Ordinary observation or correlation</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\((\mathcal U,\Sigma_{\mathcal U})\)</span></td>
+<td>“intervention space U”</td>
+<td>Allowed interventions and their measurable events</td>
+<td>Only textual prompts</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(U_t\)</span> and <span class="arithmatex">\(u_t\)</span></td>
+<td>“intervention at time t”</td>
+<td>Random intervention and one realized intervention</td>
+<td>Necessarily an autonomous action</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\((\mathcal Y,\Sigma_{\mathcal Y})\)</span></td>
+<td>“observation space Y”</td>
+<td>Possible observations and their measurable events</td>
+<td>Only natural-language output</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Y_t\)</span> and <span class="arithmatex">\(y_t\)</span></td>
+<td>“observation at time t”</td>
+<td>Random observation and one observed value</td>
+<td>Ground truth by default</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mu_0\)</span></td>
+<td>“mu zero”</td>
+<td>Initial probability law for the latent state</td>
+<td>An observed starting state</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(P_t\)</span></td>
+<td>“P at time t”</td>
+<td>State-transition kernel</td>
+<td>The generic distributions <span class="arithmatex">\(P,Q\)</span> used in the total-variation definition</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Q_t\)</span></td>
+<td>“Q at time t”</td>
+<td>Observation kernel</td>
+<td>The elicitation-policy family <span class="arithmatex">\(\mathcal Q\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(g_\kappa\)</span></td>
+<td>“g under kappa”</td>
+<td>Declared map from raw histories to relevant outcomes</td>
+<td>A universally valid score of coordination</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Z_t^\kappa\)</span></td>
+<td>“relevant outcome at time t under kappa”</td>
+<td>Coordination-relevant outcome selected by <span class="arithmatex">\(g_\kappa\)</span></td>
+<td>The complete MCW</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(h_t\)</span></td>
+<td>“history at time t”</td>
+<td>Sequence of realized interventions and observations so far</td>
+<td>A latent state by definition</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal H\)</span></td>
+<td>“history space H”</td>
+<td>All observable histories of allowed lengths</td>
+<td>Latent human context <span class="arithmatex">\(H_t\)</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id="scope-policies-prediction-and-folding">Scope, policies, prediction, and folding<a class="headerlink" href="#scope-policies-prediction-and-folding" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Say it aloud</th>
+<th>Meaning here</th>
+<th>It does <strong>not</strong> mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\kappa\)</span></td>
+<td>“kappa”</td>
+<td>Complete declaration of topology, outcomes, policies, horizon, and metric</td>
+<td>A fitted parameter</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal Z^\kappa\)</span></td>
+<td>“outcome space Z under kappa”</td>
+<td>Possible values of one coordination-relevant outcome</td>
+<td>A complete future trajectory; that lives in <span class="arithmatex">\((\mathcal Z^\kappa)^{L^\kappa}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Z_{1:L^\kappa}\)</span></td>
+<td>“Z from step one through horizon L”</td>
+<td>Full scoped future trajectory compared by a continuation law</td>
+<td>One outcome value</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Z_{2:}\)</span></td>
+<td>“Z from step two onward”</td>
+<td>Remaining suffix of a future trajectory after the next observation</td>
+<td>A stationary infinite future by default</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Pi^\kappa\)</span></td>
+<td>“capital pi under kappa”</td>
+<td>Family of allowed future policies</td>
+<td>One particular policy</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\pi\)</span></td>
+<td>“pi”</td>
+<td>One nonanticipating future policy</td>
+<td>A single static prompt necessarily</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\pi_j\)</span></td>
+<td>“policy decision at future step j”</td>
+<td>One decision rule inside a policy</td>
+<td>A probability value</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(L^\kappa\)</span></td>
+<td>“horizon L under kappa”</td>
+<td>Number of future steps compared</td>
+<td>Evidence layer L0–L4</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(D^\kappa\)</span></td>
+<td>“future-law metric D under kappa”</td>
+<td>Declared distance between probability laws</td>
+<td>Automatically total variation or automatically valid for the task</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal H^\kappa\)</span></td>
+<td>“admissible histories under kappa”</td>
+<td>Histories for which the scoped continuation model is defined</td>
+<td>Every syntactically possible transcript</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Gamma_\kappa^\pi\)</span></td>
+<td>“Gamma under kappa and pi”</td>
+<td>Continuation kernel from a history to a future-outcome distribution</td>
+<td>An estimated model already available in practice</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbb P_h^\pi\)</span></td>
+<td>“future law from h under pi”</td>
+<td>Distribution of relevant futures after history <span class="arithmatex">\(h\)</span> under policy <span class="arithmatex">\(\pi\)</span></td>
+<td>Confidence in one answer</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(h\sim_\kappa h'\)</span></td>
+<td>“h is equivalent to h-prime under kappa”</td>
+<td>Every allowed policy yields the same relevant future law</td>
+<td>Textual or semantic identity in all respects</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(S_t^\kappa\)</span></td>
+<td>“predictive state at time t under kappa”</td>
+<td>Equivalence class containing the current history</td>
+<td>Canonical MCW or a participant's belief</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal S^\kappa\)</span></td>
+<td>“predictive state space under kappa”</td>
+<td>Collection of predictive equivalence classes</td>
+<td>Necessarily finite, countable, or Euclidean</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sigma_\kappa(h)\)</span></td>
+<td>“prediction-valued representation of h”</td>
+<td>Indexed family of all scoped future laws from <span class="arithmatex">\(h\)</span></td>
+<td>A scalar summary</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\phi(h)\)</span></td>
+<td>“phi of h”</td>
+<td>Any proposed predictively sufficient representation</td>
+<td>Automatically minimal</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal E\)</span></td>
+<td>“representation space E”</td>
+<td>Codomain of <span class="arithmatex">\(\phi\)</span></td>
+<td>Topology edges <span class="arithmatex">\(E\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(R_\pi\)</span></td>
+<td>“R under pi”</td>
+<td>Kernel recovering a future law from a sufficient representation or compressed artifact</td>
+<td>Human response <span class="arithmatex">\(R_t\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(r\)</span></td>
+<td>“little r”</td>
+<td>Map recovering the predictive class from another sufficient representation</td>
+<td>A probability by default</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(q_\kappa\)</span></td>
+<td>“quotient map under kappa”</td>
+<td>Maps each history to its predictive equivalence class</td>
+<td>Human elicitation; that is <span class="arithmatex">\(a_t^{\mathrm{elicit}}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(K_\kappa^Y\)</span></td>
+<td>“immediate-observation kernel K under kappa”</td>
+<td>Distribution of the next observation after a history and intervention</td>
+<td>Compression; that is <span class="arithmatex">\(C_B\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(u\star\pi\)</span></td>
+<td>“u followed by pi”</td>
+<td>Apply intervention <span class="arithmatex">\(u\)</span> once, then follow suffix policy <span class="arithmatex">\(\pi\)</span></td>
+<td>Multiplication</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(huy\)</span></td>
+<td>“history h followed by u and y”</td>
+<td>History formed by appending intervention <span class="arithmatex">\(u\)</span> and observation <span class="arithmatex">\(y\)</span> to <span class="arithmatex">\(h\)</span></td>
+<td>Multiplication of three variables</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\overline K_\kappa\)</span></td>
+<td>“K-bar under kappa”</td>
+<td>Quotient transition kernel over next observation and next predictive state</td>
+<td>A pointwise deterministic update</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbf 1_B\)</span></td>
+<td>“indicator of B”</td>
+<td>One when the next predictive state belongs to event <span class="arithmatex">\(B\)</span>, and zero otherwise</td>
+<td>A probability by itself</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(F_\kappa\)</span></td>
+<td>“F under kappa”</td>
+<td>Optional measurable point updater when stronger uniform conditions hold</td>
+<td>Guaranteed to exist</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(T_\kappa\)</span></td>
+<td>“T under kappa”</td>
+<td>Point-update notation available only under the stronger common-version condition</td>
+<td>The default quotient transition object</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal S^{\kappa,\ell}\)</span></td>
+<td>“state space under kappa with ell steps left”</td>
+<td>Horizon-indexed predictive-state space when remaining time matters</td>
+<td>Necessarily the stationary state space <span class="arithmatex">\(\mathcal S^\kappa\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\overline K_{\kappa,\ell}\)</span></td>
+<td>“K-bar under kappa with ell steps left”</td>
+<td>Bounded-horizon quotient kernel into <span class="arithmatex">\(\mathcal S^{\kappa,\ell-1}\)</span></td>
+<td>A time-homogeneous kernel by default</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(T_{\kappa,\ell}\)</span></td>
+<td>“T under kappa with ell steps left”</td>
+<td>Deterministic bounded-horizon update when the stronger conditions hold</td>
+<td>The default recursive object</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\ell\)</span></td>
+<td>“ell”</td>
+<td>Remaining horizon or, in the compression objective, a locally declared resource cost function</td>
+<td>The numeral one</td>
+</tr>
+</tbody>
+</table>
+<h4 id="distance-belief-and-uncertainty">Distance, belief, and uncertainty<a class="headerlink" href="#distance-belief-and-uncertainty" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Say it aloud</th>
+<th>Meaning here</th>
+<th>It does <strong>not</strong> mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(d_\kappa(h,h')\)</span></td>
+<td>“distance under kappa”</td>
+<td>Worst allowed-policy distance between future laws</td>
+<td>Exact equivalence when merely small</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(D_{\mathrm{TV}}(P,Q)\)</span></td>
+<td>“total-variation distance between P and Q”</td>
+<td>Largest probability difference assigned to one measurable event</td>
+<td>Text embedding distance</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\epsilon\)</span></td>
+<td>“epsilon”</td>
+<td>Declared approximation tolerance</td>
+<td>A universal acceptable error</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(g\)</span></td>
+<td>“g”</td>
+<td>Any bounded measurable future utility in Proposition 3</td>
+<td>The outcome map <span class="arithmatex">\(g_\kappa\)</span> unless explicitly indexed</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbb E_h^\pi[g]\)</span></td>
+<td>“expected g from h under pi”</td>
+<td>Probability-weighted future value</td>
+<td>One observed outcome</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(b_t^i(B)\)</span></td>
+<td>“participant i's belief in event B at time t”</td>
+<td>Conditional probability participant <span class="arithmatex">\(i\)</span> assigns to predictive-state event <span class="arithmatex">\(B\)</span></td>
+<td>The relational predictive state itself</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(b_t^{\mathrm{obs}}(B)\)</span></td>
+<td>“observer belief in B”</td>
+<td>Analyst's conditional belief using study instrumentation</td>
+<td>Privileged ground truth</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(B\subseteq\mathcal S^\kappa\)</span></td>
+<td>“event B in predictive-state space”</td>
+<td>A measurable collection of possible predictive states</td>
+<td>Compression budget <span class="arithmatex">\(B\)</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id="human-elicitation-and-articulation">Human elicitation and articulation<a class="headerlink" href="#human-elicitation-and-articulation" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Say it aloud</th>
+<th>Meaning here</th>
+<th>It does <strong>not</strong> mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(H_t\)</span></td>
+<td>“latent human context at time t”</td>
+<td>Unobserved human-context condition used in the elicitation model</td>
+<td>Observable history space <span class="arithmatex">\(\mathcal H\)</span> or a complete enumerable HCW</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(a_t^{\mathrm{elicit}}\)</span></td>
+<td>“elicitation action at time t”</td>
+<td>Question, prompt, measurement, or other elicitation intervention</td>
+<td>Passive readout necessarily</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(c_t\)</span></td>
+<td>“channel or modality at time t”</td>
+<td>Text, speech, gesture, behavioral choice, sensing, BCI, or another modality</td>
+<td>Cost function <span class="arithmatex">\(c\)</span> in the repair section</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(R_t\)</span></td>
+<td>“human response at time t”</td>
+<td>Observed response to elicitation</td>
+<td>Recovery kernel <span class="arithmatex">\(R_\pi\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(E_{c_t}\)</span></td>
+<td>“elicitation kernel for modality c-t”</td>
+<td>Response distribution given human state and elicitation</td>
+<td>Topology edges <span class="arithmatex">\(E\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(T_H\)</span></td>
+<td>“human-state transition kernel”</td>
+<td>Possible human-context change caused by elicitation and response</td>
+<td>A claim that the HCW is fully observable</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal Q\)</span></td>
+<td>“elicitation-policy family Q”</td>
+<td>Allowed adaptive elicitation policies</td>
+<td>Observation kernel <span class="arithmatex">\(Q_t\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal C\)</span></td>
+<td>“modality family C”</td>
+<td>Allowed elicitation modalities</td>
+<td>Canonical constraint variable <span class="arithmatex">\(C\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\eta,\eta'\)</span></td>
+<td>“eta and eta-prime”</td>
+<td>Candidate human-context conditions being compared</td>
+<td>Complete descriptions of people</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\eta\equiv_{\mathcal Q,\mathcal C,L}\eta'\)</span></td>
+<td>“eta is elicitation-equivalent to eta-prime under Q, C, and L”</td>
+<td>Every allowed adaptive elicitation policy and modality yields the same response law through horizon <span class="arithmatex">\(L\)</span></td>
+<td>Equality of complete HCWs</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(I_t^{\mathrm{selected}}\)</span></td>
+<td>“selected information at time t”</td>
+<td>Information selected for articulation</td>
+<td>A fully formed IU assumed to preexist in cognition</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(S_t^{\mathrm{encoded}}\)</span></td>
+<td>“encoded signal”</td>
+<td>Selected information encoded for transmission</td>
+<td>Predictive state <span class="arithmatex">\(S_t^\kappa\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(S_t^{\mathrm{transmitted}}\)</span></td>
+<td>“transmitted signal”</td>
+<td>Representation actually sent through the channel</td>
+<td>Meaning recovered by the recipient</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\widehat I_t^A\)</span></td>
+<td>“I-hat recovered by actor A”</td>
+<td>Recipient-side recovered or inferred information</td>
+<td>Guaranteed agreement with the source</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(I(X;Y)\)</span></td>
+<td>“mutual information between X and Y”</td>
+<td>Statistical information one random variable carries about another</td>
+<td>Meaning, truth, or understanding by itself</td>
+</tr>
+</tbody>
+</table>
+<h4 id="compression-and-repair">Compression and repair<a class="headerlink" href="#compression-and-repair" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Say it aloud</th>
+<th>Meaning here</th>
+<th>It does <strong>not</strong> mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(C_B\)</span></td>
+<td>“compressor C with budget B”</td>
+<td>Deterministic compression map constrained by a declared budget</td>
+<td>Quotient transition kernel <span class="arithmatex">\(\overline K_\kappa\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(B\)</span></td>
+<td>“budget B”</td>
+<td>Token, code-length, latency, or other declared resource limit</td>
+<td>Predictive-state event <span class="arithmatex">\(B\)</span> in another local formula</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(J_e\)</span></td>
+<td>“reinjection procedure J with side information e”</td>
+<td>Reintroduces a compressed artifact into a continuing system</td>
+<td>Guaranteed faithful decoding</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(e\)</span></td>
+<td>“side information e”</td>
+<td>Information legitimately available during reinjection</td>
+<td>A hidden copy of the source history</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Z_{\mathrm{future}}^\pi\perp\!\!\!\perp H\mid C_B(H)\)</span></td>
+<td>“future Z is conditionally independent of history H given the compressed artifact”</td>
+<td>The artifact retains all scoped predictive information under policy <span class="arithmatex">\(\pi\)</span></td>
+<td>The artifact retains every fact or meaning</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Delta_\kappa(h;C_B,J_e)\)</span></td>
+<td>“operational distortion under kappa”</td>
+<td>Future-law distance after compression and reinjection</td>
+<td>Textual dissimilarity alone</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\pi^*\)</span></td>
+<td>“witness policy pi-star”</td>
+<td>One allowed policy proving that two histories have different futures</td>
+<td>An optimal policy by default</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x_0,\ldots,x_n\)</span></td>
+<td>“successive comparison conditions”</td>
+<td>Conditions produced by sequential transformations</td>
+<td>Necessarily latent states</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal U_R\)</span></td>
+<td>“repair intervention set”</td>
+<td>Canonical repair operations treated as interventions</td>
+<td>Guaranteed successful repairs</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal G\)</span></td>
+<td>“target set G”</td>
+<td>Acceptable predictive coordination region</td>
+<td>Context topology <span class="arithmatex">\(G\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\rho\)</span></td>
+<td>“rho”</td>
+<td>Repair policy</td>
+<td>Probability or correlation</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\tau_{\mathcal G}\)</span></td>
+<td>“hitting time of G”</td>
+<td>First time the process enters the target region</td>
+<td>Topology role map <span class="arithmatex">\(\tau\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(c(S_t^\kappa,U_t)\)</span></td>
+<td>“repair cost at state and intervention”</td>
+<td>Declared nonnegative cost for one repair step</td>
+<td>The modality <span class="arithmatex">\(c_t\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(V_\rho(s)\)</span></td>
+<td>“value or expected repair cost under rho from s”</td>
+<td>Expected cumulative cost until the target is reached</td>
+<td>Empirically known repair cost</td>
+</tr>
+</tbody>
+</table>
+<h4 id="about-overloaded-letters">About overloaded letters<a class="headerlink" href="#about-overloaded-letters" title="Permanent link">&para;</a></h4>
+<p>Mathematics frequently reuses letters locally. This note inherits several collisions from neighboring traditions. Typography and scope disambiguate them, but the reader should not have to guess:</p>
+<table>
+<thead>
+<tr>
+<th>Similar notation</th>
+<th>Distinction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(H_t\)</span>, <span class="arithmatex">\(H\)</span>, and <span class="arithmatex">\(\mathcal H\)</span></td>
+<td>Latent human context, a random history in the compression section, and the history space</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(P_t,Q_t\)</span> and generic <span class="arithmatex">\(P,Q\)</span></td>
+<td>System kernels versus arbitrary probability distributions in a metric definition</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(R_t\)</span> and <span class="arithmatex">\(R_\pi\)</span></td>
+<td>Human response versus future-law recovery kernel</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(T_H\)</span>, <span class="arithmatex">\(T_{\kappa,\ell}\)</span>, and canonical <span class="arithmatex">\(T\)</span></td>
+<td>Human transition, optional predictive-state update, and time in the canonical mnemonic</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(G\)</span> and <span class="arithmatex">\(\mathcal G\)</span></td>
+<td>Context topology versus repair target set</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(B\)</span></td>
+<td>A local measurable event or a local compression budget, depending on the defining paragraph</td>
+</tr>
+</tbody>
+</table>
+<p>Future revisions should prefer descriptive subscripts and superscripts over adding new collisions.</p>
+<hr />
+<h3 id="concepts-beneath-the-notation">Concepts beneath the notation<a class="headerlink" href="#concepts-beneath-the-notation" title="Permanent link">&para;</a></h3>
+<h4 id="sets-functions-and-relations">Sets, functions, and relations<a class="headerlink" href="#sets-functions-and-relations" title="Permanent link">&para;</a></h4>
+<ul>
+<li>A <strong>set</strong> is a collection of possible items.</li>
+<li>A <strong>function</strong> assigns one output to each allowed input.</li>
+<li>A <strong>relation</strong> declares which pairs count as related.</li>
+<li>An <strong>equivalence relation</strong> is reflexive, symmetric, and transitive, so it divides a set into nonoverlapping equivalence classes.</li>
+<li>A <strong>quotient</strong> is the new set made from those classes.</li>
+</ul>
+<p>Recommended foundation: <a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/">MIT OpenCourseWare — Mathematics for Computer Science</a>.</p>
+<h4 id="probability-distributions-and-conditioning">Probability distributions and conditioning<a class="headerlink" href="#probability-distributions-and-conditioning" title="Permanent link">&para;</a></h4>
+<ul>
+<li>A <strong>probability distribution</strong> assigns probabilities to events; in a finite example, this can be displayed as a list of outcomes and probabilities.</li>
+<li>A <strong>conditional probability law</strong> describes probabilities given stated information; it need not literally replace the underlying sample space.</li>
+<li>A <strong>random variable</strong> is a rule assigning a value to each possible outcome.</li>
+<li>An <strong>expected value</strong> is a probability-weighted average, not a guaranteed result.</li>
+</ul>
+<p>Foundations in two formats:</p>
+<ul>
+<li><strong>Text-first:</strong> <a href="https://openstax.org/books/introductory-statistics/pages/3-introduction">OpenStax Introductory Statistics — Probability Topics</a></li>
+<li><strong>Interactive and visual:</strong> <a href="https://seeing-theory.brown.edu/basic-probability/index.html">Brown University Seeing Theory — Basic Probability</a> and <a href="https://seeing-theory.brown.edu/compound-probability/index.html">Sets and Conditional Probability</a>. Seeing Theory is archived for reference and is offered as a supplement, not the sole path.</li>
+</ul>
+<h4 id="state-action-observation-and-policy">State, action, observation, and policy<a class="headerlink" href="#state-action-observation-and-policy" title="Permanent link">&para;</a></h4>
+<ul>
+<li>A <strong>history</strong> records what has happened.</li>
+<li>A <strong>state</strong> abstractly identifies exactly the past distinctions needed for the declared future task; it is not necessarily a stored record.</li>
+<li>An <strong>intervention or action</strong> changes or probes the process.</li>
+<li>An <strong>observation</strong> is what the study can see afterward.</li>
+<li>A <strong>policy</strong> is a rule for choosing later actions based only on information it is permitted to use.</li>
+<li>A <strong>horizon</strong> says how far into the future the comparison extends.</li>
+</ul>
+<p>Recommended discrete bridge: <a href="https://web.stanford.edu/~cpiech/cs221/handouts/markovDecisions.html">Stanford CS221 — Markov Decisions</a>. For a one-paragraph finite-state illustration, see the <a href="https://xlinux.nist.gov/dads/HTML/markovchain.html">NIST Dictionary of Algorithms and Data Structures — Markov chain</a>. Neither source covers the formal note's general measurable-state quotient construction.</p>
+<h4 id="partial-observability-measurement-and-belief">Partial observability, measurement, and belief<a class="headerlink" href="#partial-observability-measurement-and-belief" title="Permanent link">&para;</a></h4>
+<p>A latent state can affect observations without being directly readable. A belief state is an observer's probability distribution over possible latent states given the observer's evidence. It is not the latent state itself.</p>
+<p>In the HCW elicitation model, asking a question can both reveal and alter human context. The elicitation action therefore belongs in both the observation and state-transition model.</p>
+<p>Formal destination: <a href="../mcw_predictive_state_semantics/#8-hcw-elicitation-and-observability">HCW elicitation and observability</a>.</p>
+<h4 id="reviewer-only-measure-theory">Reviewer-only measure theory<a class="headerlink" href="#reviewer-only-measure-theory" title="Permanent link">&para;</a></h4>
+<p>The phrases <strong>measurable space</strong>, <strong>regular conditional probability</strong>, <strong>standard Borel space</strong>, <strong>joint measurability</strong>, and <strong>almost surely</strong> support rigorous probability on continuous or uncountable spaces. They are not prerequisites for understanding the worked example.</p>
+<p>They become necessary when reviewing whether one representative-independent recursive update exists. MIT's graduate <a href="https://ocw.mit.edu/courses/18-175-theory-of-probability-spring-2014/6dc0eeda7f7a0cbb95f9b7a16cd1f276_MIT18_175S14_Lecture26.pdf">Theory of Probability, Lecture 26</a> introduces regular conditional probabilities. The formal note's <a href="../mcw_predictive_state_semantics/#proposition-2a-when-the-quotient-supports-recursive-dynamics">Proposition 2a</a> states the additional dynamic-consistency, measurability, and lumpability assumptions used here.</p>
+<hr />
+<h3 id="a-learning-path-from-zero">A learning path from zero<a class="headerlink" href="#a-learning-path-from-zero" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Learn enough to answer</th>
+<th>Recommended resource</th>
+<th>Readiness check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Five-minute fixture</td>
+<td>Why future tests define the fold</td>
+<td><a href="#a1-build-the-idea-from-one-ordinary-conversation">Worked example above</a></td>
+<td>Can you explain why <span class="arithmatex">\(h_A\)</span> and <span class="arithmatex">\(h_B\)</span> merge before <span class="arithmatex">\(\pi_3\)</span> but split afterward?</td>
+</tr>
+<tr>
+<td>2. Sets and relations</td>
+<td>How a rule forms equivalence classes</td>
+<td><a href="https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/">MIT Mathematics for Computer Science</a></td>
+<td>Can you distinguish “identical” from “treated as equal under a declared relation”?</td>
+</tr>
+<tr>
+<td>3. Probability</td>
+<td>What a future distribution and conditional law mean</td>
+<td><a href="https://openstax.org/books/introductory-statistics/pages/3-introduction">OpenStax — Probability Topics</a>, with <a href="https://seeing-theory.brown.edu/basic-probability/index.html">Seeing Theory</a> as an interactive supplement</td>
+<td>Can you explain why a future law is not a model confidence score?</td>
+</tr>
+<tr>
+<td>4. State and policy</td>
+<td>Why actions and horizons belong in the scope</td>
+<td><a href="https://web.stanford.edu/~cpiech/cs221/handouts/markovDecisions.html">Stanford CS221 — Markov Decisions</a></td>
+<td>Can you distinguish history, current state, next action, observation, and policy?</td>
+</tr>
+<tr>
+<td>5. Predictive folding</td>
+<td>Why equal tested futures permit merging</td>
+<td><a href="https://www.cs.cornell.edu/courses/cs4120/2023sp/notes/leximpl/#dfa-minimization">Cornell — DFA Minimization</a></td>
+<td>Given a finite outcome table, can you group histories that no declared suffix distinguishes?</td>
+</tr>
+<tr>
+<td>6. Approximation</td>
+<td>Why <span class="arithmatex">\(\epsilon\)</span>-closeness is not exact equivalence</td>
+<td><a href="../mcw_predictive_state_semantics/#6-distance-without-fake-equivalence">Formal distance section</a></td>
+<td>Can you produce three points whose adjacent pairs are close but endpoints are not?</td>
+</tr>
+<tr>
+<td>7. Partial observability</td>
+<td>Why state, measurement, and belief remain separate</td>
+<td><a href="../mcw_predictive_state_semantics/#8-hcw-elicitation-and-observability">Formal elicitation section</a></td>
+<td>Can you explain how asking may reveal and change the HCW?</td>
+</tr>
+<tr>
+<td>8. Reviewer track</td>
+<td>Why conditional versions and quotient kernels need regularity</td>
+<td><a href="https://ocw.mit.edu/courses/18-175-theory-of-probability-spring-2014/6dc0eeda7f7a0cbb95f9b7a16cd1f276_MIT18_175S14_Lecture26.pdf">MIT 18.175 Lecture 26</a></td>
+<td>Can you state why pairwise almost-sure equality may not give one uniform point updater?</td>
+</tr>
+</tbody>
+</table>
+<p>After stage 5, a reader should be able to understand the research proposal. After stage 7, a reader should understand what an empirical study must declare and where further expertise in identification, sampling, estimation, power, and measurement validation is needed. Stage 8 is for theorem review and recursive implementation.</p>
+<hr />
+<h2 id="primary-research-lineage">Primary research lineage<a class="headerlink" href="#primary-research-lineage" title="Permanent link">&para;</a></h2>
+<p>The mathematical ingredients are established traditions. The proposed contribution is their MCW-specific operationalization and synthesis, not invention of predictive state, automata minimization, probability kernels, or information theory.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Why it is cited here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Smith, Oler, Miller, and Manz, <a href="https://aisel.aisnet.org/hicss-50/eg/supply_chain_security/4/">“Reverse Engineering Integrated Circuits Using Finite State Machine Analysis”</a> (2017)</td>
+<td>Non-destructive reconstruction and subtree-folding pattern motivating the research bridge</td>
+</tr>
+<tr>
+<td>Littman, Sutton, and Singh, <a href="https://papers.nips.cc/paper_files/paper/2001/hash/1e4d36177d71bbb3558e43af9577d70e-Abstract.html">“Predictive Representations of State”</a> (2001)</td>
+<td>Represents state using action-conditional predictions of future observations</td>
+</tr>
+<tr>
+<td>Shalizi and Crutchfield, <a href="https://doi.org/10.1023/A:1010388907793">“Computational Mechanics: Pattern and Prediction, Structure and Simplicity”</a> (2001)</td>
+<td>Future-equivalence classes and minimal predictive structure</td>
+</tr>
+<tr>
+<td>Ferns, Panangaden, and Precup, <a href="https://arxiv.org/abs/1207.4114">“Metrics for Finite Markov Decision Processes”</a> (2004)</td>
+<td>Bisimulation metrics and value-relevant state similarity</td>
+</tr>
+<tr>
+<td>Nayyar, Mahajan, and Teneketzis, <a href="https://doi.org/10.1109/TAC.2013.2239000">“Decentralized Stochastic Control with Partial History Sharing”</a> (2013)</td>
+<td>Distributed control with different local histories and shared information</td>
+</tr>
+<tr>
+<td>Blackwell, <a href="https://doi.org/10.1214/aoms/1177729032">“Equivalent Comparisons of Experiments”</a> (1953)</td>
+<td>Statistical comparison of information structures</td>
+</tr>
+<tr>
+<td>Åström, <a href="https://doi.org/10.1016/0022-247X(65)90154-X">“Optimal Control of Markov Processes with Incomplete State Information I”</a> (1965)</td>
+<td>Belief-state control under partial observability</td>
+</tr>
+<tr>
+<td>Tishby, Pereira, and Bialek, <a href="https://arxiv.org/abs/physics/0004057">“The Information Bottleneck Method”</a> (1999)</td>
+<td>Compression that preserves information relevant to a declared target</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="../mcw_predictive_state_semantics/#mathematical-ancestry-and-methodological-references">formal note's complete reference section</a> is the citation authority for this working construction.</p>
+<hr />
+<h2 id="what-the-accessible-version-must-never-imply">What the accessible version must never imply<a class="headerlink" href="#what-the-accessible-version-must-never-imply" title="Permanent link">&para;</a></h2>
+<ul>
+<li>A state is not automatically a transcript, summary, feeling, label, hidden vector, or model activation.</li>
+<li>“Same future” is meaningless until the tests, outcomes, horizon, and system boundary are declared.</li>
+<li>Pairwise approximate closeness is not an equivalence relation.</li>
+<li>Future probability is not the same as model confidence.</li>
+<li>A quotient need not be finite, countable, observable, or easy to compute.</li>
+<li>A participant's belief about the relational state is not the relational state.</li>
+<li>Elicitation does not read the HCW directly; it measures selectively and may change what is measured.</li>
+<li>A brain–computer interface adds a channel, not automatic access to meaning or complete human context.</li>
+<li>A compression is not sufficient merely because it sounds like a good summary.</li>
+<li>Finite experiments cannot establish exact equality over untested futures.</li>
+<li>MCW-PSS is a working operational projection of evidence about MCW, not the only or canonical definition of MCW.</li>
+<li>Context participation does not imply agency.</li>
+<li>Strong lumpability is a condition for recursive state use, not a beginner prerequisite and not something supplied by the definition alone.</li>
+</ul>
+<hr />
+<h2 id="web-and-document-accessibility">Web and document accessibility<a class="headerlink" href="#web-and-document-accessibility" title="Permanent link">&para;</a></h2>
+<p>The GitHub Pages site renders equations using MathJax rather than equation images. MathJax's <a href="https://docs.mathjax.org/en/v3.2/basic/accessibility.html">accessibility documentation</a> describes keyboard navigation, assistive MathML, screen-reader support, speech, magnification, and expression exploration. The current site configuration produces visually hidden MathML alongside the visual equations.</p>
+<p>This guide additionally follows these content rules:</p>
+<ul>
+<li>every central equation is followed by a spoken rendering and prose explanation;</li>
+<li>meaning never depends on color alone;</li>
+<li>link text describes its destination;</li>
+<li>tables have explicit header rows;</li>
+<li>abbreviations are expanded on first use;</li>
+<li>advanced material is labeled rather than assumed;</li>
+<li>deterministic examples are identified as teaching fixtures;</li>
+<li>simplified claims link to their formal definitions;</li>
+<li>no formal symbol should be added to the working note without either a local definition or an entry here.</li>
+</ul>
+<p>Screen-reader pronunciation and mathematical speech vary across browser, operating system, and assistive technology. Assistive MathML is a foundation, not a substitute for testing with readers and tools that use the site.</p>
+<hr />
+<h2 id="maintenance-checklist">Maintenance checklist<a class="headerlink" href="#maintenance-checklist" title="Permanent link">&para;</a></h2>
+<p>When a future pull request changes the formal note, reviewers should ask:</p>
+<ol>
+<li>Can the new idea be stated at A0 in one sentence?</li>
+<li>Does an A1 example already contain the idea in compressed form?</li>
+<li>Is every non-local symbol defined, pronounceable, and disambiguated?</li>
+<li>Does every equation have a prose interpretation nearby?</li>
+<li>Does a simplified claim link to the formal assumptions it omits?</li>
+<li>Are learning resources descriptive, accessible, and from identifiable authors or institutions?</li>
+<li>Are primary research claims linked to primary papers?</li>
+<li>Does the page remain useful when mathematics, color, or interactive scripts are unavailable?</li>
+<li>Has the rendered page been checked with keyboard navigation and at least one assistive-technology path?</li>
+<li>Are A4 implementation and A5 application claims withheld until corresponding evidence exists?</li>
+</ol>
+<p>Accessibility is part of epistemic discipline: if a construct cannot be explained without prestige, unexplained notation, or implicit prerequisites, the framework cannot reliably tell whether people share the same meaning.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rainmana" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
